@@ -5,12 +5,11 @@ import Link from "next/link";
 import { textSlide } from "@/components/animations/animation";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { SlArrowRight } from "react-icons/sl";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function LandingPage() {
   useEffect(() => {
-    gsap.set(".ent-1", { x: -50})
-    // gsap.set(".ent-2", { x: -50})
     textSlide();
   }, []);
 
@@ -22,20 +21,25 @@ export default function LandingPage() {
     ));
   };
 
-
   const textShift = () => {
     const tl = gsap.timeline();
-
-
-    tl.to(".ent-2", { x: 50, opacity: 0, duration: 0.3 }) 
-      .to(".ent-1", { x: 0, opacity: 1, duration: 0.3 }, "<"); 
+    tl.to(".ent-2", { x: 50, duration: 0.3 })
+      .to(".ent-1", { x: 47, duration: 0.3 }, "<")
+      .to(".arr-1", { x: 30, duration: 0.3 },"-=0.5")
+      .to(".arr-2", { x: 30, duration: 0.3 }, "-=0.5")
+      .to(".arr-3", { x: 30, duration: 0.3 }, "-=0.5")
+      .to(".arr-4", { x: 30, duration: 0.3 }, "-=0.5");
   };
 
   const textUnshift = () => {
     const tl = gsap.timeline();
 
-    tl.to(".ent-1", { x: -50, opacity: 0, duration: 0.3 }) 
-      .to(".ent-2", { x: 0, opacity: 1, duration: 0.3 }, "<"); 
+    tl.to(".ent-1", { x: -3, duration: 0.3 })
+      .to(".ent-2", { x: 0, duration: 0.3 }, "<")
+      .to(".arr-1", { x: -50, duration: 0.3 })
+      .to(".arr-2", { x: 0, duration: 0.3 }, "<")
+      .to(".arr-3", { x: 0, duration: 0.3 }, "<")
+      .to(".arr-4", { x: 0, duration: 0.3 }, "<");
   };
 
   return (
@@ -80,15 +84,31 @@ export default function LandingPage() {
         <h3 className="text-sm uppercase">CALIFORNIA, USA, 90757</h3>
         <Link
           href=""
-          className="flex items-center justify-between w-[180px] bg-[#ef4826] hover:bg-[#26ef47] text-black p-4 rounded-br-lg"
+          className="flex items-center justify-between w-[180px] bg-[#ef4826] hover:bg-[#26ef47] text-black p-4 rounded-br-lg "
           onMouseEnter={textShift}
           onMouseLeave={textUnshift}
         >
-          <div className="text-sm  uppercase font-bold w-[47px] overflow-hidde flex items-center relativ">
-            <p className="ent-1 absolute">enter</p>
-            <p className="ent-2 absolute">enter</p>
+          <div className="uppercase font-bold w-[49px] h-[20px] overflow-hidden flex items-center relative">
+            <p className="left-[-46px] ent-1 absolute text-sm ">enter</p>
+            <p className="ent-2 absolute text-sm">enter</p>
           </div>
-          <span>{">>"}</span>
+          <div
+            className=" w-[30px] h-[20px] flex items-center justify-between overflow-hidden relative"
+            
+          >
+            <div className="flex items-center justify-between w-[15px] absolute left-[-15px]">
+              <SlArrowRight className="text-sm absolut arr-1" />
+            </div>
+            <div className="flex items-center justify-between w-[15px] absolute left-[-30px] ">
+              <SlArrowRight className="text-sm  arr-2" />
+            </div>
+            <div className="flex items-center justify-between w-[15px] absolut">
+              <SlArrowRight className="text-sm  arr-3" />
+            </div>
+            <div className="flex items-center justify-between w-[15px] ">
+              <SlArrowRight className="text-sm  arr-4" />
+            </div>
+          </div>
         </Link>
       </div>
     </div>
