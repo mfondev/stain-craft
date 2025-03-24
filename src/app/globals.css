@@ -20,16 +20,22 @@
 } */
 
 @font-face {
-  font-family: "Mori";
-  src: url("/font/PPMori-Regular") format("otf");
+  font-family: "PPMori";
+  src: url("/font/PPMori-Regular.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "Aoenik";
+  src: url("/font/Aoenik-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
   font-family: "PPMori", sans-serif;
 }
 
-.overlay{
+.overlay {
   /* clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%); */
   transform: translateY(100%);
 }
