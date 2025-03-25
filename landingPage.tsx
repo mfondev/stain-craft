@@ -121,8 +121,8 @@ export default function LandingPage() {
               onMouseLeave={textUnshift}
             >
               <div className="uppercase font-bold w-[49px] h-[20px] overflow-hidden flex items-center relative">
-                <p className="left-[-46px] ent-1 absolute text-sm ">enter</p>
-                <p className="ent-2 absolute text-sm">enter</p>
+                <p className="left-[-46px] ent-1 absolute text-[14px] font-bold">enter</p>
+                <p className="ent-2 absolute text-[14px] font-bold">enter</p>
               </div>
               <div className=" w-[15px] h-[15px] flex items-center justify-between overflow-hidden relative">
                 <div className="flex items-center justify-between w-[15px] absolute left-[-10px]">
