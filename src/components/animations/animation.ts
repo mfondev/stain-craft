@@ -37,11 +37,13 @@ export const textUnslide = () => {
 };
 
 export const hfAnimation = () => {
-gsap.fromTo(".carImg",{ y: -430, opacity: 0 },
-  { y: 0, opacity: 1, duration: 1.5, ease: "power4.inOut" })
+  gsap.fromTo(
+    ".carImg",
+    { y: -300, opacity: 0 },
+    { y: 320, opacity: 1, duration: 1.5, ease: "power4.inOut" }
+  );
 
-
-  const split1= new SplitType(".hf1", { types: "chars" });
+  const split1 = new SplitType(".hf1", { types: "chars" });
   const split2 = new SplitType(".hf2", { types: "chars" });
   const chars1 = split1.chars;
   const chars2 = split2.chars;
@@ -58,18 +60,46 @@ gsap.fromTo(".carImg",{ y: -430, opacity: 0 },
     "-=1"
   );
 };
-export const lmAnimation = () => {
-  const split1= new SplitType(".lm1", { types: "words" });
-  const split2 = new SplitType(".lm2", { types: "words" });
-  console.log(split1.words);
-  
-  const chars1 = split1.words;
-  const chars2 = split2.words;
 
-  const tl = gsap.timeline();
-  tl.fromTo(
-    chars1,
-    { y: 30, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: "power2.out" }
-  )
+export const homeAnimation = () => {
+  const timeline = gsap.timeline();
+  const letStats = gsap.utils.toArray(".stats");
+  const split1 = new SplitType(".lm1", { types: "words" });
+  const statText1 = new SplitType(".statText1", { types: "chars" });
+  const statText2 = new SplitType(".statText2", { types: "chars" });
+  const chars1 = split1.words;
+  const stat1 = statText1.chars;
+  const stat2 = statText2.chars;
+
+  timeline
+    .fromTo(
+      letStats,
+      { y: 130, opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.05, duration: 1, ease: "power2.inOut" }
+    )
+    .to(stat1, {
+      y: -30,
+      opacity: 1,
+      duration: 0.5,
+      stagger: 0.05,
+      ease: "power2.out",
+    })
+    .fromTo(
+      stat2,
+      { y: 0, opacity: 0 },
+      { y: -35, opacity: 1, duration: 0.5, stagger: 0.05, ease: "power2.out" },
+      "<"
+    )
+    .fromTo(
+      ".watchVideo",
+      {  opacity: 0 },
+      {opacity: 1, duration: 0.5, stagger: 0.05, ease: "power2.out" },
+      "<"
+    )
+    .fromTo(
+      chars1,
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: "power2.out" },
+      "<"
+    );
 };
