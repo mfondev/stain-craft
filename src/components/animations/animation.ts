@@ -1,6 +1,5 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { Spline_Sans } from "next/font/google";
 gsap.registerPlugin(ScrollTrigger);
 import SplitType from "split-type";
 
@@ -103,3 +102,34 @@ export const homeAnimation = () => {
       "<"
     );
 };
+
+const onGoingCode = () => {
+  gsap.to(".carImg", {scale: 0.9, duration: 1,ease: "power2.out",scrub: 1});
+}
+
+
+export const createScroll01 = () => {
+   const panels = document.querySelectorAll(".panel");
+      panels.forEach((panel, i) => {
+        const isLast = i === panels.length - 1;
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: panel,
+              start: "top top",
+              scrub: 1,
+            },
+          })
+          .to(
+            panel,
+            {
+              // filter: isLast ? "none" : "brightness(50%) blur(10px)",
+              ease: "expo.inOut",
+              onUpdate: () => {
+                onGoingCode();
+              }
+            },
+            "<"
+          );
+      });
+    };
