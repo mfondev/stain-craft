@@ -25,13 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <LenisScroller>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <LenisScroller>{children}</LenisScroller>
       </body>
-      </LenisScroller>
     </html>
   );
 }

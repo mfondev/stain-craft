@@ -91,8 +91,8 @@ export const homeAnimation = () => {
     )
     .fromTo(
       ".watchVideo",
-      {  opacity: 0 },
-      {opacity: 1, duration: 0.5, stagger: 0.05, ease: "power2.out" },
+      { opacity: 0 },
+      { opacity: 1, duration: 0.5, stagger: 0.05, ease: "power2.out" },
       "<"
     )
     .fromTo(
@@ -103,33 +103,46 @@ export const homeAnimation = () => {
     );
 };
 
-const onGoingCode = () => {
-  gsap.to(".carImg", {scale: 0.9, duration: 1,ease: "power2.out",scrub: 1});
-}
+const onGoingCode = (progress: number) => {
+  gsap.to(".carImg", {
+    scale: 1.2 * (1 - progress), 
+    duration: 1,
+    ease: "power2.out",
+    scrub: 1,
+  });
 
+  const maxMove = -355; 
+
+  gsap.to(".eleven", {
+    y: Math.max(maxMove, -700 * progress), 
+    ease: "power2.out",
+    duration: 1,
+    marginBottom: 10,
+  });
+};
 
 export const createScroll01 = () => {
-   const panels = document.querySelectorAll(".panel");
-      panels.forEach((panel, i) => {
-        const isLast = i === panels.length - 1;
-        gsap
-          .timeline({
-            scrollTrigger: {
-              trigger: panel,
-              start: "top top",
-              scrub: 1,
-            },
-          })
-          .to(
-            panel,
-            {
-              // filter: isLast ? "none" : "brightness(50%) blur(10px)",
-              ease: "expo.inOut",
-              onUpdate: () => {
-                onGoingCode();
-              }
-            },
-            "<"
-          );
-      });
-    };
+  const panels = document.querySelectorAll(".panel");
+  panels.forEach((panel, i) => {
+    const isLast = i === panels.length - 1;
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: panel,
+          start: "top top",
+          scrub: 1,
+          onUpdate: (self) => {
+            onGoingCode(self.progress);
+          },
+        },
+      })
+      .to(
+        panel,
+        {
+          // filter: isLast ? "none" : "brightness(50%) blur(10px)",
+          ease: "expo.inOut",
+        },
+        "<"
+      );
+  });
+};

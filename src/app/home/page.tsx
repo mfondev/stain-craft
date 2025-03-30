@@ -117,11 +117,11 @@ export default function Home() {
                 </div>
               </main>
             </main>
-            <div className="h-[200px] overflow-hidden  leading-[1] font-extrabold absolute right-0 bottom-[0px]  eleven">
+            <div className="h-[200px] overflow-hidden  leading-[1] font-extrabold absolute right-0 bottom-[0px] eleven">
               <h1 className="hf1  text-[250px] leading-[1] font-extrabold h-full ">
                 11
               </h1>
-              <h1 className="hf2  text-[250px] leading-[1] font-extrabold h-full">
+              <h1 className="hf2  text-[250px] leading-[1] font-extrabold h-full ">
                 11
               </h1>
             </div>
