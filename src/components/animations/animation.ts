@@ -155,25 +155,57 @@ export const createScroll01 = () => {
   });
 };
 
+// export const scaleAnimation = () => {
+//   const timeline = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".main-section",
+//       start: "top bottom",
+//       scrub: true,
+//       markers: true,
+//     },
+//   });
+
+//   timeline
+//     .to(".scale-section", {
+//       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+//       ease: "power2.out",
+//       duration: 3,
+//     })
+//     .fromTo(
+//       ".backgroundImg",
+//       { width: "100%" },
+//       { width: "50%", duration: 1, ease: "power2.out" }
+//     );
+// };
+
+
 export const scaleAnimation = () => {
-  const timeline = gsap.timeline({
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.to(".scale-section", {
+    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    ease: "power2.out",
+    duration: 3,
     scrollTrigger: {
       trigger: ".main-section",
       start: "top bottom",
       scrub: true,
-      markers: true,
+      // pin: true,
+      // markers: true,
     },
   });
 
-  timeline
-    .to(".scale-section", {
-      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-      ease: "power2.out",
-      duration: 3,
-    })
-    .fromTo(
-      ".backgroundImg",
-      { width: "100%" },
-      { width: "50%", duration: 1, ease: "power2.out" }
-    );
+  gsap.to(".backgroundImg", {
+    width: "38%", 
+    ease: "power2.out",
+    duration: 3,
+    scrollTrigger: {
+      trigger: ".main-section",
+      start: "top 60%",
+      // end: "top center",
+      scrub: true,
+      // markers: true,
+    },
+  });
 };
+

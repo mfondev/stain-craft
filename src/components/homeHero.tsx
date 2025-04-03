@@ -59,9 +59,81 @@ export default function HomeHero() {
               className="object-cover rounded-tr-[50px]"
             />
           </div>
-          <main className="bg-[#eaece9] main-section">
+          <main className="bg-[#fff] main-section h-[100vh]">
             <section className=" h-[100vh] relative flex scale-section">
-              <div className="absolute bg-amber-400 right-0 top-0 w-1/2 h-full"></div>
+              <div className="absolute bg-[#eaece9] right-0 top-0 w-1/2 h-full">
+                <div className="px-[100px]">
+                  <h1 className="text-[55px] font-extrabold uppercase">
+                    MANIACS
+                  </h1>
+                  <h6 className="text-[25px] font-extrabold uppercase leading-6">
+                    Twins, born in Ukraine, raised in Canada. High School
+                    dropouts. Trained in Italy and California. Oilstainlab is
+                    their un-medicated vision, a pure manifest of automotive
+                    excess & Fun.
+                  </h6>
+                  <article className="grid place-items-center bg-[#e2e2e2] relative w-full h-[500px] overflow-hidden">
+                    <div className="flex items-center gap-[40px] pr-[100px] leading-[1] absolute w-full top-[-70px] left-[-690px]">
+                      <h1 className="text-[180px] font-extrabold uppercase">
+                        maniacs
+                      </h1>
+                      <p className="text-[120px] font-extrabold uppercase mt-4">
+                        *
+                      </p>
+                      <h1 className="text-[180px] font-extrabold uppercase">
+                        maniacs
+                      </h1>
+                    </div>
+                    <div className="flex items-center gap-[40px] pr-[100px] leading-[1] absolute w-full top-[70px] left-[-690px] "  >
+                      <h1 className="text-[180px] font-extrabold uppercase">
+                        maniacs
+                      </h1>
+                      <p className="text-[120px] font-extrabold uppercase mt-4">
+                        *
+                      </p>
+                      <h1 className="text-[180px] font-extrabold uppercase">
+                        maniacs
+                      </h1>
+                    </div>
+                    <div className="flex items-center gap-[40px] pr-[100px] leading-[1] absolute w-full top-[210px] left-[-690px]">
+                      <h1 className="text-[180px] font-extrabold uppercase">
+                        maniacs
+                      </h1>
+                      <p className="text-[120px] font-extrabold uppercase mt-4">
+                        *
+                      </p>
+                      <h1 className="text-[180px] font-extrabold uppercase">
+                        maniacs
+                      </h1>
+                    </div>
+                    <div className="flex items-center gap-[40px] pr-[100px] leading-[1] absolute w-full top-[350px] left-[-690px]">
+                      <h1 className="text-[180px] font-extrabold uppercase">
+                        maniacs
+                      </h1>
+                      <p className="text-[120px] font-extrabold uppercase mt-4">
+                        *
+                      </p>
+                      <h1 className="text-[180px] font-extrabold uppercase">
+                        maniacs
+                      </h1>
+                    </div>
+                  </article>
+
+                  <div>
+                    <h2>double vision</h2>
+                    <p>
+                      Our founders “the twins” as commonly referred to by the
+                      industry, have been breaking rules and records; clinching
+                      world championships and responsible for 6.5 million street
+                      cars. Maniacally obsessed with forging vehicles,
+                      experiences and technologies beyond sanity. Inspired by
+                      those before them, Oilstainlab is a new generation of
+                      trouble makers, maniacs creating for maniacs.
+                    </p>
+                  </div>
+                  <div className="w-[1px]  bg-[#bfc1bf]  "></div>
+                </div>
+              </div>
               <div className="absolute inset-0 backgroundImg">
                 <ul className="z-50 text-white place-items-cente h-[100vh] flex flex-col justify-center items-center">
                   <li className="uppercase font-bold text-2xl">Maniacs</li>
