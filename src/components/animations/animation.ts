@@ -178,10 +178,9 @@ export const createScroll01 = () => {
 //     );
 // };
 
-
 export const scaleAnimation = () => {
   gsap.registerPlugin(ScrollTrigger);
-
+  gsap.set(".aboutSection", { yPercent: 65 });
   gsap.to(".scale-section", {
     clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
     ease: "power2.out",
@@ -195,17 +194,30 @@ export const scaleAnimation = () => {
     },
   });
 
-  gsap.to(".backgroundImg", {
-    width: "38%", 
+  const tl = gsap.timeline();
+
+  tl.to(".backgroundImg", {
+    width: "50%",
     ease: "power2.out",
     duration: 3,
     scrollTrigger: {
       trigger: ".main-section",
       start: "top 60%",
-      // end: "top center",
       scrub: true,
-      // markers: true,
+      pin: ".main-section",
+      markers: true,
     },
+  }).to(".aboutSection", {
+    yPercent: -10,
+    ease: "power2.out",
+    duration: 1,
+    delay: 1,
+    // scrollTrigger: {
+    //   trigger: ".main-section",
+    //   start: "top 60%",
+    //   end: "bottom top",
+    //   scrub: true,
+    //   markers: true,
+    // },
   });
 };
-

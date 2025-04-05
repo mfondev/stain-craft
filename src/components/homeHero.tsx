@@ -56,14 +56,14 @@ export default function HomeHero() {
               src="/images/koz_1.jpg"
               alt=""
               fill
-              className="object-cover rounded-tr-[50px]"
+              className="object-cover rounded-t-[50px]"
             />
           </div>
           <main className="bg-[#fff] main-section h-[100vh]">
             <section className=" h-[100vh] relative flex scale-section">
-              <div className="absolute bg-[#eaece9] right-0 top-0 w-1/2 h-full">
-                <div className="px-[100px]">
-                  <h1 className="text-[55px] font-extrabold uppercase">
+              <div className="absolute bg-[#eaece9] right-0 top-0 w-1/2 h-full overflow-hidden">
+                <div className="px-[100px] aboutSection">
+                  <h1 className="text-[55px] font-extrabold uppercase headers">
                     MANIACS
                   </h1>
                   <h6 className="text-[25px] font-extrabold uppercase leading-6">
@@ -72,7 +72,7 @@ export default function HomeHero() {
                     their un-medicated vision, a pure manifest of automotive
                     excess & Fun.
                   </h6>
-                  <article className="grid place-items-center bg-[#e2e2e2] relative w-full h-[500px] overflow-hidden">
+                  <article className="grid place-items-center bg-[#e2e2e2] relative w-full h-[500px] overflow-hidden ">
                     <div className="flex items-center gap-[40px] pr-[100px] leading-[1] absolute w-full top-[-70px] left-[-690px]">
                       <h1 className="text-[180px] font-extrabold uppercase">
                         maniacs
