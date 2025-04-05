@@ -105,20 +105,28 @@ export const homeAnimation = () => {
 
 const onGoingCode = (progress: number) => {
   gsap.to(".carImg", {
-    scale: 1.2 * (1 - progress), 
+    scale: 1.2 * (1 - progress),
     duration: 1,
     ease: "power2.out",
     scrub: 1,
   });
 
-  const maxMove = -355; 
+  const maxMove = -355;
 
   gsap.to(".eleven", {
-    y: Math.max(maxMove, -700 * progress), 
+    y: Math.max(maxMove, -700 * progress),
     ease: "power2.out",
     duration: 1,
     marginBottom: 10,
   });
+
+  // gsap.fromTo(".panel_1",{
+  //   filter: "brightness(0.5)",
+  //   duration: 1,
+  //   ease: "power2.out",
+  // },{
+  //   filter: `brightness(${0.5 + progress})`,
+  // })
 };
 
 export const createScroll01 = () => {
@@ -139,10 +147,77 @@ export const createScroll01 = () => {
       .to(
         panel,
         {
-          // filter: isLast ? "none" : "brightness(50%) blur(10px)",
+          // filter: "brightness(50%) blur(10px)",
           ease: "expo.inOut",
         },
         "<"
       );
+  });
+};
+
+// export const scaleAnimation = () => {
+//   const timeline = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: ".main-section",
+//       start: "top bottom",
+//       scrub: true,
+//       markers: true,
+//     },
+//   });
+
+//   timeline
+//     .to(".scale-section", {
+//       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+//       ease: "power2.out",
+//       duration: 3,
+//     })
+//     .fromTo(
+//       ".backgroundImg",
+//       { width: "100%" },
+//       { width: "50%", duration: 1, ease: "power2.out" }
+//     );
+// };
+
+export const scaleAnimation = () => {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.set(".aboutSection", { yPercent: 65 });
+  gsap.to(".scale-section", {
+    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    ease: "power2.out",
+    duration: 3,
+    scrollTrigger: {
+      trigger: ".main-section",
+      start: "top bottom",
+      scrub: true,
+      // pin: true,
+      // markers: true,
+    },
+  });
+
+  const tl = gsap.timeline();
+
+  tl.to(".backgroundImg", {
+    width: "50%",
+    ease: "power2.out",
+    duration: 3,
+    scrollTrigger: {
+      trigger: ".main-section",
+      start: "top 60%",
+      scrub: true,
+      pin: ".main-section",
+      markers: true,
+    },
+  }).to(".aboutSection", {
+    yPercent: -10,
+    ease: "power2.out",
+    duration: 1,
+    delay: 1,
+    // scrollTrigger: {
+    //   trigger: ".main-section",
+    //   start: "top 60%",
+    //   end: "bottom top",
+    //   scrub: true,
+    //   markers: true,
+    // },
   });
 };

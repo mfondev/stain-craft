@@ -39,3 +39,16 @@ body {
   /* clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%); */
   transform: translateY(100%);
 }
+
+.scale-section{
+  clip-path: polygon(1% 2%, 99% 2%, 99% 99%, 1% 99%);
+  /* transition: clip-path 1s ease-in-out; */
+}
+
+.backgroundImg{
+  background: url("/images/bmw.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+}
