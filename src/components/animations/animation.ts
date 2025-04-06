@@ -155,32 +155,7 @@ export const createScroll01 = () => {
   });
 };
 
-// export const scaleAnimation = () => {
-//   const timeline = gsap.timeline({
-//     scrollTrigger: {
-//       trigger: ".main-section",
-//       start: "top bottom",
-//       scrub: true,
-//       markers: true,
-//     },
-//   });
-
-//   timeline
-//     .to(".scale-section", {
-//       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-//       ease: "power2.out",
-//       duration: 3,
-//     })
-//     .fromTo(
-//       ".backgroundImg",
-//       { width: "100%" },
-//       { width: "50%", duration: 1, ease: "power2.out" }
-//     );
-// };
-
 export const scaleAnimation = () => {
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.set(".aboutSection", { yPercent: 65 });
   gsap.to(".scale-section", {
     clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
     ease: "power2.out",
@@ -189,35 +164,68 @@ export const scaleAnimation = () => {
       trigger: ".main-section",
       start: "top bottom",
       scrub: true,
-      // pin: true,
-      // markers: true,
     },
   });
 
-  const tl = gsap.timeline();
+  const timeline = gsap.timeline()
 
-  tl.to(".backgroundImg", {
-    width: "50%",
-    ease: "power2.out",
-    duration: 3,
-    scrollTrigger: {
-      trigger: ".main-section",
-      start: "top 60%",
-      scrub: true,
-      pin: ".main-section",
-      markers: true,
+  timeline.fromTo(
+    ".backgroundImg",{
+      width: "100%",
     },
-  }).to(".aboutSection", {
-    yPercent: -10,
-    ease: "power2.out",
-    duration: 1,
-    delay: 1,
-    // scrollTrigger: {
-    //   trigger: ".main-section",
-    //   start: "top 60%",
-    //   end: "bottom top",
-    //   scrub: true,
-    //   markers: true,
-    // },
-  });
-};
+    {
+      width: "50%",
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".main-section",
+        start: "top 40%",
+        scrub: true,
+        markers: true,
+      },
+    }
+  );
+  // ScrollTrigger.create({
+  //   trigger: ".main-section",
+  //   start: "top top",
+  //   end: "bottom bottom",
+  //   scrub: true,
+  //   markers: true,
+  //   pin: ".rightBlock",
+  // })
+
+}
+
+
+const randomFunctin = () => {
+  //  let ctx =  gsap.context(() => {
+  //       gsap.set(".photo:not(:first-child)", { opacity: 0 ,scale: 0.5});
+  //       const animation = gsap.to("photo:not(:first-child)", {
+  //         opacity: 1,
+  //         scale: 1,
+  //         duration: 0.5,
+  //         stagger: 0.2,
+  //       });
+  //       ScrollTrigger.create({
+  //         trigger: "main-section",
+  //         start: "top top",
+  //         end: "bottom bottom",
+  //         scrub: true,
+  //         animation: animation,
+  //         markers: true,
+  //         // pin: ".main-section",
+  //       });
+  //     })
+  //     return () => {
+  //       ctx.revert(); 
+  //     };
+
+  ScrollTrigger.create({
+    trigger: ".main-section",
+    start: "top top",
+    end: "bottom bottom",
+    scrub: true,
+    markers: true,
+    pin: ".rightBlock",
+  })
+  }
