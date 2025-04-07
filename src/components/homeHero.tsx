@@ -15,7 +15,7 @@ export default function HomeHero() {
   return (
     <>
       <main className="relative">
-        <section className="min-h-[100vh] bg-black rounded-t-[50px] car-sectio sticky top-0 panel flex brightness-75 panel_1 ">
+        <section className="min-h-[100vh] bg-black rounded-t-[50px] sticky top-0 panel flex brightness-75 panel_1 ">
           <div className="relative w-1/2">
             <Image
               src="/images/koz_1.jpg"
@@ -59,20 +59,45 @@ export default function HomeHero() {
               className="object-cover rounded-t-[50px]"
             />
           </div>
-          <main className="bg-[#fff] main-section h-[100vh]">
-            <section className=" h-[100vh] relative flex scale-section">
-              <div className="absolute bg-[#eaece9] right-0 top-0 w-1/2 h-full overflow-hidden">
-                <div className="px-[100px] aboutSection">
-                  <h1 className="text-[55px] font-extrabold uppercase headers">
+          <main className="bg-[#fff] main-section ">
+            <section className="relative h-[100vh] flex scale-section">
+              <div className="relative w-full h-full z-10 backgroundImg rightBlock">
+                <Image
+                  src="/images/bmw.jpg"
+                  alt=""
+                  fill
+                  className="object-cover absolute top-0 left-0"
+                />
+                <Image
+                  src="/images/koz_2.jpg"
+                  alt=""
+                  fill
+                  className="object-cover absolute top-0 left-0"
+                />
+                <Image
+                  src="/images/koz_3.jpg"
+                  alt=""
+                  fill
+                  className="object-cover absolute top-0 left-0"
+                />
+                <ul className="z-50 text-white h-full flex flex-col justify-center items-center absolute top-0 left-0 w-full bg-black/25">
+                  <li className="uppercase font-bold text-2xl">Maniacs</li>
+                  <li className="uppercase font-bold text-2xl">Mission</li>
+                  <li className="uppercase font-bold text-2xl">Machine</li>
+                </ul>
+              </div>
+              <div className="absolute bg-[#eaece9] right-0 top-0 w-1/2 h-full flex items-center justify-center aboutSection">
+                <div className=" px-[60px]">
+                  <h1 className="text-[55px] font-extrabold uppercase headers mb-8">
                     MANIACS
                   </h1>
-                  <h6 className="text-[25px] font-extrabold uppercase leading-6">
+                  <h6 className="text-[32px] font-extrabold uppercase leading-8 mb-10">
                     Twins, born in Ukraine, raised in Canada. High School
                     dropouts. Trained in Italy and California. Oilstainlab is
                     their un-medicated vision, a pure manifest of automotive
                     excess & Fun.
                   </h6>
-                  <article className="grid place-items-center bg-[#e2e2e2] relative w-full h-[500px] overflow-hidden ">
+                  <article className="grid place-items-center bg-[#e2e2e2] relative w-full h-[500px] overflow-hidden  mb-8">
                     <div className="flex items-center gap-[40px] pr-[100px] leading-[1] absolute w-full top-[-70px] left-[-690px]">
                       <h1 className="text-[180px] font-extrabold uppercase">
                         maniacs
@@ -84,7 +109,7 @@ export default function HomeHero() {
                         maniacs
                       </h1>
                     </div>
-                    <div className="flex items-center gap-[40px] pr-[100px] leading-[1] absolute w-full top-[70px] left-[-690px] "  >
+                    <div className="flex items-center gap-[40px] pr-[100px] leading-[1] absolute w-full top-[70px] left-[-690px] ">
                       <h1 className="text-[180px] font-extrabold uppercase">
                         maniacs
                       </h1>
@@ -118,10 +143,11 @@ export default function HomeHero() {
                       </h1>
                     </div>
                   </article>
-
-                  <div>
-                    <h2>double vision</h2>
-                    <p>
+                  <div className="flex items-start justify-between mb-14">
+                    <h2 className="uppercase text-sm max-w-[60px]">
+                      double vision
+                    </h2>
+                    <p className="max-w-[480px] text-sm ">
                       Our founders “the twins” as commonly referred to by the
                       industry, have been breaking rules and records; clinching
                       world championships and responsible for 6.5 million street
@@ -134,17 +160,11 @@ export default function HomeHero() {
                   <div className="w-[1px]  bg-[#bfc1bf]  "></div>
                 </div>
               </div>
-              <div className="absolute inset-0 backgroundImg">
-                <ul className="z-50 text-white place-items-cente h-[100vh] flex flex-col justify-center items-center">
-                  <li className="uppercase font-bold text-2xl">Maniacs</li>
-                  <li className="uppercase font-bold text-2xl">Mission</li>
-                  <li className="uppercase font-bold text-2xl">Machine</li>
-                </ul>
-              </div>
             </section>
           </main>
         </section>
       </main>
+
     </>
   );
 }

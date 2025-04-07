@@ -73,77 +73,80 @@ export default function LandingPage() {
 
   return (
     <>
-      <div className="relative w-full h-screen overflow-hidden">
-        <div className="bg-black h-screen text-white px-6 pb-6 flex flex-col justify-between">
-          <div className="bg-black text-white h-screen p-6 flex flex-col justify-between">
-            <div className="flex flex-col gap-4">
-              <div className="h-[110px] overflow-hidden flex flex-col">
-                <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
-                  {wrapText("Bespoke")}
-                </h1>
-                <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-text2">
-                  {wrapText("Bespoke")}
-                </h1>
-              </div>
-              <div className="h-[110px] overflow-hidden flex flex-col ml-[400px]">
-                <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
-                  {wrapText("Myth")}
-                </h1>
-                <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-text2">
-                  {wrapText("Myth")}
-                </h1>
-              </div>
-              <div className="h-[110px] overflow-hidden flex flex-col">
-                <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-full h-text1 ">
-                  {wrapText("Chaos")}
-                </h1>
-                <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-text2">
-                  {wrapText("Chaos")}
-                </h1>
-              </div>
-              <div className="h-[110px] overflow-hidden flex flex-col ml-[130px]">
-                <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
-                  {wrapText("Maniac")}
-                </h1>
-                <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-text2">
-                  {wrapText("Maniac")}
-                </h1>
+      <main className="relative w-full h-screen overflow-hidden ">
+        <section className="flex flex-col justify-center h-screen px-8 z-10 bg-black">
+          <article className="flex flex-col justify-between h-[75%] relative z-10">
+            <div className="text-white">
+              <div className="flex flex-col gap-4">
+                <div className="h-[110px] overflow-hidden flex flex-col">
+                  <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
+                    {wrapText("Bespoke")}
+                  </h1>
+                  <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-text2">
+                    {wrapText("Bespoke")}
+                  </h1>
+                </div>
+                <div className="h-[110px] overflow-hidden flex flex-col ml-[400px]">
+                  <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
+                    {wrapText("Myth")}
+                  </h1>
+                  <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-text2">
+                    {wrapText("Myth")}
+                  </h1>
+                </div>
+                <div className="h-[110px] overflow-hidden flex flex-col">
+                  <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-full h-text1 ">
+                    {wrapText("Chaos")}
+                  </h1>
+                  <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-text2">
+                    {wrapText("Chaos")}
+                  </h1>
+                </div>
+                <div className="h-[110px] overflow-hidden flex flex-col ml-[130px]">
+                  <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
+                    {wrapText("Maniac")}
+                  </h1>
+                  <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-text2">
+                    {wrapText("Maniac")}
+                  </h1>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="flex items-center justify-between l-footer">
-            <h3 className="text-sm uppercase">CALIFORNIA, USA, 90757</h3>
-            <Link
-              href=""
-              onClick={homeRoute}
-              className="flex items-center justify-between w-[180px] bg-[#ef4826] hover:bg-[#26ef47] text-black p-4 rounded-br-lg "
-              onMouseEnter={textShift}
-              onMouseLeave={textUnshift}
-            >
-              <div className="uppercase font-bold w-[49px] h-[20px] overflow-hidden flex items-center relative">
-                <p className="left-[-46px] ent-1 absolute text-[14px] font-bold">enter</p>
-                <p className="ent-2 absolute text-[14px] font-bold">enter</p>
-              </div>
-              <div className=" w-[15px] h-[15px] flex items-center justify-between overflow-hidden relative">
-                <div className="flex items-center justify-between w-[15px] absolute left-[-10px]">
-                  <SlArrowRight className="text-[10px] absolu arr-1" />
+            {/*  */}
+            <div className="flex items-center justify-between l-footer">
+              <h3 className="text-sm uppercase text-white">CALIFORNIA, USA, 90757</h3>
+              <Link
+                href=""
+                onClick={homeRoute}
+                className="flex items-center justify-between w-[180px] bg-[#ef4826] hover:bg-[#26ef47] text-black p-4 rounded-br-lg "
+                onMouseEnter={textShift}
+                onMouseLeave={textUnshift}
+              >
+                <div className="uppercase font-bold w-[49px] h-[20px] overflow-hidden flex items-center relative">
+                  <p className="left-[-46px] ent-1 absolute text-[14px] font-bold">enter</p>
+                  <p className="ent-2 absolute text-[14px] font-bold">enter</p>
                 </div>
-                <div className="flex items-center justify-between w-[15px] absolute left-[-18px] ">
-                  <SlArrowRight className="text-[10px] arr-2" />
+                <div className=" w-[15px] h-[15px] flex items-center justify-between overflow-hidden relative">
+                  <div className="flex items-center justify-between w-[15px] absolute left-[-10px]">
+                    <SlArrowRight className="text-[10px] absolu arr-1" />
+                  </div>
+                  <div className="flex items-center justify-between w-[15px] absolute left-[-18px] ">
+                    <SlArrowRight className="text-[10px] arr-2" />
+                  </div>
+                  <div className="flex items-center justify-between w-[15px] absolute left-[5px] ">
+                    <SlArrowRight className="text-[10px] arr-3" />
+                  </div>
+                  <div className="flex items-center justify-between w-[15px] absolute left-[-2px] ">
+                    <SlArrowRight className="text-[10px]  arr-4" />
+                  </div>
                 </div>
-                <div className="flex items-center justify-between w-[15px] absolute left-[5px] ">
-                  <SlArrowRight className="text-[10px] arr-3" />
-                </div>
-                <div className="flex items-center justify-between w-[15px] absolute left-[-2px] ">
-                  <SlArrowRight className="text-[10px]  arr-4" />
-                </div>
-              </div>
-            </Link>
-          </div>
-        </div>
+              </Link>
+            </div>
+          </article>
+        </section>
 
         <div className="overlay absolute inset-0 w-full h-full bg-white z-50"></div>
-      </div>
+      </main>
     </>
   );
 }
