@@ -200,12 +200,12 @@ export const scaleAnimation = () => {
 const randomFunctin = () => {
   //  let ctx =  gsap.context(() => {
   //       gsap.set(".photo:not(:first-child)", { opacity: 0 ,scale: 0.5});
-  //       const animation = gsap.to("photo:not(:first-child)", {
-  //         opacity: 1,
-  //         scale: 1,
-  //         duration: 0.5,
-  //         stagger: 0.2,
-  //       });
+        // const animation = gsap.to("photo:not(:first-child)", {
+        //   opacity: 1,
+        //   scale: 1,
+        //   duration: 0.5,
+        //   stagger: 0.2,
+        // });
   //       ScrollTrigger.create({
   //         trigger: "main-section",
   //         start: "top top",
