@@ -54,6 +54,7 @@ export default function About() {
       start: "top top",
       end: "bottom bottom",
       pin: ".right",
+      // markers: true,
     });
 
     // Photo 1 → Photo 2
