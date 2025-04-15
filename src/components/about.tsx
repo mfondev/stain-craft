@@ -42,7 +42,6 @@ export default function About() {
         },
       }
     );
-
     ScrollTrigger.create({
       trigger: ".gallery",
       start: "top top",
@@ -63,14 +62,7 @@ export default function About() {
       },
     });
 
-    timeline1.to(
-      ".mission",
-      {
-        color: "#fff",
-        toggleActions: "play none none reverse",
-      },
-      
-    );
+
     timeline1.to(
       ".photo1",
       {
@@ -98,14 +90,7 @@ export default function About() {
       },
     });
 
-    timeline1.to(
-      ".machine",
-      {
-        color: "#fff",
-        // toggleActions: "play none none reverse",
-      },
-      
-    );
+  
     
 
     timeline2.to(
@@ -127,6 +112,34 @@ export default function About() {
       },
       0
     );
+
+    gsap.to(".maniacs", {
+      color: "#fff",
+      scrollTrigger: {
+        trigger: ".detail1",
+        start: "top bottom",
+        end: "bottom bottom",
+        toggleActions: "play reverse play reverse", 
+      },
+    });
+    gsap.to(".mission", {
+      color: "#fff",
+      scrollTrigger: {
+        trigger: ".detail2",
+        start: "top bottom",
+        end: "bottom bottom",
+        toggleActions: "play reverse play reverse", 
+      },
+    });
+    gsap.to(".machine", {
+      color: "#fff",
+      scrollTrigger: {
+        trigger: ".detail3",
+        start: "top bottom",
+        end: "bottom bottom",
+        toggleActions: "play reverse play reverse", 
+      },
+    });
   }, []);
   return (
     <>
