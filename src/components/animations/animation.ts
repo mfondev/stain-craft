@@ -105,13 +105,13 @@ export const homeAnimation = () => {
 
 const onGoingCode = (progress: number) => {
   gsap.to(".carImg", {
-    scale: 1.2 * (1 - progress),
+    scale: 1 - progress * 0.05,
     duration: 1,
     ease: "power2.out",
     scrub: 1,
   });
 
-  const maxMove = -355;
+  const maxMove = -305;
 
   gsap.to(".eleven", {
     y: Math.max(maxMove, -700 * progress),

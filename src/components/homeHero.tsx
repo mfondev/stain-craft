@@ -6,8 +6,35 @@ import Image from "next/image";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 import About from "./about";
+import Link from "next/link";
+import { SlArrowRight } from "react-icons/sl";
 
 export default function HomeHero() {
+  const textShift = (e: React.FormEvent<HTMLElement>) => {
+    const link = e.currentTarget;
+    const tl = gsap.timeline();
+
+    tl.to(link.querySelector(".ent-2"), { x: 135, duration: 0.3 })
+      .to(link.querySelector(".ent-1"), { x: 135, duration: 0.3 }, "<")
+      .to(
+        link.querySelectorAll(".arr-1, .arr-2, .arr-3, .arr-4"),
+        { x: 15, duration: 0.3 },
+        "<"
+      );
+  };
+
+  const textUnshift = (e: React.FormEvent<HTMLElement>) => {
+    const link = e.currentTarget;
+    const tl = gsap.timeline();
+
+    tl.to(link.querySelector(".ent-1"), { x: -3, duration: 0.3 })
+      .to(link.querySelector(".ent-2"), { x: 0, duration: 0.3 }, "<")
+      .to(
+        link.querySelectorAll(".arr-1, .arr-2, .arr-3, .arr-4"),
+        { x: 0, duration: 0.3 },
+        "<"
+      );
+  };
   const menuItems = [
     "Power",
     "Origin",
@@ -18,12 +45,11 @@ export default function HomeHero() {
   ];
 
   useEffect(() => {
-
     const animation = gsap.fromTo(
       ".menuLink",
       {
         x: -120,
-        opacity: 0
+        opacity: 0,
       },
       { x: 0, duration: 0.4, stagger: 0.2, opacity: 1 }
     );
@@ -32,7 +58,7 @@ export default function HomeHero() {
       animation: animation,
       start: "top top",
       toggleActions: "play reverse play reverse",
-      markers: true,
+      // markers: true,
     });
   }, []);
 
@@ -87,6 +113,33 @@ export default function HomeHero() {
                 </li>
               ))}
             </ul>
+            <Link
+              href=""
+              className="hover:text-white hover:bg-black  z-20 ml-[40px] absolute bottom-0 flex items-center justify-between w-[200px] bg-transparent border border-black text-black p-4 rounded-br-[25px] "
+              onMouseEnter={textShift}
+              onMouseLeave={textUnshift}
+            >
+              <div className="uppercase font-bold w-[134px] h-[20px] overflow-hidden  flex items-center relative">
+                <p className="left-[-135px] ent-1 absolute text-sm ">
+                  Download specs
+                </p>
+                <p className="ent-2 absolute text-sm">Download specs</p>
+              </div>
+              <div className=" w-[15px] h-[15px] flex items-center justify-between overflow-hidden relative">
+                <div className="flex items-center justify-between w-[15px] absolute left-[-10px]">
+                  <SlArrowRight className="text-[10px] absolu arr-1" />
+                </div>
+                <div className="flex items-center justify-between w-[15px] absolute left-[-18px] ">
+                  <SlArrowRight className="text-[10px] arr-2" />
+                </div>
+                <div className="flex items-center justify-between w-[15px] absolute left-[5px] ">
+                  <SlArrowRight className="text-[10px] arr-3" />
+                </div>
+                <div className="flex items-center justify-between w-[15px] absolute left-[-2px] ">
+                  <SlArrowRight className="text-[10px]  arr-4" />
+                </div>
+              </div>
+            </Link>
             <div
               className=" relative h-[110vh]
             "
