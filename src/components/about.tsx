@@ -1,149 +1,17 @@
 "use client";
 
 import React, { useEffect } from "react";
-import gsap from "gsap";
 import Image from "next/image";
-import ScrollTrigger from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import { aboutAnimation } from "./animations/animation";
 
 export default function About() {
   useEffect(() => {
-    gsap.set(".detailsWrapper", {
-      yPercent: 70,
-      ease: "none",
-    });
-    gsap.to(".scale-section", {
-      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-      ease: "power2.out",
-      duration: 3,
-      scrollTrigger: {
-        trigger: ".main-section",
-        start: "top bottom",
-        scrub: true,
-      },
-    });
-
-    const timeline = gsap.timeline();
-
-    timeline.fromTo(
-      ".backgroundImg",
-      {
-        width: "100%",
-      },
-      {
-        width: "50%",
-        duration: 0.1,
-        ease: "power1.out",
-        scrollTrigger: {
-          trigger: ".main-section",
-          start: "top 60%",
-          // end: "bottom 20%",
-          scrub: true,
-        },
-      }
-    );
-    ScrollTrigger.create({
-      trigger: ".gallery",
-      start: "top top",
-      end: "bottom bottom",
-      pin: ".right",
-    });
-
-    gsap.set(".photo2", { yPercent: 0 });
-    gsap.set(".photo3", { yPercent: 0 });
-
-    let timeline1 = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".detail2",
-        start: "top bottom",
-        end: "bottom bottom",
-
-        scrub: true,
-      },
-    });
-
-
-    timeline1.to(
-      ".photo1",
-      {
-        yPercent: -100,
-        ease: "power2.inOut",
-      },
-      0
-    );
-
-    timeline1.to(
-      ".photo2",
-      {
-        yPercent: -100,
-        ease: "power2.inOut",
-      },
-      0
-    );
-
-    let timeline2 = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".detail3",
-        start: "top bottom",
-        end: "bottom bottom",
-        scrub: true,
-      },
-    });
-
-  
-    
-
-    timeline2.to(
-      ".photo2",
-      {
-        yPercent: -200,
-        ease: "power2.inOut",
-      },
-      0
-    );
-
-    timeline.set(".photo3", { yPercent: -100 });
-
-    timeline2.to(
-      ".photo3",
-      {
-        yPercent: -200,
-        ease: "power2.inOut",
-      },
-      0
-    );
-
-    gsap.to(".maniacs", {
-      color: "#fff",
-      scrollTrigger: {
-        trigger: ".detail1",
-        start: "top bottom",
-        end: "bottom bottom",
-        toggleActions: "play reverse play reverse", 
-      },
-    });
-    gsap.to(".mission", {
-      color: "#fff",
-      scrollTrigger: {
-        trigger: ".detail2",
-        start: "top bottom",
-        end: "bottom bottom",
-        toggleActions: "play reverse play reverse", 
-      },
-    });
-    gsap.to(".machine", {
-      color: "#fff",
-      scrollTrigger: {
-        trigger: ".detail3",
-        start: "top bottom",
-        end: "bottom bottom",
-        toggleActions: "play reverse play reverse", 
-      },
-    });
+    aboutAnimation();
   }, []);
+
   return (
     <>
-      <main className="gallery scale-section relative w-full h-[820vh] ">
+      <main className="gallery scale-section relative w-full h-[1120vh] ">
         <section className="w-full h-full right absolute inset-0 z-20 backgroundImg">
           <article className="relative w-ful">
             <ul className="z-50 text-white h-[100vh] flex flex-col justify-center items-center absolute inset-0 w-full bg-black/25 text-left">
@@ -200,7 +68,7 @@ export default function About() {
                 un-medicated vision, a pure manifest of automotive excess & Fun.
               </h6>
               <article className="grid place-items-center bg-[#e2e2e2] relative w-full h-[500px] overflow-hidden mb-8 ">
-                <div className="flex items-center gap-[40px] pr-[100px] leading-[1]  absolute w-full top-[-70px] left-[-690px]">
+                <div className="flex items-center gap-[40px] pr-[100px] leading-[1]  absolute w-full top-[-70px] left-[-690px] maniacText1">
                   <h1 className="text-[180px] font-extrabold uppercase">
                     maniacs
                   </h1>
