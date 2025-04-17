@@ -67,38 +67,37 @@ export default function HomeHero() {
       <main className="relative">
         <section className="sticky top-0 panel">
           <section className="min-h-screen bg-black rounded-t-[50px]  flex brightness-75 panel_1">
-          <div className="relative w-1/2">
-            <Image
-              src="/images/koz_1.jpg"
-              alt=""
-              fill
-              className="object-cover rounded-tl-[50px]"
-            />
-          </div>
-          <div className="w-[1px] bg-[#c4c0c0]"></div>
-          <div className="relative w-1/2">
-            <Image
-              src="/images/koz_2.jpg"
-              alt=""
-              fill
-              className="object-cover rounded-tr-[50px]"
-            />
-            
-          </div>
+            <div className="relative w-1/2">
+              <Image
+                src="/images/koz_1.jpg"
+                alt=""
+                fill
+                className="object-cover rounded-tl-[50px]"
+              />
+            </div>
+            <div className="w-[1px] bg-[#c4c0c0]"></div>
+            <div className="relative w-1/2">
+              <Image
+                src="/images/koz_2.jpg"
+                alt=""
+                fill
+                className="object-cover rounded-tr-[50px]"
+              />
+            </div>
           </section>
           <div className=" absolute top-1/2 right-[150px] transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-20 flex flex-col gap-[250px]">
-              <span>
-                <h1 className="uppercase text-3xl text-left font-extrabold text-white">
-                  staincraft
-                </h1>
-                <p className="uppercase text-xl text-left font-extrabold">
-                  where the past <br /> overtakes the future
-                </p>
-              </span>
-              <p className="hover:bg-[#ef4826] cursor-pointer uppercase text-sm bg-white text-black rounded-full w-fit py-1 px-2 text-left font-extrabold">
-                Hear sound
+            <span>
+              <h1 className="uppercase text-3xl text-left font-extrabold text-white">
+                staincraft
+              </h1>
+              <p className="uppercase text-xl text-left font-extrabold">
+                where the past <br /> overtakes the future
               </p>
-            </div>
+            </span>
+            <p className="hover:bg-[#ef4826] cursor-pointer uppercase text-sm bg-white text-black rounded-full w-fit py-1 px-2 text-left font-extrabold">
+              Hear sound
+            </p>
+          </div>
         </section>
         <section className="rounded-t-[50px] sticky top-0 panel secondCarView">
           <main className="relative">
@@ -154,7 +153,9 @@ export default function HomeHero() {
                 className="object-cover rounded-t-[50px]"
               />
             </div>
+            {/* <About /> */}
           </main>
+
           <main className="bg-[#fff] main-section ">
             <About />
           </main>

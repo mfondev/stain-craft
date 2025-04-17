@@ -21,7 +21,8 @@
 
 @font-face {
   font-family: "PPMori";
-  src: url("/font/PPMori-Regular.otf") format("opentype");
+  src: url("/font/PPMori-SemiBold.otf") format("opentype");
+  font-weight: bold;
 }
 
 @font-face {
@@ -98,7 +99,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
 }
 
 

@@ -259,7 +259,6 @@ export const aboutAnimation = () => {
       scrollTrigger: {
         trigger: ".main-section",
         start: "top 60%",
-        // end: "bottom 20%",
         scrub: true,
       },
     }
@@ -365,14 +364,71 @@ export const aboutAnimation = () => {
       trigger: ".detail1",
       start: "top bottom",
       end: "bottom bottom",
-
       scrub: true,
     },
   });
 
-  maniacTextTimeline.to(".maniacText1", {
-    x: 100,
-    duration: 0.5,
-    ease: "power2.inOut",
-  });
+  maniacTextTimeline.to(
+    ".maniacText1",
+    {
+      x: 100,
+      duration: 0.5,
+      ease: "power2.inOut",
+    },
+    0
+  );
+  maniacTextTimeline.to(
+    ".maniacText2",
+    {
+      x: -100,
+      duration: 0.5,
+      ease: "power2.inOut",
+    },
+    0
+  );
+  maniacTextTimeline.to(
+    ".maniacText3",
+    {
+      x: 100,
+      duration: 0.5,
+      ease: "power2.inOut",
+    },
+    0
+  );
+  maniacTextTimeline.to(
+    ".maniacText4",
+    {
+      x: -100,
+      duration: 0.5,
+      ease: "power2.inOut",
+    },
+    0
+  );
+
+  // image slide animation
+  const image = gsap.utils.toArray(".slideshow") as HTMLElement[];
+
+  gsap.set(image, { autoAlpha: 0 });
+  gsap.set(image[0], { autoAlpha: 1 });
+
+  let currentNum = 0;
+
+  setInterval(() => {
+    gsap.set(image[currentNum], { autoAlpha: 0 });
+    currentNum = (currentNum + 1) % image.length;
+    gsap.set(image[currentNum], { autoAlpha: 1 });
+  }, 500);
+  // image slide animation
+  const images = gsap.utils.toArray(".slideshow-image") as HTMLElement[];
+
+  gsap.set(images, { autoAlpha: 0 });
+  gsap.set(images[0], { autoAlpha: 1 });
+
+  let currentIndex = 0;
+
+  setInterval(() => {
+    gsap.set(images[currentIndex], { autoAlpha: 0 });
+    currentIndex = (currentIndex + 1) % images.length;
+    gsap.set(images[currentIndex], { autoAlpha: 1 });
+  }, 2000);
 };
