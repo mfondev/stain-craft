@@ -418,17 +418,23 @@ export const aboutAnimation = () => {
     currentNum = (currentNum + 1) % image.length;
     gsap.set(image[currentNum], { autoAlpha: 1 });
   }, 500);
-  // image slide animation
-  const images = gsap.utils.toArray(".slideshow-image") as HTMLElement[];
+  
 
-  gsap.set(images, { autoAlpha: 0 });
-  gsap.set(images[0], { autoAlpha: 1 });
+  const section = gsap.utils.toArray(".slideshow-section") as HTMLElement[];
 
-  let currentIndex = 0;
+  section.forEach((section) => {
+    const images = section.querySelectorAll(".slideshow-image");
 
-  setInterval(() => {
-    gsap.set(images[currentIndex], { autoAlpha: 0 });
-    currentIndex = (currentIndex + 1) % images.length;
-    gsap.set(images[currentIndex], { autoAlpha: 1 });
-  }, 2000);
+    gsap.set(images, { autoAlpha: 0 });
+    gsap.set(images[0], { autoAlpha: 1 });
+  
+    let currentIndex = 0;
+  
+    setInterval(() => {
+      gsap.set(images[currentIndex], { autoAlpha: 0 });
+      currentIndex = (currentIndex + 1) % images.length;
+      gsap.set(images[currentIndex], { autoAlpha: 1 });
+    }, 1000);
+  });
+
 };

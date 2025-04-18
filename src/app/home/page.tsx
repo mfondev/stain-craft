@@ -14,7 +14,7 @@ import {
 } from "@/components/animations/animation";
 import Image from "next/image";
 import HomeHero from "@/components/homeHero";
-import Trypage from "@/components/about";
+import Trypage from "@/components/mainNavigation/about/about";
 import Descend from "@/components/descend";
 import Footer from "@/components/mainNavigation/footer";
 
