@@ -4,8 +4,8 @@ import Image from "next/image";
 export default function Machine() {
   return (
     <div className="details detail3Text">
-      <h1 className="text-[55px] font-extrabold uppercase headers mb-14">
-        Time MAchine
+      <h1 className="text-[55px] font-extrabold uppercase headers mb-14 leading-[1]">
+        Time <br />MAchine
       </h1>
 
       <section className="mb-14 slideshow-section">
