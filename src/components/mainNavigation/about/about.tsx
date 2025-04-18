@@ -14,8 +14,8 @@ export default function About() {
 
   return (
     <>
-      <article className="gallery scale-section w-full">
-        <section className="w-1/2 h-full right absolut inset-0 z-20 backgroundIm">
+      <article className="gallery scale-section w-full" >
+        <section className="w-1/2 h-full right absolut inset-0 z-20 backgroundIm" id="about">
           <article className="relative">
             <ul className="z-50 text-white h-[100vh] flex flex-col justify-center items-center absolute inset-0 w-full bg-black/25 text-left">
               <div>

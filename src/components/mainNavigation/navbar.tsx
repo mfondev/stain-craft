@@ -40,7 +40,7 @@ const Navbar = () => {
 
       <div className="flex items-center space-x-6">
         <Link
-          href="/gallery"
+          href="#gallery"
           className="uppercase text-sm font-bold"
           onMouseEnter={textShift}
           onMouseLeave={textUnshift}
@@ -51,7 +51,7 @@ const Navbar = () => {
           </div>
         </Link>
         <Link
-          href="/car-tour"
+          href="#car-tour"
           className="uppercase text-sm font-bold"
           onMouseEnter={textShift}
           onMouseLeave={textUnshift}
@@ -62,7 +62,7 @@ const Navbar = () => {
           </div>
         </Link>
         <Link
-          href="/about"
+          href="#about"
           className="uppercase text-sm font-bold"
           onMouseEnter={textShift}
           onMouseLeave={textUnshift}

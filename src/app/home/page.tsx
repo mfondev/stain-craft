@@ -3,8 +3,6 @@
 import Navbar from "@/components/mainNavigation/navbar";
 import React from "react";
 import { useEffect } from "react";
-import gsap from "gsap";
-import SplitType from "split-type";
 import Link from "next/link";
 import { IoMdArrowDropright } from "react-icons/io";
 import {
@@ -14,8 +12,6 @@ import {
 } from "@/components/animations/animation";
 import Image from "next/image";
 import HomeHero from "@/components/homeHero";
-import Trypage from "@/components/mainNavigation/about/about";
-import Descend from "@/components/descend";
 import Footer from "@/components/mainNavigation/footer";
 
 export default function Home() {
@@ -131,9 +127,8 @@ export default function Home() {
           </div>
         </article>
         <HomeHero />
-        <Descend/>
-        <Footer />
       </main>
+      <Footer />
     </>
   );
 }

@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 import About from "./mainNavigation/about/about";
 import Link from "next/link";
 import { SlArrowRight } from "react-icons/sl";
+import { BsPlusLg } from "react-icons/bs";
 
 export default function HomeHero() {
   const textShift = (e: React.FormEvent<HTMLElement>) => {
@@ -45,6 +46,19 @@ export default function HomeHero() {
   ];
 
   useEffect(() => {
+    gsap.set(".commission", { y: 70, opacity: 1 });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".panel_1",
+        start: "top 40%",
+        toggleActions: "play reverse play reverse",
+        end: "bottom 20%",
+        markers: true,
+      },
+    });
+
+    tl.to(".commission", { y: 0, duration: 0.8, ease: "power2.out" });
+
     const animation = gsap.fromTo(
       ".menuLink",
       {
@@ -99,8 +113,8 @@ export default function HomeHero() {
             </p>
           </div>
         </section>
-        <section className="rounded-t-[50px] sticky top-0 panel secondCarView">
-          <main className="relative">
+        <section className="rounded-t-[50px] sticky top-0 panel secondCarView ">
+          <main className="relative" id="car-tour">
             <ul className="flex flex-col space-y-6 w-[200px] absolute top-1/2 left-0 text-center z-20">
               {menuItems.map((item, index) => (
                 <li
@@ -117,11 +131,11 @@ export default function HomeHero() {
             </ul>
             <Link
               href=""
-              className="hover:text-white hover:bg-black  z-20 ml-[40px] absolute bottom-0 flex items-center justify-between w-[200px] bg-transparent border border-black text-black p-4 rounded-br-[25px] "
+              className="hover:text-white hover:bg-black  z-20 ml-[40px] absolute bottom-0 flex items-center justify-between w-[200px] bg-transparent border border-black text-black p-4 rounded-br-[25px]  mb-8"
               onMouseEnter={textShift}
               onMouseLeave={textUnshift}
             >
-              <div className="uppercase font-bold w-[134px] h-[20px] overflow-hidden  flex items-center relative">
+              <div className="uppercase font-bold w-[134px] h-[20px] overflow-hidden  flex items-center relative ">
                 <p className="left-[-135px] ent-1 absolute text-sm ">
                   Download specs
                 </p>
@@ -150,17 +164,29 @@ export default function HomeHero() {
                 src="/images/koz_1.jpg"
                 alt=""
                 fill
-                className="object-cover rounded-t-[50px]"
+                className="object-cover rounded-t-[50px] "
               />
             </div>
-            {/* <About /> */}
+            {/* <div className="flex items-center justify-between w-[45%] bg-[#ef4826] hover:bg-[#26ef47] text-black p-4 rounded-tr-[35px] cursor-pointer">
+              <h2 className="uppercase text-2xl font-extrabold">commission your mf-47</h2>
+              <div className="bg-black rounded-full p-[3px]">
+              <BsPlusLg className=" text-white text-[30px]" />
+              </div>
+            </div> */}
           </main>
-
           <main className="bg-[#fff] main-section ">
             <About />
           </main>
         </section>
       </main>
+      <div className="commission flex items-center justify-between w-[45%] bg-[#ef4826] hover:bg-[#26ef47] text-black p-4 rounded-tr-[35px] cursor-pointer z-50 fixed bottom-0 left-0">
+        <h2 className="uppercase text-2xl font-extrabold">
+          commission your mf-47
+        </h2>
+        <div className="bg-black rounded-full p-[3px]">
+          <BsPlusLg className=" text-white text-[30px]" />
+        </div>
+      </div>
     </>
   );
 }
