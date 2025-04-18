@@ -42,7 +42,8 @@ body {
 }
 
 .scale-section {
-  clip-path: polygon(1% 2%, 99% 2%, 99% 99%, 1% 99%);
+  clip-path: polygon(1% 0, 99% 0, 99% 100%, 1% 100%);
+
   /* transition: clip-path 1s ease-in-out; */
 }
 
