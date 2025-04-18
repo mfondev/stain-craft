@@ -5,166 +5,162 @@ import gsap from "gsap";
 import Image from "next/image";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-import { scaleAnimation } from "./animations/animation";
+import About from "./about";
+import Link from "next/link";
+import { SlArrowRight } from "react-icons/sl";
 
 export default function HomeHero() {
+  const textShift = (e: React.FormEvent<HTMLElement>) => {
+    const link = e.currentTarget;
+    const tl = gsap.timeline();
+
+    tl.to(link.querySelector(".ent-2"), { x: 135, duration: 0.3 })
+      .to(link.querySelector(".ent-1"), { x: 135, duration: 0.3 }, "<")
+      .to(
+        link.querySelectorAll(".arr-1, .arr-2, .arr-3, .arr-4"),
+        { x: 15, duration: 0.3 },
+        "<"
+      );
+  };
+
+  const textUnshift = (e: React.FormEvent<HTMLElement>) => {
+    const link = e.currentTarget;
+    const tl = gsap.timeline();
+
+    tl.to(link.querySelector(".ent-1"), { x: -3, duration: 0.3 })
+      .to(link.querySelector(".ent-2"), { x: 0, duration: 0.3 }, "<")
+      .to(
+        link.querySelectorAll(".arr-1, .arr-2, .arr-3, .arr-4"),
+        { x: 0, duration: 0.3 },
+        "<"
+      );
+  };
+  const menuItems = [
+    "Power",
+    "Origin",
+    "Beauty",
+    "Asylum",
+    "Obsession",
+    "Strength",
+  ];
+
   useEffect(() => {
-    scaleAnimation();
+    const animation = gsap.fromTo(
+      ".menuLink",
+      {
+        x: -120,
+        opacity: 0,
+      },
+      { x: 0, duration: 0.4, stagger: 0.2, opacity: 1 }
+    );
+    ScrollTrigger.create({
+      trigger: ".secondCarView",
+      animation: animation,
+      start: "top top",
+      toggleActions: "play reverse play reverse",
+      // markers: true,
+    });
   }, []);
 
   return (
     <>
       <main className="relative">
-        <section className="min-h-[100vh] bg-black rounded-t-[50px] sticky top-0 panel flex brightness-75 panel_1 ">
-          <div className="relative w-1/2">
-            <Image
-              src="/images/koz_1.jpg"
-              alt=""
-              fill
-              className="object-cover rounded-tl-[50px]"
-            />
-          </div>
-          <div className="w-[1px] bg-[#c4c0c0]"></div>
-          <div className="relative w-1/2">
-            <Image
-              src="/images/koz_2.jpg"
-              alt=""
-              fill
-              className="object-cover rounded-tr-[50px]"
-            />
-            <div className=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-whit z-20 flex flex-col gap-[200px]">
-              <span>
-                <h1 className="uppercase text-2xl text-left font-extrabold">
-                  staincraft
-                </h1>
-                <p className="uppercase text-2xl text-left font-extrabold">
-                  where the past overtakes the future
-                </p>
-              </span>
-              <p className="uppercase text-2xl text-left font-extrabold">
-                Hear sound
-              </p>
+        <section className="sticky top-0 panel">
+          <section className="min-h-screen bg-black rounded-t-[50px]  flex brightness-75 panel_1">
+            <div className="relative w-1/2">
+              <Image
+                src="/images/koz_1.jpg"
+                alt=""
+                fill
+                className="object-cover rounded-tl-[50px]"
+              />
             </div>
+            <div className="w-[1px] bg-[#c4c0c0]"></div>
+            <div className="relative w-1/2">
+              <Image
+                src="/images/koz_2.jpg"
+                alt=""
+                fill
+                className="object-cover rounded-tr-[50px]"
+              />
+            </div>
+          </section>
+          <div className=" absolute top-1/2 right-[150px] transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-20 flex flex-col gap-[250px]">
+            <span>
+              <h1 className="uppercase text-3xl text-left font-extrabold text-white">
+                staincraft
+              </h1>
+              <p className="uppercase text-xl text-left font-extrabold">
+                where the past <br /> overtakes the future
+              </p>
+            </span>
+            <p className="hover:bg-[#ef4826] cursor-pointer uppercase text-sm bg-white text-black rounded-full w-fit py-1 px-2 text-left font-extrabold">
+              Hear sound
+            </p>
           </div>
         </section>
-        <section className="h-[250vh] rounded-t-[50px] sticky top-0 panel">
-          <div
-            className=" relative h-[150vh]
-          "
-          >
-            <Image
-              src="/images/koz_1.jpg"
-              alt=""
-              fill
-              className="object-cover rounded-t-[50px]"
-            />
-          </div>
-          <main className="bg-[#fff] main-section ">
-            <section className="relative h-[100vh] flex scale-section">
-              <div className="relative w-full h-full z-10 backgroundImg rightBlock">
-                <Image
-                  src="/images/bmw.jpg"
-                  alt=""
-                  fill
-                  className="object-cover absolute top-0 left-0"
-                />
-                <Image
-                  src="/images/koz_2.jpg"
-                  alt=""
-                  fill
-                  className="object-cover absolute top-0 left-0"
-                />
-                <Image
-                  src="/images/koz_3.jpg"
-                  alt=""
-                  fill
-                  className="object-cover absolute top-0 left-0"
-                />
-                <ul className="z-50 text-white h-full flex flex-col justify-center items-center absolute top-0 left-0 w-full bg-black/25">
-                  <li className="uppercase font-bold text-2xl">Maniacs</li>
-                  <li className="uppercase font-bold text-2xl">Mission</li>
-                  <li className="uppercase font-bold text-2xl">Machine</li>
-                </ul>
-              </div>
-              <div className="absolute bg-[#eaece9] right-0 top-0 w-1/2 h-full flex items-center justify-center aboutSection">
-                <div className=" px-[60px]">
-                  <h1 className="text-[55px] font-extrabold uppercase headers mb-8">
-                    MANIACS
+        <section className="rounded-t-[50px] sticky top-0 panel secondCarView">
+          <main className="relative">
+            <ul className="flex flex-col space-y-6 w-[200px] absolute top-1/2 left-0 text-center z-20">
+              {menuItems.map((item, index) => (
+                <li
+                  key={index}
+                  className=" group flex items-center gap-4 cursor-pointer transition-all duration-300"
+                >
+                  <p className="w-[0px] bg-black h-[1px] transition-all duration-300 group-hover:w-[32px]"></p>
+                  <p className="bg-[#ef4826] w-2 h-2 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"></p>
+                  <h1 className="menuLink text-[#6b6b6b] uppercase font-extrabold text-sm transition-all duration-300 group-hover:text-black group-hover:text-base  ">
+                    {item}
                   </h1>
-                  <h6 className="text-[32px] font-extrabold uppercase leading-8 mb-10">
-                    Twins, born in Ukraine, raised in Canada. High School
-                    dropouts. Trained in Italy and California. Oilstainlab is
-                    their un-medicated vision, a pure manifest of automotive
-                    excess & Fun.
-                  </h6>
-                  <article className="grid place-items-center bg-[#e2e2e2] relative w-full h-[500px] overflow-hidden  mb-8">
-                    <div className="flex items-center gap-[40px] pr-[100px] leading-[1] absolute w-full top-[-70px] left-[-690px]">
-                      <h1 className="text-[180px] font-extrabold uppercase">
-                        maniacs
-                      </h1>
-                      <p className="text-[120px] font-extrabold uppercase mt-4">
-                        *
-                      </p>
-                      <h1 className="text-[180px] font-extrabold uppercase">
-                        maniacs
-                      </h1>
-                    </div>
-                    <div className="flex items-center gap-[40px] pr-[100px] leading-[1] absolute w-full top-[70px] left-[-690px] ">
-                      <h1 className="text-[180px] font-extrabold uppercase">
-                        maniacs
-                      </h1>
-                      <p className="text-[120px] font-extrabold uppercase mt-4">
-                        *
-                      </p>
-                      <h1 className="text-[180px] font-extrabold uppercase">
-                        maniacs
-                      </h1>
-                    </div>
-                    <div className="flex items-center gap-[40px] pr-[100px] leading-[1] absolute w-full top-[210px] left-[-690px]">
-                      <h1 className="text-[180px] font-extrabold uppercase">
-                        maniacs
-                      </h1>
-                      <p className="text-[120px] font-extrabold uppercase mt-4">
-                        *
-                      </p>
-                      <h1 className="text-[180px] font-extrabold uppercase">
-                        maniacs
-                      </h1>
-                    </div>
-                    <div className="flex items-center gap-[40px] pr-[100px] leading-[1] absolute w-full top-[350px] left-[-690px]">
-                      <h1 className="text-[180px] font-extrabold uppercase">
-                        maniacs
-                      </h1>
-                      <p className="text-[120px] font-extrabold uppercase mt-4">
-                        *
-                      </p>
-                      <h1 className="text-[180px] font-extrabold uppercase">
-                        maniacs
-                      </h1>
-                    </div>
-                  </article>
-                  <div className="flex items-start justify-between mb-14">
-                    <h2 className="uppercase text-sm max-w-[60px]">
-                      double vision
-                    </h2>
-                    <p className="max-w-[480px] text-sm ">
-                      Our founders “the twins” as commonly referred to by the
-                      industry, have been breaking rules and records; clinching
-                      world championships and responsible for 6.5 million street
-                      cars. Maniacally obsessed with forging vehicles,
-                      experiences and technologies beyond sanity. Inspired by
-                      those before them, Oilstainlab is a new generation of
-                      trouble makers, maniacs creating for maniacs.
-                    </p>
-                  </div>
-                  <div className="w-[1px]  bg-[#bfc1bf]  "></div>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href=""
+              className="hover:text-white hover:bg-black  z-20 ml-[40px] absolute bottom-0 flex items-center justify-between w-[200px] bg-transparent border border-black text-black p-4 rounded-br-[25px] "
+              onMouseEnter={textShift}
+              onMouseLeave={textUnshift}
+            >
+              <div className="uppercase font-bold w-[134px] h-[20px] overflow-hidden  flex items-center relative">
+                <p className="left-[-135px] ent-1 absolute text-sm ">
+                  Download specs
+                </p>
+                <p className="ent-2 absolute text-sm">Download specs</p>
+              </div>
+              <div className=" w-[15px] h-[15px] flex items-center justify-between overflow-hidden relative">
+                <div className="flex items-center justify-between w-[15px] absolute left-[-10px]">
+                  <SlArrowRight className="text-[10px] absolu arr-1" />
+                </div>
+                <div className="flex items-center justify-between w-[15px] absolute left-[-18px] ">
+                  <SlArrowRight className="text-[10px] arr-2" />
+                </div>
+                <div className="flex items-center justify-between w-[15px] absolute left-[5px] ">
+                  <SlArrowRight className="text-[10px] arr-3" />
+                </div>
+                <div className="flex items-center justify-between w-[15px] absolute left-[-2px] ">
+                  <SlArrowRight className="text-[10px]  arr-4" />
                 </div>
               </div>
-            </section>
+            </Link>
+            <div
+              className=" relative h-[110vh]
+            "
+            >
+              <Image
+                src="/images/koz_1.jpg"
+                alt=""
+                fill
+                className="object-cover rounded-t-[50px]"
+              />
+            </div>
+            {/* <About /> */}
+          </main>
+
+          <main className="bg-[#fff] main-section ">
+            <About />
           </main>
         </section>
       </main>
-
     </>
   );
 }

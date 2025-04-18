@@ -14,6 +14,9 @@ import {
 } from "@/components/animations/animation";
 import Image from "next/image";
 import HomeHero from "@/components/homeHero";
+import Trypage from "@/components/about";
+import Descend from "@/components/descend";
+import Footer from "@/components/mainNavigation/footer";
 
 export default function Home() {
   useEffect(() => {
@@ -26,7 +29,7 @@ export default function Home() {
     <>
       <main className="relative">
         <article className="sticky top-0 panel">
-          <div className="bg-[#eaece9] h-screen relative ">
+          <div className="bg-[#eaece9] h-screen relative">
             <Navbar />
             <Image
               src="/images/dummyimage.png"
@@ -37,10 +40,10 @@ export default function Home() {
             />
             <div className="h-[200px] overflow-hidden ">
               <h1 className="hf1 text-[250px] leading-[1] font-extrabold h-full ">
-                HF
+                MF
               </h1>
               <h1 className="hf2 text-[250px] leading-[1] font-extrabold h-full">
-                HF
+                MF
               </h1>
             </div>
             <main className="flex flex-col justify-cente items-cente absolute left-1/2 bottom-0 mb-8 transform -translate-x-1/2 ml-[140px] ">
@@ -119,15 +122,17 @@ export default function Home() {
             </main>
             <div className="h-[200px] overflow-hidden  leading-[1] font-extrabold absolute right-0 bottom-[0px] eleven">
               <h1 className="hf1  text-[250px] leading-[1] font-extrabold h-full ">
-                11
+                47
               </h1>
               <h1 className="hf2  text-[250px] leading-[1] font-extrabold h-full ">
-                11
+                47
               </h1>
             </div>
           </div>
         </article>
         <HomeHero />
+        <Descend/>
+        <Footer />
       </main>
     </>
   );

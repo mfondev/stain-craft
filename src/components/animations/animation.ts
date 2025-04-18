@@ -105,13 +105,13 @@ export const homeAnimation = () => {
 
 const onGoingCode = (progress: number) => {
   gsap.to(".carImg", {
-    scale: 1.2 * (1 - progress),
+    scale: 1 - progress * 0.05,
     duration: 1,
     ease: "power2.out",
     scrub: 1,
   });
 
-  const maxMove = -355;
+  const maxMove = -305;
 
   gsap.to(".eleven", {
     y: Math.max(maxMove, -700 * progress),
@@ -167,10 +167,11 @@ export const scaleAnimation = () => {
     },
   });
 
-  const timeline = gsap.timeline()
+  const timeline = gsap.timeline();
 
   timeline.fromTo(
-    ".backgroundImg",{
+    ".backgroundImg",
+    {
       width: "100%",
     },
     {
@@ -193,19 +194,17 @@ export const scaleAnimation = () => {
   //   markers: true,
   //   pin: ".rightBlock",
   // })
-
-}
-
+};
 
 const randomFunctin = () => {
   //  let ctx =  gsap.context(() => {
   //       gsap.set(".photo:not(:first-child)", { opacity: 0 ,scale: 0.5});
-  //       const animation = gsap.to("photo:not(:first-child)", {
-  //         opacity: 1,
-  //         scale: 1,
-  //         duration: 0.5,
-  //         stagger: 0.2,
-  //       });
+  // const animation = gsap.to("photo:not(:first-child)", {
+  //   opacity: 1,
+  //   scale: 1,
+  //   duration: 0.5,
+  //   stagger: 0.2,
+  // });
   //       ScrollTrigger.create({
   //         trigger: "main-section",
   //         start: "top top",
@@ -217,7 +216,7 @@ const randomFunctin = () => {
   //       });
   //     })
   //     return () => {
-  //       ctx.revert(); 
+  //       ctx.revert();
   //     };
 
   ScrollTrigger.create({
@@ -227,5 +226,209 @@ const randomFunctin = () => {
     scrub: true,
     markers: true,
     pin: ".rightBlock",
-  })
-  }
+  });
+};
+
+export const aboutAnimation = () => {
+  gsap.set(".detailsWrapper", {
+    yPercent: 140,
+    ease: "none",
+  });
+  gsap.to(".scale-section", {
+    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    ease: "power2.out",
+    duration: 3,
+    scrollTrigger: {
+      trigger: ".main-section",
+      start: "top bottom",
+      scrub: true,
+    },
+  });
+
+  const timeline = gsap.timeline();
+
+  timeline.fromTo(
+    ".backgroundImg",
+    {
+      width: "100%",
+    },
+    {
+      width: "50%",
+      duration: 0.1,
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: ".main-section",
+        start: "top 60%",
+        scrub: true,
+      },
+    }
+  );
+  ScrollTrigger.create({
+    trigger: ".gallery",
+    start: "top top",
+    end: "bottom bottom",
+    pin: ".right",
+  });
+
+  gsap.set(".photo2", { yPercent: 0 });
+  gsap.set(".photo3", { yPercent: 0 });
+
+  let timeline1 = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".detail2",
+      start: "top bottom",
+      end: "bottom bottom",
+
+      scrub: true,
+    },
+  });
+
+  timeline1.to(
+    ".photo1",
+    {
+      yPercent: -100,
+      ease: "power2.inOut",
+    },
+    0
+  );
+
+  timeline1.to(
+    ".photo2",
+    {
+      yPercent: -100,
+      ease: "power2.inOut",
+    },
+    0
+  );
+
+  let timeline2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".detail3",
+      start: "top bottom",
+      end: "bottom bottom",
+      scrub: true,
+    },
+  });
+
+  timeline2.to(
+    ".photo2",
+    {
+      yPercent: -200,
+      ease: "power2.inOut",
+    },
+    0
+  );
+
+  timeline.set(".photo3", { yPercent: -100 });
+
+  timeline2.to(
+    ".photo3",
+    {
+      yPercent: -200,
+      ease: "power2.inOut",
+    },
+    0
+  );
+
+  gsap.to(".maniacs", {
+    color: "#fff",
+    scrollTrigger: {
+      trigger: ".detail1",
+      start: "top bottom",
+      end: "bottom bottom",
+      toggleActions: "play reverse play reverse",
+    },
+  });
+  gsap.to(".mission", {
+    color: "#fff",
+    scrollTrigger: {
+      trigger: ".detail2",
+      start: "top bottom",
+      end: "bottom bottom",
+      toggleActions: "play reverse play reverse",
+    },
+  });
+  gsap.to(".machine", {
+    color: "#fff",
+    scrollTrigger: {
+      trigger: ".detail3",
+      start: "top bottom",
+      end: "bottom bottom",
+      toggleActions: "play reverse play reverse",
+    },
+  });
+
+  // maniac texts animation
+  const maniacTextTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".detail1",
+      start: "top bottom",
+      end: "bottom bottom",
+      scrub: true,
+    },
+  });
+
+  maniacTextTimeline.to(
+    ".maniacText1",
+    {
+      x: 100,
+      duration: 0.5,
+      ease: "power2.inOut",
+    },
+    0
+  );
+  maniacTextTimeline.to(
+    ".maniacText2",
+    {
+      x: -100,
+      duration: 0.5,
+      ease: "power2.inOut",
+    },
+    0
+  );
+  maniacTextTimeline.to(
+    ".maniacText3",
+    {
+      x: 100,
+      duration: 0.5,
+      ease: "power2.inOut",
+    },
+    0
+  );
+  maniacTextTimeline.to(
+    ".maniacText4",
+    {
+      x: -100,
+      duration: 0.5,
+      ease: "power2.inOut",
+    },
+    0
+  );
+
+  // image slide animation
+  const image = gsap.utils.toArray(".slideshow") as HTMLElement[];
+
+  gsap.set(image, { autoAlpha: 0 });
+  gsap.set(image[0], { autoAlpha: 1 });
+
+  let currentNum = 0;
+
+  setInterval(() => {
+    gsap.set(image[currentNum], { autoAlpha: 0 });
+    currentNum = (currentNum + 1) % image.length;
+    gsap.set(image[currentNum], { autoAlpha: 1 });
+  }, 500);
+  // image slide animation
+  const images = gsap.utils.toArray(".slideshow-image") as HTMLElement[];
+
+  gsap.set(images, { autoAlpha: 0 });
+  gsap.set(images[0], { autoAlpha: 1 });
+
+  let currentIndex = 0;
+
+  setInterval(() => {
+    gsap.set(images[currentIndex], { autoAlpha: 0 });
+    currentIndex = (currentIndex + 1) % images.length;
+    gsap.set(images[currentIndex], { autoAlpha: 1 });
+  }, 2000);
+};
