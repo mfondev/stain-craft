@@ -355,7 +355,6 @@ export const aboutAnimation = () => {
       start: "top bottom",
       end: "bottom bottom",
       toggleActions: "play reverse play reverse",
-      markers: true,
 
     },
   });
