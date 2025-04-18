@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Mission() {
   return (
-    <div className="details detail2">
+    <div className="details detail2Text">
     <h1 className="text-[55px] font-extrabold uppercase headers mb-8">
       MISSION
     </h1>
@@ -37,7 +37,8 @@ export default function Mission() {
         addicted to progress as they are to the past.
       </p>
     </div>
-    <div className="w-full h-[1px] bg-[#e8e8e8] my-32"></div>
+    <div className="w-full h-[1px] bg-[#e8e8e8] my-32  detail3"></div>
+    
   </div>
   );
 }

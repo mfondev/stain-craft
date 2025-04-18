@@ -333,7 +333,7 @@ export const aboutAnimation = () => {
   gsap.to(".maniacs", {
     color: "#fff",
     scrollTrigger: {
-      trigger: ".detail1",
+      trigger: ".detail1Text",
       start: "top bottom",
       end: "bottom bottom",
       toggleActions: "play reverse play reverse",
@@ -342,7 +342,7 @@ export const aboutAnimation = () => {
   gsap.to(".mission", {
     color: "#fff",
     scrollTrigger: {
-      trigger: ".detail2",
+      trigger: ".detail2Text",
       start: "top bottom",
       end: "bottom bottom",
       toggleActions: "play reverse play reverse",
@@ -351,10 +351,12 @@ export const aboutAnimation = () => {
   gsap.to(".machine", {
     color: "#fff",
     scrollTrigger: {
-      trigger: ".detail3",
+      trigger: ".detail3Text",
       start: "top bottom",
       end: "bottom bottom",
       toggleActions: "play reverse play reverse",
+      markers: true,
+
     },
   });
 

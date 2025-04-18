@@ -4,8 +4,8 @@ import Image from "next/image";
 
 export default function Maniac() {
   return (
-    <div className="details detail1">
-    <h1 className="text-[55px] font-extrabold uppercase mb-8 ">
+    <div className="details detail1Text">
+    <h1 className="text-[55px] font-extrabold uppercase mb-8 detail1">
       MANIACS
     </h1>
     <h6 className="text-[32px] font-extrabold uppercase leading-8 mb-10">
@@ -105,7 +105,7 @@ export default function Maniac() {
         creating for maniacs.
       </p>
     </div>
-    <div className="w-full h-[1px] bg-[#e8e8e8] my-32"></div>
+    <div className="w-full h-[1px] bg-[#e8e8e8] my-32 detail2"></div>
   </div>
   );
 }
