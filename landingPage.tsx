@@ -74,8 +74,8 @@ export default function LandingPage() {
   return (
     <>
       <main className="relative w-full h-screen overflow-hidden ">
-        <section className="flex flex-col justify-center h-screen px-8 z-10 bg-black">
-          <article className="flex flex-col justify-between h-[75%] relative z-10">
+        <section className="flex flex-col justify-center h-screen px-8 z-10 bg-black py-8">
+          <article className="flex flex-col justify-between h-full relative z-10">
             <div className="text-white">
               <div className="flex flex-col gap-4">
                 <div className="h-[110px] overflow-hidden flex flex-col">
@@ -118,7 +118,7 @@ export default function LandingPage() {
               <Link
                 href=""
                 onClick={homeRoute}
-                className="flex items-center justify-between w-[180px] bg-[#ef4826] hover:bg-[#26ef47] text-black p-4 rounded-br-lg "
+                className="flex items-center justify-between w-[190px] bg-[#ef4826] hover:bg-[#26ef47] text-black p-5 rounded-br-[15px]"
                 onMouseEnter={textShift}
                 onMouseLeave={textUnshift}
               >

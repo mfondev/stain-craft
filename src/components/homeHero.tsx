@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect,useRef }from "react";
 import gsap from "gsap";
 import Image from "next/image";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -11,6 +11,7 @@ import { SlArrowRight } from "react-icons/sl";
 import { BsPlusLg } from "react-icons/bs";
 
 export default function HomeHero() {
+  const commissionTimeline = useRef<GSAPTimeline | null>(null);
   const textShift = (e: React.FormEvent<HTMLElement>) => {
     const link = e.currentTarget;
     const tl = gsap.timeline();
@@ -46,18 +47,17 @@ export default function HomeHero() {
   ];
 
   useEffect(() => {
-    gsap.set(".commission", { y: 70, opacity: 1 });
+    gsap.set(".commission", { y: 800, opacity: 1 });
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".panel_1",
         start: "top 40%",
         toggleActions: "play reverse play reverse",
         end: "bottom 20%",
-        markers: true,
       },
     });
 
-    tl.to(".commission", { y: 0, duration: 0.8, ease: "power2.out" });
+    tl.to(".commission", { y: 675, duration: 0.8, ease: "power2.out" });
 
     const animation = gsap.fromTo(
       ".menuLink",
@@ -75,6 +75,35 @@ export default function HomeHero() {
       // markers: true,
     });
   }, []);
+
+  const commissionClick = () => {
+    if (!commissionTimeline.current) {
+      commissionTimeline.current = gsap.timeline({ paused: true });
+
+      commissionTimeline.current
+        .to(".overlayy", {
+          y: 0,
+          duration: 1.5,
+          ease: "power2.inOut",
+        })
+        .to(
+          ".gear",
+          {
+            rotation: "0.785rad",
+            duration: 0.5,
+            ease: "power2.inOut",
+          },
+          0
+        );
+    }
+
+    commissionTimeline.current.play();
+  };
+
+  const reverseCommissionClick = () => {
+    commissionTimeline.current?.reverse();
+  };
+  
 
   return (
     <>
@@ -167,24 +196,35 @@ export default function HomeHero() {
                 className="object-cover rounded-t-[50px] "
               />
             </div>
-            {/* <div className="flex items-center justify-between w-[45%] bg-[#ef4826] hover:bg-[#26ef47] text-black p-4 rounded-tr-[35px] cursor-pointer">
-              <h2 className="uppercase text-2xl font-extrabold">commission your mf-47</h2>
-              <div className="bg-black rounded-full p-[3px]">
-              <BsPlusLg className=" text-white text-[30px]" />
-              </div>
-            </div> */}
           </main>
           <main className="bg-[#fff] main-section ">
             <About />
           </main>
         </section>
       </main>
-      <div className="commission flex items-center justify-between w-[45%] bg-[#ef4826] hover:bg-[#26ef47] text-black p-4 rounded-tr-[35px] cursor-pointer z-50 fixed bottom-0 left-0">
-        <h2 className="uppercase text-2xl font-extrabold">
-          commission your mf-47
-        </h2>
-        <div className="bg-black rounded-full p-[3px]">
-          <BsPlusLg className=" text-white text-[30px]" />
+
+      <div className="overlayy commission fixed bottom-0 left-0 w-1/2 h-[100vh]  z-50 rounded-tr-[35px]">
+        <div
+          onClick={commissionClick}
+          className="commissio flex items-center justify-between w-full h-[10%] bg-[#ef4826]  hover:bg-[#26ef47] text-black px-8 py-3 rounded-tr-[35px] cursor-pointer z-50 fixe bottom-0 left-0"
+        >
+          <h2 className="uppercase text-[16px] font-extrabold">
+            commission your mf-47
+          </h2>
+          <div className="bg-black rounded-full p-[3px]">
+            <BsPlusLg
+              className=" text-white text-[30px] gear"
+              onClick={(e) => {
+                e.stopPropagation(); // prevent double trigger
+                reverseCommissionClick();
+              }}
+            />
+          </div>
+        </div>
+        <div className="h-[90%] bg-white">
+          <h2 className="text-[50px] max-w-[270px] leading-[0.9] font-extrabold px-8 py-10">
+            REGISTER YOUR INTEREST IN HF-11.
+          </h2>
         </div>
       </div>
     </>
