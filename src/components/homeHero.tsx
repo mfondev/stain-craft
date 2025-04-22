@@ -1,16 +1,22 @@
 "use client";
 
-import React, { useEffect,useRef }from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Image from "next/image";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-import About from "./mainNavigation/about/about";
+import About from "./about/about";
 import Link from "next/link";
 import { SlArrowRight } from "react-icons/sl";
 import { BsPlusLg } from "react-icons/bs";
+import Specs from "./specs";
+import { menuItems } from "../../utils/type";
 
 export default function HomeHero() {
+  const [activeSpec, setactiveSpec] = useState<string | null>(null);
+  const handleSpecClick = (spec: string) => {
+    setactiveSpec(spec);
+  };
   const commissionTimeline = useRef<GSAPTimeline | null>(null);
   const textShift = (e: React.FormEvent<HTMLElement>) => {
     const link = e.currentTarget;
@@ -37,14 +43,7 @@ export default function HomeHero() {
         "<"
       );
   };
-  const menuItems = [
-    "Power",
-    "Origin",
-    "Beauty",
-    "Asylum",
-    "Obsession",
-    "Strength",
-  ];
+ 
 
   useEffect(() => {
     gsap.set(".commission", { y: 800, opacity: 1 });
@@ -96,14 +95,13 @@ export default function HomeHero() {
           0
         );
     }
-
+    document.body.style.overflow = "hidden";
     commissionTimeline.current.play();
   };
 
   const reverseCommissionClick = () => {
     commissionTimeline.current?.reverse();
   };
-  
 
   return (
     <>
@@ -146,17 +144,31 @@ export default function HomeHero() {
           <main className="relative" id="car-tour">
             <ul className="flex flex-col space-y-6 w-[200px] absolute top-1/2 left-0 text-center z-20">
               {menuItems.map((item, index) => (
-                <li
-                  key={index}
-                  className=" group flex items-center gap-4 cursor-pointer transition-all duration-300"
-                >
-                  <p className="w-[0px] bg-black h-[1px] transition-all duration-300 group-hover:w-[32px]"></p>
-                  <p className="bg-[#ef4826] w-2 h-2 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"></p>
-                  <h1 className="menuLink text-[#6b6b6b] uppercase font-extrabold text-sm transition-all duration-300 group-hover:text-black group-hover:text-base  ">
-                    {item}
-                  </h1>
-                </li>
+                <div>
+                  <li
+                    key={index}
+                    className=" group flex items-center gap-4 cursor-pointer transition-all duration-300"
+                  >
+                    <p className="w-[0px] bg-black h-[1px] transition-all duration-300 group-hover:w-[32px]"></p>
+                    <p className="bg-[#ef4826] w-2 h-2 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"></p>
+                    <h1
+                      className="menuLink text-[#6b6b6b] uppercase font-extrabold text-sm transition-all duration-300 group-hover:text-black group-hover:text-base "
+                      onClick={() => handleSpecClick(item.title)}
+                    >
+                      {item.title}
+                    </h1>
+                    {activeSpec === item.title && (
+                      <Specs
+                        title={item.title}
+                        images={item.images}
+                        paragraph={item.paragraph}
+                        backgroundImage={item.backGroundImg}
+                      />
+                    )}
+                  </li>
+                </div>
               ))}
+              {/* {activeSpec && <Specs />} */}
             </ul>
             <Link
               href=""
@@ -215,7 +227,7 @@ export default function HomeHero() {
             <BsPlusLg
               className=" text-white text-[30px] gear"
               onClick={(e) => {
-                e.stopPropagation(); // prevent double trigger
+                e.stopPropagation();
                 reverseCommissionClick();
               }}
             />
