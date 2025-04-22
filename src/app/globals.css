@@ -37,6 +37,7 @@
 
 body {
   font-family: "PPMori", sans-serif;
+  
 }
 
 .overlay {
@@ -46,6 +47,9 @@ body {
 .overlayy {
   transform: translateY(90%);
 }
+/* .specs-overlay {
+  transform: translateY(-99%);
+} */
 
 .scale-section {
   clip-path: polygon(1% 0, 99% 0, 99% 100%, 1% 100%);
@@ -104,6 +108,7 @@ body {
   height: 40vw;
   background: maroon;
 }
+  /* 
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -219,4 +224,4 @@ body {
   body {
     @apply bg-background text-foreground;
   }
-}
+} */
