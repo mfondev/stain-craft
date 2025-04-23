@@ -43,7 +43,6 @@ export default function HomeHero() {
         "<"
       );
   };
- 
 
   useEffect(() => {
     gsap.set(".commission", { y: 800, opacity: 1 });
@@ -144,11 +143,8 @@ export default function HomeHero() {
           <main className="relative" id="car-tour">
             <ul className="flex flex-col space-y-6 w-[200px] absolute top-1/2 left-0 text-center z-20">
               {menuItems.map((item, index) => (
-                <div>
-                  <li
-                    key={index}
-                    className=" group flex items-center gap-4 cursor-pointer transition-all duration-300"
-                  >
+                <div key={index}>
+                  <li className=" group flex items-center gap-4 cursor-pointer transition-all duration-300">
                     <p className="w-[0px] bg-black h-[1px] transition-all duration-300 group-hover:w-[32px]"></p>
                     <p className="bg-[#ef4826] w-2 h-2 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"></p>
                     <h1
@@ -159,6 +155,7 @@ export default function HomeHero() {
                     </h1>
                     {activeSpec === item.title && (
                       <Specs
+                        key={item.title}
                         title={item.title}
                         images={item.images}
                         paragraph={item.paragraph}
@@ -168,11 +165,10 @@ export default function HomeHero() {
                   </li>
                 </div>
               ))}
-              {/* {activeSpec && <Specs />} */}
             </ul>
             <Link
               href=""
-              className="hover:text-white hover:bg-black  z-20 ml-[40px] absolute bottom-0 flex items-center justify-between w-[200px] bg-transparent border border-black text-black p-4 rounded-br-[25px]  mb-8"
+              className="hover:text-white hover:bg-black z-10 ml-[40px] absolute bottom-0 flex items-center justify-between w-[200px] bg-transparent border border-black text-black p-4 rounded-br-[25px]  mb-8"
               onMouseEnter={textShift}
               onMouseLeave={textUnshift}
             >
@@ -215,7 +211,7 @@ export default function HomeHero() {
         </section>
       </main>
 
-      <div className="overlayy commission fixed bottom-0 left-0 w-1/2 h-[100vh]  z-50 rounded-tr-[35px]">
+      <div className="overlayy commission fixed bottom-0 left-0 w-1/2 h-[100vh] z-40 rounded-tr-[35px]">
         <div
           onClick={commissionClick}
           className="commissio flex items-center justify-between w-full h-[10%] bg-[#ef4826]  hover:bg-[#26ef47] text-black px-8 py-3 rounded-tr-[35px] cursor-pointer z-50 fixe bottom-0 left-0"
