@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -19,6 +19,11 @@ export default function Specs({
   backgroundImage,
   paragraph,
 }: SpecsProps) {
+  const galleryRef = useRef(null);
+  const plusRef = useRef(null);
+  const textRef = useRef(null);
+  const timelineRef = useRef<GSAPTimeline | null>(null);
+  const [clicked, setClicked] = useState(false);
   let timeline = useRef<GSAPTimeline | null>(null);
 
   useEffect(() => {
@@ -37,7 +42,7 @@ export default function Specs({
         gsap.set(images[currentIndex], { autoAlpha: 0 });
         currentIndex = (currentIndex + 1) % images.length;
         gsap.set(images[currentIndex], { autoAlpha: 1 });
-      }, 1000);
+      }, 500);
     });
 
     const splitText = new SplitType(".specTitle", { types: "chars" });
@@ -84,10 +89,89 @@ export default function Specs({
         opacity: 1,
         duration: 0.5,
         ease: "power2.out",
-      });
+      })
+      .fromTo(
+        ".gallery-button",
+        { x: -200, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 0.5,
+          ease: "power2.out",
+        }
+      );
   }, []);
   const specReverse = () => {
     timeline.current?.reverse();
+  };
+  const handleMouseEnter = () => {
+    gsap.to(galleryRef.current, {
+      // width: 100,
+      width: "170px",
+      duration: 0.3,
+      ease: "power2.out",
+      opacity: 1,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    gsap.to(galleryRef.current, {
+      width: 0,
+      duration: 0.5,
+      ease: "power2.in",
+      opacity: 0,
+    });
+  };
+
+  gsap.set(".gallery-section", { y: 100 });
+  const handleClick = () => {
+    if (!timelineRef.current) {
+      const tl = gsap.timeline({ paused: true });
+
+      tl.to(plusRef.current, {
+        rotation: "0.785rad", 
+        duration: 0.3,
+        ease: "power2.inOut",
+      })
+        .to(
+          ".view",
+          {
+            y: "-20",
+            duration: 0.3,
+            ease: "power2.inOut",
+          },
+          "<"
+        )
+        .to(
+          ".close",
+          {
+            y: "-20",
+            duration: 0.3,
+            ease: "power2.inOut",
+          },
+          "<"
+        )
+        .to(".specs-overlay", {
+          yPercent: -110,
+          duration: 0.5,
+          ease: "power2.inOut",
+        })
+        .to(
+          ".gallery-section",
+
+          { y: 0, opacity: 1, duration: 0.5, ease: "power2.inOut" }
+        );
+
+      timelineRef.current = tl;
+    }
+
+    if (!clicked) {
+      timelineRef.current?.play();
+    } else {
+      timelineRef.current.reverse();
+    }
+
+    setClicked(!clicked);
   };
   return (
     <>
@@ -99,7 +183,7 @@ export default function Specs({
             fill
             className="object-cover specImage"
           />
-          <article className="bg-white absolute w-[46%] right-5 top-5 h-[0%] flex flex-col justify-between specs-overlay overflow-hidden">
+          <article className="bg-white absolute w-[46%] right-5 top-5 h-[0%] flex flex-col justify-between specs-overlay overflow-hidden z-40">
             <header className="flex items-cente justify-between px-2 py-1">
               <div className=" h-[72px] overflow-hidden">
                 <h1 className="text-[90px] uppercase leading-[1] specTitle">
@@ -134,22 +218,42 @@ export default function Specs({
           </article>
         </section>
         <div
-      className="absolute right-[60px] top-1/2 -translate-y-1/2 flex items-center gap-2"
-     
-    >
-      {/* Sliding pill */}
-      <div
-        className="absolute right-[40px] bg-white text-black rounded-full px-4 py-2 text-sm font-semibold opacity-0 -translate-x-20 z-0"
-        style={{ whiteSpace: "nowrap" }}
-      >
-        View Gallery
-      </div>
-
-      {/* Plus icon */}
-      <div className="relative z-10 bg-[#ef4826] hover:bg-green-500 rounded-full p-4 cursor-pointer">
-        <BsPlusLg className="text-black text-2xl" />
-      </div>
-    </div>
+          className="gallery-button  absolute right-[40px] top-1/2 -translate-y-1/2 flex items-center h-[50px] z-50"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div
+            className="gallery-grp absolute right-[0px] py-3 uppercase bg-white border-[0.5px] border-b-gray-400 text-black rounded-full w-0 opacity-0"
+            ref={galleryRef}
+            style={{ whiteSpace: "nowrap" }}
+          >
+            <div ref={textRef} className="h-[20px] overflow-hidden mr-8">
+              <p className="view text-[13px]">view gallery</p>
+              <p className="close text-[13px]">close gallery</p>
+            </div>
+          </div>
+          <div
+            onClick={handleClick}
+            className="relative z-10 bg-[#ef4826] hover:bg-[#26ef47] rounded-full p-2 cursor-pointer"
+          >
+            <div ref={plusRef}>
+              <BsPlusLg className="text-black text-2xl" />
+            </div>
+          </div>
+        </div>
+        <section className="absolute bottom-5 right-5 z-20 gallery-section opacity-0">
+          <div className="w-[250px] h-[150px] relative ">
+            {images.map((image, index) => (
+              <Image
+                src={image}
+                alt={image}
+                fill
+                className="object-cover slideshow-imag"
+                key={index}
+              />
+            ))}
+          </div>
+        </section>
       </main>
     </>
   );
