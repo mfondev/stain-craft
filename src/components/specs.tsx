@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 import SplitType from "split-type";
 import { BsPlusLg } from "react-icons/bs";
+import CustomCursor from "./ui/customCursor";
 
 type SpecsProps = {
   title: string;
@@ -19,14 +20,32 @@ export default function Specs({
   backgroundImage,
   paragraph,
 }: SpecsProps) {
-  const galleryRef = useRef(null);
+  const galleryRef = useRef<HTMLDivElement | null>(null);
   const plusRef = useRef(null);
   const textRef = useRef(null);
   const timelineRef = useRef<GSAPTimeline | null>(null);
   const [clicked, setClicked] = useState(false);
+  const isDraggingRef = useRef(false);
+  const [cursorActive, setCursorActive] = useState(false);
+  const picBoxRef = useRef<HTMLDivElement | null>(null);
   let timeline = useRef<GSAPTimeline | null>(null);
 
   useEffect(() => {
+    const picBox = picBoxRef.current;
+    if (!picBox) return;
+    const draggingEnter = (e: MouseEvent) => {
+      if (!isDraggingRef.current) return;
+      picBox.scrollLeft -= e.movementX;
+      console.log(e.movementX);
+      
+    };
+
+    const draggingLeave = () => {
+      isDraggingRef.current = false;
+    };
+    window.addEventListener("mousemove", draggingEnter);
+    window.addEventListener("mouseup", draggingLeave);
+
     timeline.current = gsap.timeline();
     const section = gsap.utils.toArray(".slideshow-section") as HTMLElement[];
 
@@ -100,6 +119,11 @@ export default function Specs({
           ease: "power2.out",
         }
       );
+
+    return () => {
+      window.removeEventListener("mousemove", draggingEnter);
+      window.removeEventListener("mouseup", draggingLeave);
+    };
   }, []);
   const specReverse = () => {
     timeline.current?.reverse();
@@ -129,7 +153,7 @@ export default function Specs({
       const tl = gsap.timeline({ paused: true });
 
       tl.to(plusRef.current, {
-        rotation: "0.785rad", 
+        rotation: "0.785rad",
         duration: 0.3,
         ease: "power2.inOut",
       })
@@ -155,12 +179,14 @@ export default function Specs({
           yPercent: -110,
           duration: 0.5,
           ease: "power2.inOut",
+          onComplete: () => setCursorActive(true),
         })
-        .to(
-          ".gallery-section",
-
-          { y: 0, opacity: 1, duration: 0.5, ease: "power2.inOut" }
-        );
+        .to(".gallery-section", {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          ease: "power2.inOut",
+        });
 
       timelineRef.current = tl;
     }
@@ -169,20 +195,25 @@ export default function Specs({
       timelineRef.current?.play();
     } else {
       timelineRef.current.reverse();
+      setCursorActive(false);
     }
 
     setClicked(!clicked);
   };
+
   return (
     <>
-      <main className="w-full h-screen fixed inset-0  overflow-y-hidden spec-section z-50">
+      <main className="w-full h-screen fixed inset-0 overflow-y-hidden spec-section z-50">
         <section className="relative w-full h-screen overflow-hidden">
-          <Image
-            src={backgroundImage}
-            alt=""
-            fill
-            className="object-cover specImage"
-          />
+          {images.map((image, index) => (
+            <Image
+              src={image}
+              alt={image}
+              fill
+              className="object-cover"
+              key={index}
+            />
+          ))}
           <article className="bg-white absolute w-[46%] right-5 top-5 h-[0%] flex flex-col justify-between specs-overlay overflow-hidden z-40">
             <header className="flex items-cente justify-between px-2 py-1">
               <div className=" h-[72px] overflow-hidden">
@@ -241,20 +272,32 @@ export default function Specs({
             </div>
           </div>
         </div>
-        <section className="absolute bottom-5 right-5 z-20 gallery-section opacity-0">
-          <div className="w-[250px] h-[150px] relative ">
+        <section
+          className="absolute bottom-10 right-5 z-20 w-[640px] h-[110px] overflow-hidden opacity-0 gallery-section"
+          onMouseDown={() => isDraggingRef.current = true}
+        >
+          <div
+            ref={picBoxRef}
+            className="flex flex-nowrap items-center space-x-4 picture-box overflow-x-auto w-full h-full "
+            style={{ cursor: "grab", scrollbarWidth: "none" }}
+          >
             {images.map((image, index) => (
-              <Image
-                src={image}
-                alt={image}
-                fill
-                className="object-cover slideshow-imag"
+              <div
                 key={index}
-              />
+                className="relative shrink-0 w-[200px] h-[110px]"
+              >
+                <Image
+                  src={image}
+                  alt={`Image ${index}`}
+                  fill
+                  className="object-cover"
+                />
+              </div>
             ))}
           </div>
         </section>
       </main>
+      <CustomCursor active={cursorActive} />
     </>
   );
 }
