@@ -2,6 +2,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 import SplitType from "split-type";
+import { useRef } from "react";
 
 export const textSlide = () => {
   const tl = gsap.timeline();
@@ -196,38 +197,6 @@ export const scaleAnimation = () => {
   // })
 };
 
-const randomFunctin = () => {
-  //  let ctx =  gsap.context(() => {
-  //       gsap.set(".photo:not(:first-child)", { opacity: 0 ,scale: 0.5});
-  // const animation = gsap.to("photo:not(:first-child)", {
-  //   opacity: 1,
-  //   scale: 1,
-  //   duration: 0.5,
-  //   stagger: 0.2,
-  // });
-  //       ScrollTrigger.create({
-  //         trigger: "main-section",
-  //         start: "top top",
-  //         end: "bottom bottom",
-  //         scrub: true,
-  //         animation: animation,
-  //         markers: true,
-  //         // pin: ".main-section",
-  //       });
-  //     })
-  //     return () => {
-  //       ctx.revert();
-  //     };
-
-  ScrollTrigger.create({
-    trigger: ".main-section",
-    start: "top top",
-    end: "bottom bottom",
-    scrub: true,
-    markers: true,
-    pin: ".rightBlock",
-  });
-};
 
 export const aboutAnimation = () => {
   gsap.set(".detailsWrapper", {
@@ -439,3 +408,85 @@ export const aboutAnimation = () => {
   });
 
 };
+
+
+export const specAnimation = () => {
+  const timeline = gsap.timeline();
+
+  const section = gsap.utils.toArray(".slideshow-section") as HTMLElement[];
+
+  section.forEach((section) => {
+    const images = section.querySelectorAll(".slideshow-image");
+
+    gsap.set(images, { autoAlpha: 0 });
+    gsap.set(images[0], { autoAlpha: 1 });
+
+    let currentIndex = 0;
+
+    setInterval(() => {
+      gsap.set(images[currentIndex], { autoAlpha: 0 });
+      currentIndex = (currentIndex + 1) % images.length;
+      gsap.set(images[currentIndex], { autoAlpha: 1 });
+    }, 500);
+  });
+
+  const splitText = new SplitType(".specTitle", { types: "chars" });
+  const specTitleChars = splitText.chars;
+  gsap.set(specTitleChars, { y: 70 });
+
+  timeline
+    .fromTo(
+      ".spec-section",
+      { autoAlpha: 0 },
+      { autoAlpha: 1, duration: 0.3, ease: "power2.out" }
+    )
+    .fromTo(
+      ".specImage",
+      { scale: 1.1 },
+      { scale: 1, duration: 0.5, ease: "power2.out" },
+      "+=0.1"
+    )
+    .to(
+      ".specs-overlay",
+      {
+        height: "95%",
+        duration: 0.3,
+        ease: "power2.out",
+      },
+      "+=0.1"
+    )
+    .to(specTitleChars, {
+      y: 0,
+      duration: 0.3,
+      ease: "power2.out",
+      stagger: 0.05,
+    })
+    .to(".backButton", {
+      width: "78px",
+      duration: 0.15,
+      ease: "power2.out",
+    })
+    .fromTo(
+      ".specSlide",
+      { autoAlpha: 0 },
+      { autoAlpha: 1, duration: 0.5, ease: "power2.out" }
+    )
+    .to(".specTexts", {
+      opacity: 1,
+      duration: 0.5,
+      ease: "power2.out",
+    })
+    .fromTo(
+      ".gallery-button",
+      { x: -200, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.5,
+        ease: "power2.out",
+      }
+    );
+
+  return timeline;
+};
+

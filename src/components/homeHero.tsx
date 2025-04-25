@@ -9,7 +9,7 @@ import About from "./about/about";
 import Link from "next/link";
 import { SlArrowRight } from "react-icons/sl";
 import { BsPlusLg } from "react-icons/bs";
-import Specs from "./specs";
+import Specs from "./specification/specs";
 import { menuItems } from "../../utils/type";
 
 export default function HomeHero() {
