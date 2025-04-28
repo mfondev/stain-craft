@@ -8,9 +8,10 @@ import CustomCursor from "../ui/customCursor";
 
 type Props = {
   images: string[];
+  imageClick: (index: number) => void;
 };
 
-export default function Gallery({ images }: Props) {
+export default function Gallery({ images, imageClick }: Props) {
   const [clicked, setClicked] = useState(false);
   const [cursorActive, setCursorActive] = useState(false);
   const galleryRef = useRef<HTMLDivElement | null>(null);
@@ -32,7 +33,7 @@ export default function Gallery({ images }: Props) {
 
     document.addEventListener("mouseup", () => {
       isDraggingRef.current = false;
-    })
+    });
 
     picBox.addEventListener("mousedown", () => {
       isDraggingRef.current = true;
@@ -226,7 +227,11 @@ export default function Gallery({ images }: Props) {
           style={{ scrollbarWidth: "none" }}
         >
           {images.map((image, index) => (
-            <div key={index} className="relative shrink-0 w-[200px] h-[110px]">
+            <div
+              key={index}
+              className="relative shrink-0 w-[200px] h-[110px]"
+              onClick={() => imageClick(index)}
+            >
               <Image
                 src={image}
                 alt={`Image ${index}`}

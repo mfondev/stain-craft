@@ -8,24 +8,18 @@ import { specAnimation } from "../animations/animation";
 type SpecsProps = {
   title: string;
   images: string[];
-  backgroundImage: string;
   paragraph: string;
 };
 
-export default function Specs({
-  title,
-  images,
-  backgroundImage,
-  paragraph,
-}: SpecsProps) {
-  const bckgroundImageRef = useRef<HTMLDivElement | null>(null);
+export default function Specs({ title, images, paragraph }: SpecsProps) {
+  const backgroundImageRef = useRef<HTMLDivElement | null>(null);
   const isDraggingRef = useRef(false);
   const timeline = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
     timeline.current = specAnimation();
     // Enable dragging functionality
-    const bckgroundImage = bckgroundImageRef.current;
+    const bckgroundImage = backgroundImageRef.current;
     if (!bckgroundImage) return;
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -64,6 +58,16 @@ export default function Specs({
     timeline.current?.reverse();
   };
 
+  const onImageClick = (index: number) => {
+    if (!backgroundImageRef.current) return;
+    const container = backgroundImageRef.current;
+    const imageWidth = container.clientWidth;
+    container.scrollTo({
+      left: imageWidth * index,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <main className="w-full h-screen fixed inset-0 overflow-y-hidden spec-section z-50">
@@ -71,7 +75,7 @@ export default function Specs({
           <div
             className="w-full h-screen flex items-center overflow-x-auto"
             style={{ scrollbarWidth: "none" }}
-            ref={bckgroundImageRef}
+            ref={backgroundImageRef}
             onMouseDown={() => (isDraggingRef.current = true)}
           >
             {images.map((image, index) => (
@@ -114,7 +118,7 @@ export default function Specs({
             </section>
           </article>
         </section>
-        <Gallery images={images} />
+        <Gallery images={images} imageClick={onImageClick} />
       </main>
     </>
   );
