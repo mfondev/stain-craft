@@ -11,6 +11,7 @@ import { SlArrowRight } from "react-icons/sl";
 import { BsPlusLg } from "react-icons/bs";
 import Specs from "./specification/specs";
 import { menuItems } from "../../utils/type";
+import IntroPage from "./introPage";
 
 export default function HomeHero() {
   const [activeSpec, setactiveSpec] = useState<string | null>(null);
@@ -104,7 +105,8 @@ export default function HomeHero() {
 
   return (
     <>
-      <main className="relative">
+    <IntroPage />
+      <main className="relative z-50">
         <section className="sticky top-0 panel">
           <section className="min-h-screen bg-black rounded-t-[50px]  flex brightness-75 panel_1">
             <div className="relative w-1/2">
@@ -159,7 +161,6 @@ export default function HomeHero() {
                         title={item.title}
                         images={item.images}
                         paragraph={item.paragraph}
-                        backgroundImage={item.backGroundImg}
                       />
                     )}
                   </li>
@@ -210,7 +211,6 @@ export default function HomeHero() {
           </main>
         </section>
       </main>
-
       <div className="overlayy commission fixed bottom-0 left-0 w-1/2 h-[100vh] z-40 rounded-tr-[35px]">
         <div
           onClick={commissionClick}
