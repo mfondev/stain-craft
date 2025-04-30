@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef,useState } from "react";
 import Gallery from "./gallery";
 import { specAnimation } from "../animations/animation";
 
@@ -15,9 +15,25 @@ export default function Specs({ title, images, paragraph }: SpecsProps) {
   const backgroundImageRef = useRef<HTMLDivElement | null>(null);
   const isDraggingRef = useRef(false);
   const timeline = useRef<gsap.core.Timeline | null>(null);
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  
 
   useEffect(() => {
     timeline.current = specAnimation();
+
+    const gallerySection = document.querySelector(
+      ".gallery-section .picture-box"
+    );
+
+    const syncGalleryScroll = () => {
+      if (!backgroundImageRef.current || !gallerySection) return;
+      const main = backgroundImageRef.current;
+      const ratio = gallerySection.scrollWidth / main.scrollWidth;
+      gallerySection.scrollLeft = main.scrollLeft * ratio;
+    };
+
+    backgroundImageRef.current?.addEventListener("scroll", syncGalleryScroll);
+
     // Enable dragging functionality
     const bckgroundImage = backgroundImageRef.current;
     if (!bckgroundImage) return;
@@ -51,6 +67,10 @@ export default function Specs({ title, images, paragraph }: SpecsProps) {
       window.removeEventListener("mouseup", handleMouseUp);
       window.removeEventListener("gallery-opened", enableDragging);
       window.removeEventListener("gallery-closed", disableDragging);
+      backgroundImageRef.current?.removeEventListener(
+        "scroll",
+        syncGalleryScroll
+      );
     };
   }, []);
 
@@ -66,6 +86,7 @@ export default function Specs({ title, images, paragraph }: SpecsProps) {
       left: imageWidth * index,
       behavior: "smooth",
     });
+    setActiveIndex(index);
   };
 
   return (
@@ -118,8 +139,10 @@ export default function Specs({ title, images, paragraph }: SpecsProps) {
             </section>
           </article>
         </section>
-        <Gallery images={images} imageClick={onImageClick} />
+        <Gallery images={images} imageClick={onImageClick} activeIndex={activeIndex} />
       </main>
     </>
   );
 }
+
+

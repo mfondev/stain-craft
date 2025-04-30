@@ -9,9 +9,10 @@ import CustomCursor from "../ui/customCursor";
 type Props = {
   images: string[];
   imageClick: (index: number) => void;
+  activeIndex: number | null
 };
 
-export default function Gallery({ images, imageClick }: Props) {
+export default function Gallery({ images, imageClick,activeIndex }: Props) {
   const [clicked, setClicked] = useState(false);
   const [cursorActive, setCursorActive] = useState(false);
   const galleryRef = useRef<HTMLDivElement | null>(null);
@@ -229,7 +230,9 @@ export default function Gallery({ images, imageClick }: Props) {
           {images.map((image, index) => (
             <div
               key={index}
-              className="relative shrink-0 w-[200px] h-[110px]"
+              className={`relative shrink-0 w-[200px] h-[110px] cursor-pointer transition-opacity duration-300 ${
+                activeIndex === index ? "opacity-100" : "opacity-50"
+              }`}
               onClick={() => imageClick(index)}
             >
               <Image
