@@ -105,7 +105,7 @@ export default function HomeHero() {
 
   return (
     <>
-      <main className="relative z-50">
+      <main className="relative z-30">
         <section className="sticky top-0 panel">
           <section className="min-h-screen bg-black rounded-t-[50px]  flex brightness-75 panel_1">
             <div className="relative w-1/2">
@@ -210,7 +210,7 @@ export default function HomeHero() {
           </main>
         </section>
       </main>
-      <div className="overlayy commission fixed bottom-0 left-0 w-1/2 h-[100vh] z-40 rounded-tr-[35px]">
+      <div className="overlayy commission fixed bottom-0 left-0 w-1/2 h-[100vh] z-50 rounded-tr-[35px]">
         <div
           onClick={commissionClick}
           className="commissio flex items-center justify-between w-full h-[10%] bg-[#ef4826]  hover:bg-[#26ef47] text-black px-8 py-3 rounded-tr-[35px] cursor-pointer z-50 fixe bottom-0 left-0"

@@ -2,7 +2,7 @@
 
 import Navbar from "@/components/mainNavigation/navbar";
 import React from "react";
-import { useEffect,useRef } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { IoMdArrowDropright } from "react-icons/io";
 import gsap from "gsap";
@@ -16,31 +16,29 @@ import IntroPage from "@/components/introPage";
 import HomeHero from "@/components/homeHero";
 import Footer from "@/components/mainNavigation/footer";
 
-
 export default function HomePage() {
   const introRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     createScroll01();
-   
   }, []);
 
-    const homeRoute = (e: React.FormEvent<HTMLElement>) => {
-      e.preventDefault();
-      const timeline = gsap.timeline();
-  
-      const text2Letters = gsap.utils.toArray(".h-text2 span");
-  
+  const homeRoute = (e: React.FormEvent<HTMLElement>) => {
+    e.preventDefault();
+    const timeline = gsap.timeline();
+
+    const text2Letters = gsap.utils.toArray(".h-text2 span");
+
     timeline.to(text2Letters, {
       y: -240,
       duration: 0.8,
       stagger: 0.05,
       ease: "power2.out",
     });
-  
+
     timeline.to(
-      [".overlay", ".intro-section"], 
+      [".overlay", ".intro-section"],
       {
-        y: 0, 
+        y: 0,
         duration: 1.5,
         ease: "power2.inOut",
         onUpdate: () => {
@@ -51,14 +49,14 @@ export default function HomePage() {
           });
         },
         onComplete: () => {
-          
-          const introSection = document.querySelector(".intro-section") as HTMLElement;
+          const introSection = document.querySelector(
+            ".intro-section"
+          ) as HTMLElement;
 
           if (introRef.current) {
-            introRef.current.style.display = "none";}
+            introRef.current.style.display = "none";
+          }
           if (introSection) introSection.style.display = "none";
-          // console.log("Overlay display", overlay.style.display);
-          console.log("Intro section display", introSection.style.display);
           homeAnimation();
           hfAnimation();
         },
@@ -66,22 +64,21 @@ export default function HomePage() {
       "-=0.5"
     );
   };
-  
 
   return (
     <>
-    <IntroPage onHomePageReveal={homeRoute} ref={introRef} />
-      <main className="relative">
+      <IntroPage onHomePageReveal={homeRoute} ref={introRef} />
+      <main className="relative bg-[#eaece9]">
+        <Navbar />
+        <Image
+          src="/images/dummyimage.png"
+          alt="dummy image"
+          width={400}
+          height={400}
+          className="object-cover absolute left-1/2 top-[-320px] mb-8 transform -translate-x-1/2 carImg z-40"
+        />
         <article className="sticky top-0 panel">
           <div className="bg-[#eaece9] h-screen relative">
-            <Navbar />
-            <Image
-              src="/images/dummyimage.png"
-              alt="dummy image"
-              width={400}
-              height={400}
-              className="object-cover absolute left-1/2 top-[-320px] mb-8 transform -translate-x-1/2 carImg"
-            />
             <div className="h-[200px] overflow-hidden ">
               <h1 className="hf1 text-[250px] leading-[1] font-extrabold h-full ">
                 MF

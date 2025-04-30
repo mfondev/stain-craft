@@ -87,7 +87,7 @@ export default forwardRef<HTMLElement, Props>(function IntroPage({ onHomePageRev
 
   return (
     <>
-      <main className="fixed top-0 left-0 w-full h-screen overflow-hidden z-[50] " ref={ref}>
+      <main className="fixed top-0 left-0 w-full h-screen overflow-hidden z-50 " ref={ref}>
         <section className="intro-section flex flex-col justify-center h-screen px-8 z-10 bg-black py-8">
           <article className="flex flex-col justify-between h-full relative z-10">
             <div className="text-white">
