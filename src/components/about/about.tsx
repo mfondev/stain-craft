@@ -1,21 +1,25 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect , useState} from "react";
 import Image from "next/image";
-import { aboutAnimation } from "../../animations/animation";
+import { aboutAnimation } from "../animations/animation";
 import Maniac from "./maniac";
 import Machine from "./machine";
 import Mission from "./mission";
-
 export default function About() {
+
+
   useEffect(() => {
     aboutAnimation();
   }, []);
 
   return (
     <>
-      <article className="gallery scale-section w-full" >
-        <section className="w-1/2 h-full right absolut inset-0 z-20 backgroundIm" id="about">
+      <article className="gallery scale-section w-full">
+        <section
+          className="w-1/2 h-full right absolut inset-0 z-20 backgroundIm"
+          id="about"
+        >
           <article className="relative">
             <ul className="z-50 text-white h-[100vh] flex flex-col justify-center items-center absolute inset-0 w-full bg-black/25 text-left">
               <div>
@@ -61,8 +65,8 @@ export default function About() {
         </section>
         <section className="w-1/2 absolut right-0 top-0 z-10">
           <div className="detailsWrappe px-[80px">
-           <Maniac />
-            <Mission/>
+            <Maniac />
+            <Mission />
             <Machine />
           </div>
         </section>

@@ -1,16 +1,24 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Image from "next/image";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-import About from "./mainNavigation/about/about";
+import About from "./about/about";
 import Link from "next/link";
 import { SlArrowRight } from "react-icons/sl";
 import { BsPlusLg } from "react-icons/bs";
+import Specs from "./specification/specs";
+import { menuItems } from "../../utils/type";
+import IntroPage from "./introPage";
 
 export default function HomeHero() {
+  const [activeSpec, setactiveSpec] = useState<string | null>(null);
+  const handleSpecClick = (spec: string) => {
+    setactiveSpec(spec);
+  };
+  const commissionTimeline = useRef<GSAPTimeline | null>(null);
   const textShift = (e: React.FormEvent<HTMLElement>) => {
     const link = e.currentTarget;
     const tl = gsap.timeline();
@@ -36,28 +44,19 @@ export default function HomeHero() {
         "<"
       );
   };
-  const menuItems = [
-    "Power",
-    "Origin",
-    "Beauty",
-    "Asylum",
-    "Obsession",
-    "Strength",
-  ];
 
   useEffect(() => {
-    gsap.set(".commission", { y: 70, opacity: 1 });
+    gsap.set(".commission", { y: 800, opacity: 1 });
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".panel_1",
         start: "top 40%",
         toggleActions: "play reverse play reverse",
         end: "bottom 20%",
-        markers: true,
       },
     });
 
-    tl.to(".commission", { y: 0, duration: 0.8, ease: "power2.out" });
+    tl.to(".commission", { y: 675, duration: 0.8, ease: "power2.out" });
 
     const animation = gsap.fromTo(
       ".menuLink",
@@ -76,9 +75,37 @@ export default function HomeHero() {
     });
   }, []);
 
+  const commissionClick = () => {
+    if (!commissionTimeline.current) {
+      commissionTimeline.current = gsap.timeline({ paused: true });
+
+      commissionTimeline.current
+        .to(".overlayy", {
+          y: 0,
+          duration: 1.5,
+          ease: "power2.inOut",
+        })
+        .to(
+          ".gear",
+          {
+            rotation: "0.785rad",
+            duration: 0.5,
+            ease: "power2.inOut",
+          },
+          0
+        );
+    }
+    document.body.style.overflow = "hidden";
+    commissionTimeline.current.play();
+  };
+
+  const reverseCommissionClick = () => {
+    commissionTimeline.current?.reverse();
+  };
+
   return (
     <>
-      <main className="relative">
+      <main className="relative z-50">
         <section className="sticky top-0 panel">
           <section className="min-h-screen bg-black rounded-t-[50px]  flex brightness-75 panel_1">
             <div className="relative w-1/2">
@@ -117,21 +144,31 @@ export default function HomeHero() {
           <main className="relative" id="car-tour">
             <ul className="flex flex-col space-y-6 w-[200px] absolute top-1/2 left-0 text-center z-20">
               {menuItems.map((item, index) => (
-                <li
-                  key={index}
-                  className=" group flex items-center gap-4 cursor-pointer transition-all duration-300"
-                >
-                  <p className="w-[0px] bg-black h-[1px] transition-all duration-300 group-hover:w-[32px]"></p>
-                  <p className="bg-[#ef4826] w-2 h-2 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"></p>
-                  <h1 className="menuLink text-[#6b6b6b] uppercase font-extrabold text-sm transition-all duration-300 group-hover:text-black group-hover:text-base  ">
-                    {item}
-                  </h1>
-                </li>
+                <div key={index}>
+                  <li className=" group flex items-center gap-4 cursor-pointer transition-all duration-300">
+                    <p className="w-[0px] bg-black h-[1px] transition-all duration-300 group-hover:w-[32px]"></p>
+                    <p className="bg-[#ef4826] w-2 h-2 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"></p>
+                    <h1
+                      className="menuLink text-[#6b6b6b] uppercase font-extrabold text-sm transition-all duration-300 group-hover:text-black group-hover:text-base "
+                      onClick={() => handleSpecClick(item.title)}
+                    >
+                      {item.title}
+                    </h1>
+                    {activeSpec === item.title && (
+                      <Specs
+                        key={item.title}
+                        title={item.title}
+                        images={item.images}
+                        paragraph={item.paragraph}
+                      />
+                    )}
+                  </li>
+                </div>
               ))}
             </ul>
             <Link
               href=""
-              className="hover:text-white hover:bg-black  z-20 ml-[40px] absolute bottom-0 flex items-center justify-between w-[200px] bg-transparent border border-black text-black p-4 rounded-br-[25px]  mb-8"
+              className="hover:text-white hover:bg-black z-10 ml-[40px] absolute bottom-0 flex items-center justify-between w-[200px] bg-transparent border border-black text-black p-4 rounded-br-[25px]  mb-8"
               onMouseEnter={textShift}
               onMouseLeave={textUnshift}
             >
@@ -167,24 +204,34 @@ export default function HomeHero() {
                 className="object-cover rounded-t-[50px] "
               />
             </div>
-            {/* <div className="flex items-center justify-between w-[45%] bg-[#ef4826] hover:bg-[#26ef47] text-black p-4 rounded-tr-[35px] cursor-pointer">
-              <h2 className="uppercase text-2xl font-extrabold">commission your mf-47</h2>
-              <div className="bg-black rounded-full p-[3px]">
-              <BsPlusLg className=" text-white text-[30px]" />
-              </div>
-            </div> */}
           </main>
           <main className="bg-[#fff] main-section ">
             <About />
           </main>
         </section>
       </main>
-      <div className="commission flex items-center justify-between w-[45%] bg-[#ef4826] hover:bg-[#26ef47] text-black p-4 rounded-tr-[35px] cursor-pointer z-50 fixed bottom-0 left-0">
-        <h2 className="uppercase text-2xl font-extrabold">
-          commission your mf-47
-        </h2>
-        <div className="bg-black rounded-full p-[3px]">
-          <BsPlusLg className=" text-white text-[30px]" />
+      <div className="overlayy commission fixed bottom-0 left-0 w-1/2 h-[100vh] z-40 rounded-tr-[35px]">
+        <div
+          onClick={commissionClick}
+          className="commissio flex items-center justify-between w-full h-[10%] bg-[#ef4826]  hover:bg-[#26ef47] text-black px-8 py-3 rounded-tr-[35px] cursor-pointer z-50 fixe bottom-0 left-0"
+        >
+          <h2 className="uppercase text-[16px] font-extrabold">
+            commission your mf-47
+          </h2>
+          <div className="bg-black rounded-full p-[3px]">
+            <BsPlusLg
+              className=" text-white text-[30px] gear"
+              onClick={(e) => {
+                e.stopPropagation();
+                reverseCommissionClick();
+              }}
+            />
+          </div>
+        </div>
+        <div className="h-[90%] bg-white">
+          <h2 className="text-[50px] max-w-[270px] leading-[0.9] font-extrabold px-8 py-10">
+            REGISTER YOUR INTEREST IN HF-11.
+          </h2>
         </div>
       </div>
     </>

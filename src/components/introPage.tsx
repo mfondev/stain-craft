@@ -1,16 +1,19 @@
 "use client";
 
-import React, { FormEvent, useEffect } from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { textSlide, textUnslide } from "@/components/animations/animation";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { SlArrowRight } from "react-icons/sl";
-import { useRouter } from "next/navigation";
 gsap.registerPlugin(ScrollTrigger);
+import { forwardRef } from "react";
 
-export default function LandingPage() {
-  const router = useRouter();
+type Props = {
+  onHomePageReveal: (e: React.FormEvent<HTMLElement>) => void;
+};
+
+export default forwardRef<HTMLElement, Props>(function IntroPage({ onHomePageReveal }: Props, ref) {
   useEffect(() => {
     textSlide();
   }, []);
@@ -44,38 +47,49 @@ export default function LandingPage() {
       .to(".arr-4", { x: 0, duration: 0.3 }, "<");
   };
 
-  const homeRoute = (e: React.FormEvent<HTMLElement>) => {
-    e.preventDefault();
-    const timeline = gsap.timeline();
+  //   const homeRoute = (e: React.FormEvent<HTMLElement>) => {
+  //     e.preventDefault();
+  //     const timeline = gsap.timeline();
 
-    const text2Letters = gsap.utils.toArray(".h-text2 span");
+  //     const text2Letters = gsap.utils.toArray(".h-text2 span");
 
-    timeline.to(text2Letters, {
-      y: -240,
-      duration: 0.8,
-      stagger: 0.05,
-      ease: "power2.out",
-    });
+  //   timeline.to(text2Letters, {
+  //     y: -240,
+  //     duration: 0.8,
+  //     stagger: 0.05,
+  //     ease: "power2.out",
+  //   });
 
-    timeline.to(
-      ".overlay",
-      {
-        y: 0,
-        duration: 1.5,
-        ease: "power2.inOut",
-      },
-      "-=0.5"
-    );
-    timeline.call(() => {
-      router.push("/home");
-    });
-  };
+  //   timeline.to(
+  //     [".overlay", ".intro-section"],
+  //     {
+  //       y: 0,
+  //       duration: 1.5,
+  //       ease: "power2.inOut",
+  //       onUpdate: () => {
+  //         gsap.to(".intro-section", {
+  //           y: "-100%",
+  //           duration: 1.5,
+  //           ease: "power2.inOut",
+  //         });
+  //       },
+  //       onComplete: () => {
+  //         const overlay = document.querySelector(".overlay") as HTMLElement;
+  //         if (overlay) overlay.style.display = "none";
+
+  //         const introSection = document.querySelector(".intro-section") as HTMLElement;
+  //         if (introSection) introSection.style.display = "none";
+  //       },
+  //     },
+  //     "-=0.5"
+  //   );
+  // };
 
   return (
     <>
-      <main className="relative w-full h-screen overflow-hidden ">
-        <section className="flex flex-col justify-center h-screen px-8 z-10 bg-black">
-          <article className="flex flex-col justify-between h-[75%] relative z-10">
+      <main className="fixed top-0 left-0 w-full h-screen overflow-hidden z-[50] " ref={ref}>
+        <section className="intro-section flex flex-col justify-center h-screen px-8 z-10 bg-black py-8">
+          <article className="flex flex-col justify-between h-full relative z-10">
             <div className="text-white">
               <div className="flex flex-col gap-4">
                 <div className="h-[110px] overflow-hidden flex flex-col">
@@ -114,16 +128,20 @@ export default function LandingPage() {
             </div>
             {/*  */}
             <div className="flex items-center justify-between l-footer">
-              <h3 className="text-sm uppercase text-white">CALIFORNIA, USA, 90757</h3>
+              <h3 className="text-sm uppercase text-white">
+                CALIFORNIA, USA, 90757
+              </h3>
               <Link
                 href=""
-                onClick={homeRoute}
-                className="flex items-center justify-between w-[180px] bg-[#ef4826] hover:bg-[#26ef47] text-black p-4 rounded-br-lg "
+                onClick={onHomePageReveal}
+                className="flex items-center justify-between w-[190px] bg-[#ef4826] hover:bg-[#26ef47] text-black p-5 rounded-br-[15px]"
                 onMouseEnter={textShift}
                 onMouseLeave={textUnshift}
               >
                 <div className="uppercase font-bold w-[49px] h-[20px] overflow-hidden flex items-center relative">
-                  <p className="left-[-46px] ent-1 absolute text-[14px] font-bold">enter</p>
+                  <p className="left-[-46px] ent-1 absolute text-[14px] font-bold">
+                    enter
+                  </p>
                   <p className="ent-2 absolute text-[14px] font-bold">enter</p>
                 </div>
                 <div className=" w-[15px] h-[15px] flex items-center justify-between overflow-hidden relative">
@@ -145,8 +163,37 @@ export default function LandingPage() {
           </article>
         </section>
 
-        <div className="overlay absolute inset-0 w-full h-full bg-white z-50"></div>
+        <div className="overlay absolute inset-0 w-full h-full bg-white "></div>
       </main>
     </>
   );
-}
+});
+
+// timeline.to(text2Letters, {
+//   y: -240,
+//   duration: 0.8,
+//   stagger: 0.05,
+//   ease: "power2.out",
+// });
+
+// timeline.to(
+//   ".overlay",
+//   {
+//     y: 0,
+//     duration: 1.5,
+//     ease: "power2.inOut",
+//     onComplete: () => {
+//       // After the overlay covers the screen, hide or remove it
+//       const overlay = document.querySelector(".overlay") as HTMLElement;
+//       if (overlay) {
+//         overlay.style.display = "none"; // or use gsap.set(overlay, { display: "none" });
+//       }
+
+//       // Navigate or reveal the next section
+//       // You can scroll or change state if necessary here
+//     }
+//   },
+//   "-=0.5"
+// );
+
+// 1. Move text letters up

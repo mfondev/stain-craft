@@ -35,41 +35,41 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center p-4  text-black">
+    <nav className="flex justify-between items-center p-4  text-black cursor-pointer">
       <Link href="/" className="text-2xl font-extrabold uppercase">StainCraft</Link>
 
       <div className="flex items-center space-x-6">
         <Link
           href="#gallery"
-          className="uppercase text-sm font-bold"
+          className="uppercase font-extrabold text-sm font-bol"
           onMouseEnter={textShift}
           onMouseLeave={textUnshift}
         >
           <div className="uppercase font-bold w-[65px] h-[20px] overflow-hidden  flex items-center relative">
-            <p className="left-[-85px] ent-1 absolute text-sm ">gallery</p>
-            <p className="ent-2 absolute text-sm">gallery</p>
+            <p className="left-[-85px] ent-1 absolute font-extrabold text-sm ">gallery</p>
+            <p className="ent-2 absolute font-extrabold text-sm">gallery</p>
           </div>
         </Link>
         <Link
           href="#car-tour"
-          className="uppercase text-sm font-bold"
+          className="uppercase font-extrabold text-sm"
           onMouseEnter={textShift}
           onMouseLeave={textUnshift}
         >
           <div className="uppercase font-bold w-[80px] h-[20px] overflow-hidden  flex items-center relative">
-            <p className="left-[-85px] ent-1 absolute text-sm ">car tour</p>
-            <p className="ent-2 absolute text-sm">car tour</p>
+            <p className="left-[-85px] ent-1 absolute font-extrabold text-sm ">car tour</p>
+            <p className="ent-2 absolute font-extrabold text-sm">car tour</p>
           </div>
         </Link>
         <Link
           href="#about"
-          className="uppercase text-sm font-bold"
+          className="uppercase font-extrabold text-sm "
           onMouseEnter={textShift}
           onMouseLeave={textUnshift}
         >
           <div className="uppercase font-bold w-[59px] h-[20px] overflow-hidden  flex items-center relative">
-            <p className="left-[-85px] ent-1 absolute text-sm ">about</p>
-            <p className="ent-2 absolute text-sm">about</p>
+            <p className="left-[-85px] ent-1 absolute font-extrabold text-sm ">about</p>
+            <p className="ent-2 absolute font-extrabold text-sm">about</p>
           </div>
         </Link>
         <Link
@@ -79,8 +79,8 @@ const Navbar = () => {
           onMouseLeave={textUnshift}
         >
           <div className="uppercase font-bold w-[89px] h-[20px] overflow-hidden  flex items-center relative">
-            <p className="left-[-85px] ent-1 absolute text-sm ">ownership</p>
-            <p className="ent-2 absolute text-sm">ownership</p>
+            <p className="left-[-85px] ent-1 absolute font-extrabold text-sm ">ownership</p>
+            <p className="ent-2 absolute font-extrabold text-sm">ownership</p>
           </div>
           <div className=" w-[15px] h-[15px] flex items-center justify-between overflow-hidden relative">
             <div className="flex items-center justify-between w-[15px] absolute left-[-10px]">
