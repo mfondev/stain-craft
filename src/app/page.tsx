@@ -1,10 +1,9 @@
-
-import HomeHero from "@/components/homeHero";
+import HomePage from "./home/homePage";
 
 export default function Home() {
   return (
     <>
-      <HomeHero />
+      <HomePage />
     </>
   );
 }

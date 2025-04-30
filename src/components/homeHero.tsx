@@ -105,7 +105,6 @@ export default function HomeHero() {
 
   return (
     <>
-    <IntroPage />
       <main className="relative z-50">
         <section className="sticky top-0 panel">
           <section className="min-h-screen bg-black rounded-t-[50px]  flex brightness-75 panel_1">

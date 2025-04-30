@@ -35,7 +35,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center p-4  text-black">
+    <nav className="flex justify-between items-center p-4  text-black cursor-pointer">
       <Link href="/" className="text-2xl font-extrabold uppercase">StainCraft</Link>
 
       <div className="flex items-center space-x-6">
