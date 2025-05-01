@@ -81,7 +81,7 @@ export default function HomePage() {
           />
           <div className="bg-[#eaece9] h-screen relative">
             <div className="h-[200px] overflow-hidden absolute left-0 top-0 ">
-              <h1 className="hf1 text-[250px] leading-[1] font-extrabold h-full ">
+              <h1 className="hf1 text-[250px] leading-[1] font-extrabold h-full">
                 MF
               </h1>
               <h1 className="hf2 text-[250px] leading-[1] font-extrabold h-full">

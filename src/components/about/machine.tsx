@@ -5,7 +5,8 @@ export default function Machine() {
   return (
     <div className="details detail3Text">
       <h1 className="text-[55px] font-extrabold uppercase headers mb-14 leading-[1]">
-        Time <br />MAchine
+        Time <br />
+        MAchine
       </h1>
 
       <section className="mb-14 slideshow-section">
@@ -56,6 +57,7 @@ export default function Machine() {
             src="/images/carImg4.jpg"
             alt=""
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="slideshow-image object-cover absolute top-0 left-0 z-[10]"
           />
           <Image
@@ -124,6 +126,7 @@ export default function Machine() {
             src="/images/carImg4.jpg"
             alt=""
             fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="slideshow-image object-cover absolute top-0 left-0 z-[40]"
           />
         </div>
