@@ -11,8 +11,14 @@ import { SlArrowRight } from "react-icons/sl";
 import { BsPlusLg } from "react-icons/bs";
 import Specs from "./specification/specs";
 import { menuItems } from "../../utils/type";
+import { GiSpeaker } from "react-icons/gi";
+// import sound from "../../public/sounds/engine_sound.wav"
 
 export default function HomeHero() {
+
+  function playSound() {
+    new Audio(("/sounds/engine_sound.wav")).play();
+  }
   const [activeSpec, setactiveSpec] = useState<string | null>(null);
   const handleSpecClick = (spec: string) => {
     setactiveSpec(spec);
@@ -133,9 +139,16 @@ export default function HomeHero() {
                 where the past <br /> overtakes the future
               </p>
             </span>
-            <p className="hover:bg-[#ef4826] cursor-pointer uppercase text-sm bg-white text-black rounded-full w-fit py-1 px-2 text-left font-extrabold">
+            <div
+            onClick={playSound}
+            className="flex items-center gap-2 hover:bg-[#ef4826] cursor-pointer uppercase text-sm bg-white text-black rounded-full w-fit py-1 px-2 text-left font-extrabold">
+            <p >
               Hear sound
+
             </p>
+            <GiSpeaker />
+            </div>
+        
           </div>
         </section>
         <section className="rounded-t-[50px] sticky top-0 panel secondCarView ">
