@@ -12,12 +12,14 @@ import { BsPlusLg } from "react-icons/bs";
 import Specs from "./specification/specs";
 import { menuItems } from "../../utils/type";
 import { GiSpeaker } from "react-icons/gi";
-// import sound from "../../public/sounds/engine_sound.wav"
 
 export default function HomeHero() {
-
+  const soundRef = useRef<HTMLDivElement>(null);
   function playSound() {
-    new Audio(("/sounds/engine_sound.wav")).play();
+    new Audio("/sounds/engine_sound.wav").play();
+    if (soundRef.current) {
+      soundRef.current.style.backgroundColor = "#26ef47";
+    }
   }
   const [activeSpec, setactiveSpec] = useState<string | null>(null);
   const handleSpecClick = (spec: string) => {
@@ -140,15 +142,13 @@ export default function HomeHero() {
               </p>
             </span>
             <div
-            onClick={playSound}
-            className="flex items-center gap-2 hover:bg-[#ef4826] cursor-pointer uppercase text-sm bg-white text-black rounded-full w-fit py-1 px-2 text-left font-extrabold">
-            <p >
-              Hear sound
-
-            </p>
-            <GiSpeaker />
+              onClick={playSound}
+              ref={soundRef}
+              className="flex items-center gap-2 hover:bg-[#ef4826] cursor-pointer uppercase text-[12px] bg-white text-black rounded-full w-fit py-1 px-2 text-left font-extrabold"
+            >
+              <p>engine sound</p>
+              <GiSpeaker />
             </div>
-        
           </div>
         </section>
         <section className="rounded-t-[50px] sticky top-0 panel secondCarView ">
