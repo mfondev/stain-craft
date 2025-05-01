@@ -2,7 +2,6 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 import SplitType from "split-type";
-import { useRef } from "react";
 
 export const textSlide = () => {
   const tl = gsap.timeline();
@@ -111,15 +110,28 @@ const onGoingCode = (progress: number) => {
     ease: "power2.out",
     scrub: 1,
   });
+  // maxMove = -105;
 
-  const maxMove = -305;
+  // gsap.to(".eleven", {
+  //   y: Math.max(maxMove, -700 * progress),
+  //   ease: "power2.out",
+  //   duration: 1,
+  //   marginBottom: 10,
+  // });
 
-  gsap.to(".eleven", {
-    y: Math.max(maxMove, -700 * progress),
-    ease: "power2.out",
-    duration: 1,
-    marginBottom: 10,
+  gsap.ticker.add(() => {
+    const scrollY = window.scrollY;
+  
+    const panel = document.querySelector(".articleHead");
+    const maxUp = panel ? (panel as HTMLElement).offsetHeight - 330 : 0; 
+    const moveAmount = Math.min(scrollY, maxUp); 
+  
+    gsap.set(".eleven", {
+      y: -moveAmount, 
+    });
   });
+  
+  
 
   // gsap.fromTo(".panel_1",{
   //   filter: "brightness(0.5)",
@@ -199,10 +211,10 @@ export const scaleAnimation = () => {
 
 
 export const aboutAnimation = () => {
-  gsap.set(".detailsWrapper", {
-    yPercent: 140,
-    ease: "none",
-  });
+  // gsap.set(".detailsWrapper", {
+  //   yPercent: 140,
+  //   ease: "none",
+  // });
   gsap.to(".scale-section", {
     clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
     ease: "power2.out",
@@ -333,8 +345,10 @@ export const aboutAnimation = () => {
     scrollTrigger: {
       trigger: ".detail1",
       start: "top bottom",
-      end: "bottom bottom",
+      // end: "bottom bottom",
+      toggleActions: "play reverse play reverse",
       scrub: true,
+      markers: true,
     },
   });
 
