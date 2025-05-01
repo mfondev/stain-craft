@@ -1,20 +1,24 @@
 "use client";
 
-import React,{useRef,useEffect} from "react";
+import React, { useRef, useEffect } from "react";
 import Link from "next/link";
 import { SlArrowRight } from "react-icons/sl";
 import gsap from "gsap";
+import { headers } from "next/headers";
 
 const Navbar = () => {
   const navbarRef = useRef<HTMLDivElement>(null);
   const lastScrollTop = useRef(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
+
+    const handleScroll = () => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+        console.log("Scroll position:", scrollTop);
       if (navbarRef.current) {
-        if (scrollTop === 0) {
+        if (scrollTop < 400) {
           navbarRef.current.style.backgroundColor = "transparent";
           navbarRef.current.style.top = "0";
         } else if (scrollTop > lastScrollTop.current) {
@@ -23,7 +27,6 @@ const Navbar = () => {
           navbarRef.current.style.top = "0";
           navbarRef.current.style.backgroundColor = "white";
         }
-
         lastScrollTop.current = scrollTop <= 0 ? 0 : scrollTop;
       }
     };
@@ -31,9 +34,9 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll); 
+      window.removeEventListener("scroll", handleScroll);
     };
-  }, []); 
+  }, []);
 
   const textShift = (e: React.FormEvent<HTMLElement>) => {
     const link = e.currentTarget;
@@ -62,8 +65,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center px-8 py-3 bg-transparent text-black cursor-pointer sticky top-0 z-40" ref={navbarRef}
-    style={{ transition: "top 0.3s ease" }}
+    
+    <nav
+      className="flex justify-between items-center px-8 py-3 bg-transparent text-black cursor-pointer fixed w-full top-0 z-30"
+      ref={navbarRef}
+      style={{ transition: "top 0.3s ease" }}
     >
       <Link href="/" className="text-2xl font-extrabold uppercase">
         StainCraft
@@ -93,7 +99,9 @@ const Navbar = () => {
             <p className="left-[-85px] ent-1 absolute font-extrabold text-[12px] ">
               car tour
             </p>
-            <p className="ent-2 absolute font-extrabold text-[12px]">car tour</p>
+            <p className="ent-2 absolute font-extrabold text-[12px]">
+              car tour
+            </p>
           </div>
         </Link>
         <Link
@@ -119,7 +127,9 @@ const Navbar = () => {
             <p className="left-[-80px] ent-1 absolute font-extrabold text-[12px] ">
               ownership
             </p>
-            <p className="ent-2 absolute font-extrabold text-[12px]">ownership</p>
+            <p className="ent-2 absolute font-extrabold text-[12px]">
+              ownership
+            </p>
           </div>
           <div className=" w-[15px] h-[15px] flex items-center justify-between overflow-hidden relative">
             <div className="flex items-center justify-between w-[15px] absolute left-[-10px]">

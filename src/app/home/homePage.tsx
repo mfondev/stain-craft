@@ -68,18 +68,19 @@ export default function HomePage() {
   return (
     <>
       <IntroPage onHomePageReveal={homeRoute} ref={introRef} />
-      <main className="relative bg-[#eaece9]">
-        <Navbar />
-        <Image
-          src="/images/dummyimage.png"
-          alt="dummy image"
-          width={400}
-          height={400}
-          className="object-cover absolute left-1/2 top-[-320px] mb-8 transform -translate-x-1/2 carImg z-40"
-        />
-        <article className="sticky top-0 panel">
+
+      <main className="relative bg-[#eaece9] ">
+        <Navbar />      
+        <article className="sticky top-0 panel pt-[80px] articleHead">
+          <Image
+            src="/images/dummyimage.png"
+            alt="dummy image"
+            width={400}
+            height={400}
+            className="object-cover absolute left-1/2 top-[-320px] mb-8 transform -translate-x-1/2 carImg z-40"
+          />
           <div className="bg-[#eaece9] h-screen relative">
-            <div className="h-[200px] overflow-hidden ">
+            <div className="h-[200px] overflow-hidden absolute left-0 top-0 ">
               <h1 className="hf1 text-[250px] leading-[1] font-extrabold h-full ">
                 MF
               </h1>
@@ -87,7 +88,7 @@ export default function HomePage() {
                 MF
               </h1>
             </div>
-            <main className="flex flex-col justify-cente items-cente absolute left-1/2 bottom-0 mb-8 transform -translate-x-1/2 ml-[140px] ">
+            <main className="flex flex-col justify-cente items-cente absolute left-1/2 bottom-15 mb-8 transform -translate-x-1/2 ml-[140px] ">
               <div className="h-[30px] overflow-hidden ">
                 <h2 className="uppercase text-[30px] leading-[1] font-extrabold  lm1">
                   Less is more,
@@ -161,7 +162,7 @@ export default function HomePage() {
                 </div>
               </main>
             </main>
-            <div className="h-[200px] overflow-hidden  leading-[1] font-extrabold absolute right-0 bottom-[0px] eleven">
+            <div className="h-[200px] overflow-hidden  leading-[1] font-extrabold absolute right-0 bottom-15 eleven">
               <h1 className="hf1  text-[250px] leading-[1] font-extrabold h-full ">
                 47
               </h1>
