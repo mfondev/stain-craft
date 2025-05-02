@@ -343,12 +343,12 @@ export const aboutAnimation = () => {
   // maniac texts animation
   const maniacTextTimeline = gsap.timeline({
     scrollTrigger: {
-      trigger: ".detail1",
+      trigger: ".detail1Text",
       start: "top bottom",
       // end: "bottom bottom",
       toggleActions: "play reverse play reverse",
       scrub: true,
-      markers: true,
+      // markers: true,
     },
   });
 

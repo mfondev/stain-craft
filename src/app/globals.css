@@ -47,9 +47,6 @@ body {
 .overlayy {
   transform: translateY(90%);
 }
-/* .specs-overlay {
-  transform: translateY(-99%);
-} */
 
 .scale-section {
   clip-path: polygon(1% 0, 99% 0, 99% 100%, 1% 100%);
