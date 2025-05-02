@@ -47,44 +47,6 @@ export default forwardRef<HTMLElement, Props>(function IntroPage({ onHomePageRev
       .to(".arr-4", { x: 0, duration: 0.3 }, "<");
   };
 
-  //   const homeRoute = (e: React.FormEvent<HTMLElement>) => {
-  //     e.preventDefault();
-  //     const timeline = gsap.timeline();
-
-  //     const text2Letters = gsap.utils.toArray(".h-text2 span");
-
-  //   timeline.to(text2Letters, {
-  //     y: -240,
-  //     duration: 0.8,
-  //     stagger: 0.05,
-  //     ease: "power2.out",
-  //   });
-
-  //   timeline.to(
-  //     [".overlay", ".intro-section"],
-  //     {
-  //       y: 0,
-  //       duration: 1.5,
-  //       ease: "power2.inOut",
-  //       onUpdate: () => {
-  //         gsap.to(".intro-section", {
-  //           y: "-100%",
-  //           duration: 1.5,
-  //           ease: "power2.inOut",
-  //         });
-  //       },
-  //       onComplete: () => {
-  //         const overlay = document.querySelector(".overlay") as HTMLElement;
-  //         if (overlay) overlay.style.display = "none";
-
-  //         const introSection = document.querySelector(".intro-section") as HTMLElement;
-  //         if (introSection) introSection.style.display = "none";
-  //       },
-  //     },
-  //     "-=0.5"
-  //   );
-  // };
-
   return (
     <>
       <main className="fixed top-0 left-0 w-full h-screen overflow-hidden z-50 " ref={ref}>
@@ -168,32 +130,3 @@ export default forwardRef<HTMLElement, Props>(function IntroPage({ onHomePageRev
     </>
   );
 });
-
-// timeline.to(text2Letters, {
-//   y: -240,
-//   duration: 0.8,
-//   stagger: 0.05,
-//   ease: "power2.out",
-// });
-
-// timeline.to(
-//   ".overlay",
-//   {
-//     y: 0,
-//     duration: 1.5,
-//     ease: "power2.inOut",
-//     onComplete: () => {
-//       // After the overlay covers the screen, hide or remove it
-//       const overlay = document.querySelector(".overlay") as HTMLElement;
-//       if (overlay) {
-//         overlay.style.display = "none"; // or use gsap.set(overlay, { display: "none" });
-//       }
-
-//       // Navigate or reveal the next section
-//       // You can scroll or change state if necessary here
-//     }
-//   },
-//   "-=0.5"
-// );
-
-// 1. Move text letters up
