@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Image from "next/image";
 import ScrollTrigger from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
 import About from "./about/about";
 import Link from "next/link";
 import { SlArrowRight } from "react-icons/sl";
@@ -12,8 +11,13 @@ import { BsPlusLg } from "react-icons/bs";
 import Specs from "./specification/specs";
 import { menuItems } from "../../utils/type";
 import { GiSpeaker } from "react-icons/gi";
+import CommissionForm from "./forms/commissionForm";
+gsap.registerPlugin(ScrollTrigger);
+
 
 export default function HomeHero() {
+  const [isOpen, setIsOpen] = useState(false);
+
   const soundRef = useRef<HTMLDivElement>(null);
   function playSound() {
     new Audio("/sounds/engine_sound.wav").play();
@@ -81,7 +85,7 @@ export default function HomeHero() {
     });
   }, []);
 
-  const commissionClick = () => {
+  const toggleCommission = () => {
     if (!commissionTimeline.current) {
       commissionTimeline.current = gsap.timeline({ paused: true });
 
@@ -90,6 +94,9 @@ export default function HomeHero() {
           y: 0,
           duration: 1.5,
           ease: "power2.inOut",
+          onComplete: () => {
+            document.body.style.overflow = "hidden";
+          },
         })
         .to(
           ".gear",
@@ -101,12 +108,15 @@ export default function HomeHero() {
           0
         );
     }
-    document.body.style.overflow = "hidden";
-    commissionTimeline.current.play();
-  };
 
-  const reverseCommissionClick = () => {
-    commissionTimeline.current?.reverse();
+    if (!isOpen) {
+      document.body.style.overflow = "hidden";
+      commissionTimeline.current.play();
+    } else {
+      commissionTimeline.current.reverse();
+    }
+
+    setIsOpen(!isOpen); 
   };
 
   return (
@@ -222,10 +232,7 @@ export default function HomeHero() {
         </section>
       </main>
       <div className="overlayy commission fixed bottom-0 left-0 w-1/2 h-[100vh] z-40 rounded-tr-[35px]">
-        <div
-          onClick={commissionClick}
-          className="commissio flex items-center justify-between w-full h-[10%] bg-[#ef4826]  hover:bg-[#26ef47] text-black px-8 py-3 rounded-tr-[35px] cursor-pointer z-50 fixe bottom-0 left-0"
-        >
+        <div className=" flex items-center justify-between w-full h-[10%] bg-[#ef4826]  hover:bg-[#26ef47] text-black px-8 py-3 rounded-tr-[35px] cursor-pointer z-50 fixe bottom-0 left-0">
           <h2 className="uppercase text-[16px] font-extrabold">
             commission your mf-47
           </h2>
@@ -234,15 +241,16 @@ export default function HomeHero() {
               className=" text-white text-[30px] gear"
               onClick={(e) => {
                 e.stopPropagation();
-                reverseCommissionClick();
+                toggleCommission();
               }}
             />
           </div>
         </div>
-        <div className="h-[90%] bg-white">
-          <h2 className="text-[50px] max-w-[270px] leading-[0.9] font-extrabold px-8 py-10">
+        <div className="h-[90%] bg-white px-8 py-10">
+          <h2 className="text-[50px] max-w-[270px] leading-[0.9] font-extrabold mb-10">
             REGISTER YOUR INTEREST IN HF-11.
           </h2>
+          <CommissionForm />
         </div>
       </div>
     </>
