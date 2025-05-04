@@ -121,17 +121,15 @@ const onGoingCode = (progress: number) => {
 
   gsap.ticker.add(() => {
     const scrollY = window.scrollY;
-  
+
     const panel = document.querySelector(".articleHead");
-    const maxUp = panel ? (panel as HTMLElement).offsetHeight - 330 : 0; 
-    const moveAmount = Math.min(scrollY, maxUp); 
-  
+    const maxUp = panel ? (panel as HTMLElement).offsetHeight - 330 : 0;
+    const moveAmount = Math.min(scrollY, maxUp);
+
     gsap.set(".eleven", {
-      y: -moveAmount, 
+      y: -moveAmount,
     });
   });
-  
-  
 
   // gsap.fromTo(".panel_1",{
   //   filter: "brightness(0.5)",
@@ -208,7 +206,6 @@ export const scaleAnimation = () => {
   //   pin: ".rightBlock",
   // })
 };
-
 
 export const aboutAnimation = () => {
   // gsap.set(".detailsWrapper", {
@@ -336,7 +333,6 @@ export const aboutAnimation = () => {
       start: "top bottom",
       end: "bottom bottom",
       toggleActions: "play reverse play reverse",
-
     },
   });
 
@@ -352,44 +348,12 @@ export const aboutAnimation = () => {
     },
   });
 
-  maniacTextTimeline.to(
-    ".maniacText1",
-    {
-      x: 100,
-      duration: 0.5,
-      ease: "power2.inOut",
-    },
-    0
-  );
-  maniacTextTimeline.to(
-    ".maniacText2",
-    {
-      x: -100,
-      duration: 0.5,
-      ease: "power2.inOut",
-    },
-    0
-  );
-  maniacTextTimeline.to(
-    ".maniacText3",
-    {
-      x: 100,
-      duration: 0.5,
-      ease: "power2.inOut",
-    },
-    0
-  );
-  maniacTextTimeline.to(
-    ".maniacText4",
-    {
-      x: -100,
-      duration: 0.5,
-      ease: "power2.inOut",
-    },
-    0
-  );
+  maniacTextTimeline
+    .to(".maniacText1", { x: 200, duration: 0.4, ease: "power2.inOut" }, 0)
+    .to(".maniacText2", { x: -200, duration: 0.3, ease: "power2.inOut" }, 0)
+    .to(".maniacText3", { x: 200, duration: 0.3, ease: "power2.inOut" }, 0)
+    .to(".maniacText4", { x: -200, duration: 0.3, ease: "power2.inOut" }, 0);
 
-  // image slide animation
   const image = gsap.utils.toArray(".slideshow") as HTMLElement[];
 
   gsap.set(image, { autoAlpha: 0 });
@@ -402,7 +366,6 @@ export const aboutAnimation = () => {
     currentNum = (currentNum + 1) % image.length;
     gsap.set(image[currentNum], { autoAlpha: 1 });
   }, 500);
-  
 
   const section = gsap.utils.toArray(".slideshow-section") as HTMLElement[];
 
@@ -411,18 +374,16 @@ export const aboutAnimation = () => {
 
     gsap.set(images, { autoAlpha: 0 });
     gsap.set(images[0], { autoAlpha: 1 });
-  
+
     let currentIndex = 0;
-  
+
     setInterval(() => {
       gsap.set(images[currentIndex], { autoAlpha: 0 });
       currentIndex = (currentIndex + 1) % images.length;
       gsap.set(images[currentIndex], { autoAlpha: 1 });
     }, 1000);
   });
-
 };
-
 
 export const specAnimation = () => {
   document.documentElement.style.overflow = "hidden";
@@ -505,4 +466,3 @@ export const specAnimation = () => {
 
   return timeline;
 };
-

@@ -25,7 +25,7 @@ export default function Maniac() {
           maniacs
         </h1>
       </div>
-      <div className="flex items-center gap-[40px] pr-[100px] leading-[1] absolute  w-full top-[90px] left-[-690px] maniacText2">
+      <div className="flex items-center gap-[40px] pr-[100px] leading-[1] absolute  w-full top-[120px] left-[-690px] maniacText2">
         <h1 className="text-[14vw] font-extrabold uppercase">
           maniacs
         </h1>
@@ -36,7 +36,7 @@ export default function Maniac() {
           maniacs
         </h1>
       </div>
-      <div className="flex items-center gap-[40px] pr-[100px] leading-[1] absolute w-full top-[250px] left-[-690px] maniacText3">
+      <div className="flex items-center gap-[40px] pr-[100px] leading-[1] absolute w-full top-[300px] left-[-690px] maniacText3">
         <h1 className="text-[14vw] font-extrabold uppercase">
           maniacs
         </h1>
@@ -47,7 +47,7 @@ export default function Maniac() {
           maniacs
         </h1>
       </div>
-      <div className="flex items-center gap-[40px] pr-[100px] leading-[1]  absolute w-full top-[410px] left-[-690px] maniacText4">
+      <div className="flex items-center gap-[40px] pr-[100px] leading-[1]  absolute w-full top-[480px] left-[-690px] maniacText4">
         <h1 className="text-[14vw] font-extrabold uppercase">
           maniacs
         </h1>
