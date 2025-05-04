@@ -57,7 +57,7 @@ export default function HomeHero() {
   };
 
   useEffect(() => {
-    gsap.set(".commission", { y: 800, opacity: 1 });
+    gsap.set(".commission", { y: 830, opacity: 1 });
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".panel_1",
@@ -67,7 +67,7 @@ export default function HomeHero() {
       },
     });
 
-    tl.to(".commission", { y: 675, duration: 0.8, ease: "power2.out" });
+    tl.to(".commission", { y: 750, duration: 0.8, ease: "power2.out" });
 
     const animation = gsap.fromTo(
       ".menuLink",
@@ -94,9 +94,6 @@ export default function HomeHero() {
           y: 0,
           duration: 1.5,
           ease: "power2.inOut",
-          onComplete: () => {
-            document.body.style.overflow = "hidden";
-          },
         })
         .to(
           ".gear",
@@ -109,14 +106,17 @@ export default function HomeHero() {
         );
     }
 
+    const scrollTarget = document.documentElement; 
+
     if (!isOpen) {
-      document.body.style.overflow = "hidden";
+      scrollTarget.style.overflow = "hidden"; 
       commissionTimeline.current.play();
     } else {
+      scrollTarget.style.overflow = ""; 
       commissionTimeline.current.reverse();
     }
-
-    setIsOpen(!isOpen); 
+  
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -231,7 +231,7 @@ export default function HomeHero() {
           </main>
         </section>
       </main>
-      <div className="overlayy commission fixed bottom-0 left-0 w-1/2 h-[100vh] z-40 rounded-tr-[35px]">
+      <div className="overlayy commission fixed bottom-0 left-0 w-1/2 h-[100vh] z-40 rounded-tr-[35px] ">
         <div className=" flex items-center justify-between w-full h-[10%] bg-[#ef4826]  hover:bg-[#26ef47] text-black px-8 py-3 rounded-tr-[35px] cursor-pointer z-50 fixe bottom-0 left-0">
           <h2 className="uppercase text-[16px] font-extrabold">
             commission your mf-47
