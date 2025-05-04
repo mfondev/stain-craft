@@ -2,7 +2,7 @@
 
 import Navbar from "@/components/mainNavigation/navbar";
 import React from "react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { IoMdArrowDropright } from "react-icons/io";
 import gsap from "gsap";
@@ -17,15 +17,18 @@ import HomeHero from "@/components/homeHero";
 import Footer from "@/components/mainNavigation/footer";
 
 export default function HomePage() {
+  const [isOpen, setIsOpen] = useState<boolean>(true);
   const introRef = useRef<HTMLDivElement>(null);
+
+
   useEffect(() => {
+    document.documentElement.style.overflow = "hidden";
     createScroll01();
   }, []);
 
   const homeRoute = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
     const timeline = gsap.timeline();
-
     const text2Letters = gsap.utils.toArray(".h-text2 span");
 
     timeline.to(text2Letters, {
@@ -49,6 +52,8 @@ export default function HomePage() {
           });
         },
         onComplete: () => {
+          document.documentElement.style.overflow = "auto";
+
           const introSection = document.querySelector(
             ".intro-section"
           ) as HTMLElement;
@@ -70,10 +75,10 @@ export default function HomePage() {
       <IntroPage onHomePageReveal={homeRoute} ref={introRef} />
 
       <main className="relative bg-[#eaece9] ">
-        <Navbar />      
+        <Navbar />
         <article className="sticky top-0 panel pt-[80px] articleHead">
           <Image
-            src="/images/dummyimage.png"
+            src="/images/dropImg.png"
             alt="dummy image"
             width={400}
             height={400}
