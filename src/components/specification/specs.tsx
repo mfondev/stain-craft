@@ -17,10 +17,8 @@ export default function Specs({ title, images, paragraph }: SpecsProps) {
   const timeline = useRef<gsap.core.Timeline | null>(null);
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
   
-
   useEffect(() => {
     timeline.current = specAnimation();
-
     const gallerySection = document.querySelector(
       ".gallery-section .picture-box"
     );
@@ -34,7 +32,6 @@ export default function Specs({ title, images, paragraph }: SpecsProps) {
 
     backgroundImageRef.current?.addEventListener("scroll", syncGalleryScroll);
 
-    // Enable dragging functionality
     const bckgroundImage = backgroundImageRef.current;
     if (!bckgroundImage) return;
 
@@ -61,7 +58,6 @@ export default function Specs({ title, images, paragraph }: SpecsProps) {
     window.addEventListener("gallery-opened", enableDragging);
     window.addEventListener("gallery-closed", disableDragging);
 
-    // Clean up
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
@@ -76,6 +72,8 @@ export default function Specs({ title, images, paragraph }: SpecsProps) {
 
   const specReverse = () => {
     timeline.current?.reverse();
+    document.documentElement.style.overflow = "auto";
+
   };
 
   const onImageClick = (index: number) => {

@@ -425,6 +425,8 @@ export const aboutAnimation = () => {
 
 
 export const specAnimation = () => {
+  document.documentElement.style.overflow = "hidden";
+
   const timeline = gsap.timeline();
 
   const section = gsap.utils.toArray(".slideshow-section") as HTMLElement[];
