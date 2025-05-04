@@ -16,7 +16,6 @@ const Navbar = () => {
     const handleScroll = () => {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
-        console.log("Scroll position:", scrollTop);
       if (navbarRef.current) {
         if (scrollTop < 400) {
           navbarRef.current.style.backgroundColor = "transparent";
@@ -24,7 +23,6 @@ const Navbar = () => {
         } else if (scrollTop > lastScrollTop.current) {
           navbarRef.current.style.top = "-100px";
         } else {
-          navbarRef.current.style.top = "0";
           navbarRef.current.style.backgroundColor = "white";
         }
         lastScrollTop.current = scrollTop <= 0 ? 0 : scrollTop;

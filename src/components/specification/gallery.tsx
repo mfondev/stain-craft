@@ -39,81 +39,7 @@ export default function Gallery({ images, imageClick,activeIndex }: Props) {
     picBox.addEventListener("mousedown", () => {
       isDraggingRef.current = true;
     });
-
-    // const draggingEnter = (e: MouseEvent) => {
-    //   if (!isDraggingRef.current) return;
-    //   if (picBox) {
-    //     picBox.scrollLeft -= e.movementX;
-    //   }
-    // };
-
-    // const draggingEnd = () => {
-    //   isDraggingRef.current = false;
-    // };
-
-    // if (picBox) {
-    //   picBox.addEventListener("mousemove", draggingEnter);
-    //   picBox.addEventListener("mousedown", () => {
-    //     isDraggingRef.current = true;});
-    //   picBox.addEventListener("mouseup", draggingEnd);
-    //   picBox.addEventListener("mouseleave", draggingEnd);
-    // }
-    // return () => {
-    //   if (picBox) {
-    //     picBox.removeEventListener("mousemove", draggingEnter);
-    //     picBox.removeEventListener("mouseup", draggingEnd);
-    //     picBox.removeEventListener("mouseleave", draggingEnd);
-    //   }
-    // };
   }, []);
-  // DRAG FUNCTIONALITY FOR GALLERY
-
-  //   useEffect(() => {
-  //   const picBox = picBoxRef.current;
-  //   let startX = 0;
-  //   let scrollLeft = 0;
-  //   let isDragging = false;
-
-  //   const mouseDownHandler = (e: MouseEvent) => {
-  //     if (!picBox) return;
-  //     isDragging = true;
-  //     startX = e.pageX - picBox.offsetLeft;
-  //     scrollLeft = picBox.scrollLeft;
-  //     picBox.style.cursor = "grabbing";
-  //   };
-
-  //   const mouseMoveHandler = (e: MouseEvent) => {
-  //     if (!isDragging || !picBox) return;
-  //     e.preventDefault();
-  //     const x = e.pageX - picBox.offsetLeft;
-  //     const walk = x - startX; // distance moved
-  //     picBox.scrollLeft = scrollLeft - walk;
-  //   };
-
-  //   const mouseUpHandler = () => {
-  //     isDragging = false;
-  //     if (picBox) {
-  //       picBox.style.cursor = "grab";
-  //     }
-  //   };
-
-  //   if (picBox) {
-  //     picBox.addEventListener("mousedown", mouseDownHandler);
-  //     picBox.addEventListener("mousemove", mouseMoveHandler);
-  //     picBox.addEventListener("mouseup", mouseUpHandler);
-  //     picBox.addEventListener("mouseleave", mouseUpHandler);
-  //     picBox.style.cursor = "grab"; // default cursor
-  //   }
-
-  //   return () => {
-  //     if (picBox) {
-  //       picBox.removeEventListener("mousedown", mouseDownHandler);
-  //       picBox.removeEventListener("mousemove", mouseMoveHandler);
-  //       picBox.removeEventListener("mouseup", mouseUpHandler);
-  //       picBox.removeEventListener("mouseleave", mouseUpHandler);
-  //     }
-  //   };
-  // }, []);
 
   const handleMouseEnter = () => {
     setCursorActive(false);
@@ -220,7 +146,6 @@ export default function Gallery({ images, imageClick,activeIndex }: Props) {
       </div>
       <section
         className="absolute bottom-10 right-5 z-20 w-[640px] h-[110px] overflow-hidden opacity-0 gallery-section"
-        // onMouseDown={() => (isDraggingRef.current = true)}
       >
         <div
           ref={picBoxRef}
