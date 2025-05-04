@@ -15,7 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
 const formSchema = z.object({
-  name: z.string().min(2).max(50),
+  name: z.string().min(2),
   email: z.string().email(),
   phone: z.string().min(10).max(15),
   address: z.string().min(5).max(100),
@@ -44,6 +44,7 @@ export default function CommissionForm() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    form.reset();
   }
 
   return (
