@@ -12,7 +12,7 @@ type Props = {
   activeIndex: number | null
 };
 
-export default function Gallery({ images, imageClick,activeIndex }: Props) {
+export default function SpecGallery({ images, imageClick,activeIndex }: Props) {
   const [clicked, setClicked] = useState(false);
   const [cursorActive, setCursorActive] = useState(false);
   const galleryRef = useRef<HTMLDivElement | null>(null);
@@ -23,7 +23,6 @@ export default function Gallery({ images, imageClick,activeIndex }: Props) {
   const picBoxRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    // DRAG FUNCTIONALITY FOR GALLERY
     const picBox = picBoxRef.current;
 
     if (!picBox) return;
@@ -103,7 +102,6 @@ export default function Gallery({ images, imageClick,activeIndex }: Props) {
           duration: 0.5,
           ease: "power2.inOut",
         });
-
       timelineRef.current = tl;
     }
 
@@ -111,8 +109,8 @@ export default function Gallery({ images, imageClick,activeIndex }: Props) {
       timelineRef.current?.play();
     } else {
       timelineRef.current.reverse();
-      setCursorActive(false);
-      window.dispatchEvent(new Event("gallery-closed"));
+      // setCursorActive(false);
+      // window.dispatchEvent(new Event("gallery-closed"));
     }
 
     setClicked(!clicked);

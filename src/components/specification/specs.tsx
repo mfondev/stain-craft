@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React, { useEffect, useRef,useState } from "react";
-import Gallery from "./gallery";
+import SpecGallery from "./specGallery";
 import { specAnimation } from "../animations/animation";
 
 type SpecsProps = {
@@ -137,7 +137,7 @@ export default function Specs({ title, images, paragraph }: SpecsProps) {
             </section>
           </article>
         </section>
-        <Gallery images={images} imageClick={onImageClick} activeIndex={activeIndex} />
+        <SpecGallery images={images} imageClick={onImageClick} activeIndex={activeIndex} />
       </main>
     </>
   );

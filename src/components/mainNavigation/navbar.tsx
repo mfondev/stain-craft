@@ -1,18 +1,17 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect,useState } from "react";
 import Link from "next/link";
 import { SlArrowRight } from "react-icons/sl";
 import gsap from "gsap";
-import { headers } from "next/headers";
+import Gallery from "../gallery/gallery";
 
 const Navbar = () => {
+  const [galleryOpen, setGalleryOpen] = useState<boolean>(false);
   const navbarRef = useRef<HTMLDivElement>(null);
   const lastScrollTop = useRef(0);
 
   useEffect(() => {
-
-
     const handleScroll = () => {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
@@ -39,7 +38,6 @@ const Navbar = () => {
   const textShift = (e: React.FormEvent<HTMLElement>) => {
     const link = e.currentTarget;
     const tl = gsap.timeline();
-
     tl.to(link.querySelector(".ent-2"), { x: 80, duration: 0.3 })
       .to(link.querySelector(".ent-1"), { x: 86, duration: 0.3 }, "<")
       .to(
@@ -62,8 +60,17 @@ const Navbar = () => {
       );
   };
 
+  const handleGalleryClick = (e: React.MouseEvent) => {
+    // e.preventDefault();
+    setGalleryOpen(true);
+  }
+
+  const handleCloseGallery = () => {
+    setGalleryOpen(false);
+    document.documentElement.style.overflow = "auto";
+  };
+
   return (
-    
     <nav
       className="flex justify-between items-center px-8 py-3 bg-transparent text-black cursor-pointer fixed w-full top-0 z-30"
       ref={navbarRef}
@@ -72,10 +79,11 @@ const Navbar = () => {
       <Link href="/" className="text-2xl font-extrabold uppercase">
         StainCraft
       </Link>
-
       <div className="flex items-center space-x-6">
+        {galleryOpen && <Gallery closeGallery={handleCloseGallery}/>}
         <Link
           href="#gallery"
+          onClick={handleGalleryClick}  
           className="uppercase font-extrabold text-[12px] font-bol"
           onMouseEnter={textShift}
           onMouseLeave={textUnshift}
