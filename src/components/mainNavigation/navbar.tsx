@@ -15,25 +15,29 @@ const Navbar = () => {
     const handleScroll = () => {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
+  
       if (navbarRef.current) {
-        if (scrollTop < 400) {
+        if (scrollTop === 0) {
           navbarRef.current.style.backgroundColor = "transparent";
-          navbarRef.current.style.top = "0";
+          navbarRef.current.style.top = "0"; 
         } else if (scrollTop > lastScrollTop.current) {
           navbarRef.current.style.top = "-100px";
         } else {
+          navbarRef.current.style.top = "0"; 
           navbarRef.current.style.backgroundColor = "white";
         }
+  
         lastScrollTop.current = scrollTop <= 0 ? 0 : scrollTop;
       }
     };
-
+  
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+  
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  
+
+
 
   const textShift = (e: React.FormEvent<HTMLElement>) => {
     const link = e.currentTarget;

@@ -105,6 +105,14 @@ body {
   height: 40vw;
   background: maroon;
 }
+
+.bg-bottom-image {
+  background-image: url("/images/bg-bottom.webp"); 
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: cover; /* or 'contain' depending on design */
+}
+
   /* 
 
 @theme inline {

@@ -349,10 +349,10 @@ export const aboutAnimation = () => {
   });
 
   maniacTextTimeline
-    .to(".maniacText1", { x: 200, duration: 0.4, ease: "power2.inOut" }, 0)
-    .to(".maniacText2", { x: -200, duration: 0.3, ease: "power2.inOut" }, 0)
-    .to(".maniacText3", { x: 200, duration: 0.3, ease: "power2.inOut" }, 0)
-    .to(".maniacText4", { x: -200, duration: 0.3, ease: "power2.inOut" }, 0);
+    .to(".maniacText1", { x: 400, duration: 0.4, ease: "power2.inOut" }, 0)
+    .to(".maniacText2", { x: -400, duration: 0.3, ease: "power2.inOut" }, 0)
+    .to(".maniacText3", { x: 400, duration: 0.3, ease: "power2.inOut" }, 0)
+    .to(".maniacText4", { x: -400, duration: 0.3, ease: "power2.inOut" }, 0);
 
   const image = gsap.utils.toArray(".slideshow") as HTMLElement[];
 
