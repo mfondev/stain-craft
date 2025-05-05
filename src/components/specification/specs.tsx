@@ -9,9 +9,10 @@ type SpecsProps = {
   title: string;
   images: string[];
   paragraph: string;
+  onClose: () => void;
 };
 
-export default function Specs({ title, images, paragraph }: SpecsProps) {
+export default function Specs({ title, images, paragraph,onClose }: SpecsProps) {
   const backgroundImageRef = useRef<HTMLDivElement | null>(null);
   const isDraggingRef = useRef(false);
   const timeline = useRef<gsap.core.Timeline | null>(null);
@@ -71,10 +72,15 @@ export default function Specs({ title, images, paragraph }: SpecsProps) {
   }, []);
 
   const specReverse = () => {
-    timeline.current?.reverse();
+    if (timeline.current) {
+      timeline.current.eventCallback("onReverseComplete", () => {
+        onClose();
+      });
+      timeline.current.reverse();
+    }
     document.documentElement.style.overflow = "auto";
-
   };
+  
 
   const onImageClick = (index: number) => {
     if (!backgroundImageRef.current) return;

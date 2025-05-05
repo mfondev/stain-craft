@@ -9,7 +9,7 @@ import Link from "next/link";
 import { SlArrowRight } from "react-icons/sl";
 import { BsPlusLg } from "react-icons/bs";
 import Specs from "./specification/specs";
-import { menuItems } from "../../utils/type";
+import { menuItems } from "../lib/types";
 import { GiSpeaker } from "react-icons/gi";
 import CommissionForm from "./forms/commissionForm";
 gsap.registerPlugin(ScrollTrigger);
@@ -17,17 +17,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function HomeHero() {
   const [isOpen, setIsOpen] = useState(false);
-
   const soundRef = useRef<HTMLDivElement>(null);
+  const [activeSpec, setActiveSpec] = useState<string | null>(null);
+
   function playSound() {
     new Audio("/sounds/engine_sound.wav").play();
     if (soundRef.current) {
       soundRef.current.style.backgroundColor = "#26ef47";
     }
   }
-  const [activeSpec, setactiveSpec] = useState<string | null>(null);
   const handleSpecClick = (spec: string) => {
-    setactiveSpec(spec);
+    setActiveSpec(spec);
   };
   const commissionTimeline = useRef<GSAPTimeline | null>(null);
   const textShift = (e: React.FormEvent<HTMLElement>) => {
@@ -181,6 +181,7 @@ export default function HomeHero() {
                         title={item.title}
                         images={item.images}
                         paragraph={item.paragraph}
+                        onClose={() => setActiveSpec(null)}
                       />
                     )}
                   </li>
