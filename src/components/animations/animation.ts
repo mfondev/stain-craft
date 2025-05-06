@@ -105,7 +105,7 @@ export const homeAnimation = () => {
 
 const onGoingCode = (progress: number) => {
   gsap.to(".carImg", {
-    scale: 1 - progress * 0.05,
+    scale: 1 + progress * 0.2,
     duration: 1,
     ease: "power2.out",
     scrub: 1,

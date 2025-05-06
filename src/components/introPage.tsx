@@ -13,7 +13,10 @@ type Props = {
   onHomePageReveal: (e: React.FormEvent<HTMLElement>) => void;
 };
 
-export default forwardRef<HTMLElement, Props>(function IntroPage({ onHomePageReveal }: Props, ref) {
+export default forwardRef<HTMLElement, Props>(function IntroPage(
+  { onHomePageReveal }: Props,
+  ref
+) {
   useEffect(() => {
     textSlide();
   }, []);
@@ -49,7 +52,13 @@ export default forwardRef<HTMLElement, Props>(function IntroPage({ onHomePageRev
 
   return (
     <>
-      <main className="fixed top-0 left-0 w-full h-screen overflow-hidden z-50 " ref={ref}>
+      <main
+        className="relative top-0 left-0 w-full h-screen overflow-hidden z-50 "
+        ref={ref}
+      >
+        <video autoPlay loop muted playsInline className="absolute top-0 left-0 w-full h-full object-cover z-0">
+          <source src="/images/intro.mp4" type="video/mp4" />
+        </video>
         <section className="intro-section flex flex-col justify-center h-screen px-8 z-10 bg-black py-8">
           <article className="flex flex-col justify-between h-full relative z-10">
             <div className="text-white">
@@ -124,7 +133,6 @@ export default forwardRef<HTMLElement, Props>(function IntroPage({ onHomePageRev
             </div>
           </article>
         </section>
-
         <div className="overlay absolute inset-0 w-full h-full bg-white "></div>
       </main>
     </>
