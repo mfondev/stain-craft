@@ -53,7 +53,7 @@ export default forwardRef<HTMLElement, Props>(function IntroPage(
   return (
     <>
       <main
-        className="relative top-0 left-0 w-full h-screen overflow-hidden z-50 "
+        className="fixed top-0 left-0 w-full h-screen overflow-hidden z-50 "
         ref={ref}
       >
         <video autoPlay loop muted playsInline className="absolute top-0 left-0 w-full h-full object-cover z-0">
