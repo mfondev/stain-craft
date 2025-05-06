@@ -4,19 +4,30 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Image from "next/image";
 import ScrollTrigger from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
 import About from "./about/about";
 import Link from "next/link";
 import { SlArrowRight } from "react-icons/sl";
 import { BsPlusLg } from "react-icons/bs";
 import Specs from "./specification/specs";
-import { menuItems } from "../../utils/type";
-import IntroPage from "./introPage";
+import { menuItems } from "../lib/types";
+import { GiSpeaker } from "react-icons/gi";
+import CommissionForm from "./forms/commissionForm";
+gsap.registerPlugin(ScrollTrigger);
+
 
 export default function HomeHero() {
-  const [activeSpec, setactiveSpec] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const soundRef = useRef<HTMLDivElement>(null);
+  const [activeSpec, setActiveSpec] = useState<string | null>(null);
+
+  function playSound() {
+    new Audio("/sounds/engine_sound.wav").play();
+    if (soundRef.current) {
+      soundRef.current.style.backgroundColor = "#26ef47";
+    }
+  }
   const handleSpecClick = (spec: string) => {
-    setactiveSpec(spec);
+    setActiveSpec(spec);
   };
   const commissionTimeline = useRef<GSAPTimeline | null>(null);
   const textShift = (e: React.FormEvent<HTMLElement>) => {
@@ -46,7 +57,7 @@ export default function HomeHero() {
   };
 
   useEffect(() => {
-    gsap.set(".commission", { y: 800, opacity: 1 });
+    gsap.set(".commission", { y: 830, opacity: 1 });
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".panel_1",
@@ -56,7 +67,7 @@ export default function HomeHero() {
       },
     });
 
-    tl.to(".commission", { y: 675, duration: 0.8, ease: "power2.out" });
+    tl.to(".commission", { y: 750, duration: 0.8, ease: "power2.out" });
 
     const animation = gsap.fromTo(
       ".menuLink",
@@ -71,11 +82,10 @@ export default function HomeHero() {
       animation: animation,
       start: "top top",
       toggleActions: "play reverse play reverse",
-      // markers: true,
     });
   }, []);
 
-  const commissionClick = () => {
+  const toggleCommission = () => {
     if (!commissionTimeline.current) {
       commissionTimeline.current = gsap.timeline({ paused: true });
 
@@ -95,19 +105,25 @@ export default function HomeHero() {
           0
         );
     }
-    document.body.style.overflow = "hidden";
-    commissionTimeline.current.play();
-  };
 
-  const reverseCommissionClick = () => {
-    commissionTimeline.current?.reverse();
+    const scrollTarget = document.documentElement; 
+
+    if (!isOpen) {
+      scrollTarget.style.overflow = "hidden"; 
+      commissionTimeline.current.play();
+    } else {
+      scrollTarget.style.overflow = ""; 
+      commissionTimeline.current.reverse();
+    }
+  
+    setIsOpen(!isOpen);
   };
 
   return (
     <>
-      <main className="relative z-50">
+      <main className="relative z-20">
         <section className="sticky top-0 panel">
-          <section className="min-h-screen bg-black rounded-t-[50px]  flex brightness-75 panel_1">
+          <section className="min-h-screen bg-black rounded-t-[50px] flex brightness-75 panel_1">
             <div className="relative w-1/2">
               <Image
                 src="/images/koz_1.jpg"
@@ -135,9 +151,14 @@ export default function HomeHero() {
                 where the past <br /> overtakes the future
               </p>
             </span>
-            <p className="hover:bg-[#ef4826] cursor-pointer uppercase text-sm bg-white text-black rounded-full w-fit py-1 px-2 text-left font-extrabold">
-              Hear sound
-            </p>
+            <div
+              onClick={playSound}
+              ref={soundRef}
+              className="flex items-center gap-2 hover:bg-[#ef4826] cursor-pointer uppercase text-[12px] bg-white text-black rounded-full w-fit py-1 px-2 text-left font-extrabold"
+            >
+              <p>engine sound</p>
+              <GiSpeaker />
+            </div>
           </div>
         </section>
         <section className="rounded-t-[50px] sticky top-0 panel secondCarView ">
@@ -160,6 +181,7 @@ export default function HomeHero() {
                         title={item.title}
                         images={item.images}
                         paragraph={item.paragraph}
+                        onClose={() => setActiveSpec(null)}
                       />
                     )}
                   </li>
@@ -210,11 +232,8 @@ export default function HomeHero() {
           </main>
         </section>
       </main>
-      <div className="overlayy commission fixed bottom-0 left-0 w-1/2 h-[100vh] z-40 rounded-tr-[35px]">
-        <div
-          onClick={commissionClick}
-          className="commissio flex items-center justify-between w-full h-[10%] bg-[#ef4826]  hover:bg-[#26ef47] text-black px-8 py-3 rounded-tr-[35px] cursor-pointer z-50 fixe bottom-0 left-0"
-        >
+      <div className="overlayy commission fixed bottom-0 left-0 w-1/2 h-[100vh] z-40 rounded-tr-[35px] ">
+        <div className=" flex items-center justify-between w-full h-[10%] bg-[#ef4826]  hover:bg-[#26ef47] text-black px-8 py-3 rounded-tr-[35px] cursor-pointer z-50 fixe bottom-0 left-0">
           <h2 className="uppercase text-[16px] font-extrabold">
             commission your mf-47
           </h2>
@@ -223,15 +242,16 @@ export default function HomeHero() {
               className=" text-white text-[30px] gear"
               onClick={(e) => {
                 e.stopPropagation();
-                reverseCommissionClick();
+                toggleCommission();
               }}
             />
           </div>
         </div>
-        <div className="h-[90%] bg-white">
-          <h2 className="text-[50px] max-w-[270px] leading-[0.9] font-extrabold px-8 py-10">
+        <div className="h-[90%] bg-white px-8 py-10">
+          <h2 className="text-[50px] max-w-[270px] leading-[0.9] font-extrabold mb-10">
             REGISTER YOUR INTEREST IN HF-11.
           </h2>
+          <CommissionForm />
         </div>
       </div>
     </>

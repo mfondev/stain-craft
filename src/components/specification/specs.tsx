@@ -1,24 +1,38 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect, useRef } from "react";
-import Gallery from "./gallery";
+import React, { useEffect, useRef,useState } from "react";
+import SpecGallery from "./specGallery";
 import { specAnimation } from "../animations/animation";
 
 type SpecsProps = {
   title: string;
   images: string[];
   paragraph: string;
+  onClose: () => void;
 };
 
-export default function Specs({ title, images, paragraph }: SpecsProps) {
+export default function Specs({ title, images, paragraph,onClose }: SpecsProps) {
   const backgroundImageRef = useRef<HTMLDivElement | null>(null);
   const isDraggingRef = useRef(false);
   const timeline = useRef<gsap.core.Timeline | null>(null);
-
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  
   useEffect(() => {
     timeline.current = specAnimation();
-    // Enable dragging functionality
+    const gallerySection = document.querySelector(
+      ".gallery-section .picture-box"
+    );
+
+    const syncGalleryScroll = () => {
+      if (!backgroundImageRef.current || !gallerySection) return;
+      const main = backgroundImageRef.current;
+      const ratio = gallerySection.scrollWidth / main.scrollWidth;
+      gallerySection.scrollLeft = main.scrollLeft * ratio;
+    };
+
+    backgroundImageRef.current?.addEventListener("scroll", syncGalleryScroll);
+
     const bckgroundImage = backgroundImageRef.current;
     if (!bckgroundImage) return;
 
@@ -45,18 +59,28 @@ export default function Specs({ title, images, paragraph }: SpecsProps) {
     window.addEventListener("gallery-opened", enableDragging);
     window.addEventListener("gallery-closed", disableDragging);
 
-    // Clean up
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
       window.removeEventListener("gallery-opened", enableDragging);
       window.removeEventListener("gallery-closed", disableDragging);
+      backgroundImageRef.current?.removeEventListener(
+        "scroll",
+        syncGalleryScroll
+      );
     };
   }, []);
 
   const specReverse = () => {
-    timeline.current?.reverse();
+    if (timeline.current) {
+      timeline.current.eventCallback("onReverseComplete", () => {
+        onClose();
+      });
+      timeline.current.reverse();
+    }
+    document.documentElement.style.overflow = "auto";
   };
+  
 
   const onImageClick = (index: number) => {
     if (!backgroundImageRef.current) return;
@@ -66,6 +90,7 @@ export default function Specs({ title, images, paragraph }: SpecsProps) {
       left: imageWidth * index,
       behavior: "smooth",
     });
+    setActiveIndex(index);
   };
 
   return (
@@ -118,8 +143,10 @@ export default function Specs({ title, images, paragraph }: SpecsProps) {
             </section>
           </article>
         </section>
-        <Gallery images={images} imageClick={onImageClick} />
+        <SpecGallery images={images} imageClick={onImageClick} activeIndex={activeIndex} />
       </main>
     </>
   );
 }
+
+

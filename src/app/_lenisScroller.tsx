@@ -2,7 +2,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import Lenis from "lenis";
-
 import { ReactNode } from "react";
 
 export default function LenisScroller({ children }: { children: ReactNode }) {
@@ -30,7 +29,5 @@ export default function LenisScroller({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  return <div>
-    {children}
-  </div>;
+  return <div>{children}</div>;
 }
