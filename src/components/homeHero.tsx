@@ -82,6 +82,7 @@ export default function HomeHero() {
       animation: animation,
       start: "top top",
       toggleActions: "play reverse play reverse",
+      // markers: true
     });
   }, []);
 
@@ -121,7 +122,7 @@ export default function HomeHero() {
 
   return (
     <>
-      <main className="relative z-20">
+      <main className="relative z-40">
         <section className="sticky top-0 panel">
           <section className="min-h-screen bg-black rounded-t-[50px] flex brightness-75 panel_1">
             <div className="relative w-1/2">
@@ -161,7 +162,7 @@ export default function HomeHero() {
             </div>
           </div>
         </section>
-        <section className="rounded-t-[50px] sticky top-0 panel secondCarView ">
+        <section className="rounded-t-[50px] sticky top-0 panel secondCarView">
           <main className="relative" id="car-tour">
             <ul className="flex flex-col space-y-6 w-[200px] absolute top-1/2 left-0 text-center z-20">
               {menuItems.map((item, index) => (
