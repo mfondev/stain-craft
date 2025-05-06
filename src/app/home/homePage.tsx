@@ -79,11 +79,11 @@ export default function HomePage() {
             <Image
               src="/images/bgg.webp"
               alt="dummy image"
-              width={1600}
+              width={1200}
               height={100}
-              className="object-cover absolute left-1/2 top-[-320px] mb-8 transform -translate-x-1/2 carImg z-40 w-[2000px] h-[900px]"
+              className="object-cover absolute left-1/2 top-[-320px] mb-8 transform -translate-x-1/2 carImg z-30 w-[1800px] h-[780px] "
             />
-            <div className="bg-[#eaece9 h-screen relative">
+            <div className=" h-screen relative">
               <div className="h-[200px] overflow-hidden absolute left-0 top-0 ">
                 <h1 className="hf1 text-[250px] leading-[1] font-extrabold h-full">
                   MF
@@ -92,7 +92,7 @@ export default function HomePage() {
                   MF
                 </h1>
               </div>
-              <main className="flex flex-col justify-cente items-cente absolute left-1/2 bottom-15 mb-8 transform -translate-x-1/2 ml-[140px] ">
+              <main className="flex flex-col justify-cente items-cente absolute left-1/2 bottom-35 mb-8 transform -translate-x-1/2 ml-[140px] z-40 ">
                 <div className="h-[30px] overflow-hidden ">
                   <h2 className="uppercase text-[30px] leading-[1] font-extrabold  lm1">
                     Less is more,
@@ -110,7 +110,7 @@ export default function HomePage() {
                   <p className="uppercase text-sm font-bold">watch video</p>
                   <IoMdArrowDropright className="text-xl" />
                 </Link>
-                <main className="w-[280px]">
+                <main className="w-[320px]">
                   <div className="stats">
                     <div className="flex items-center justify-between w-full mb-2 ">
                       <span className="h-[30px] w-[58px]  overflow-hidden flex flex-col items-center">
@@ -168,7 +168,7 @@ export default function HomePage() {
                   </div>
                 </main>
               </main>
-              <div className="h-[200px] overflow-hidden  leading-[1] font-extrabold absolute right-0 bottom-15 eleven">
+              <div className="h-[200px] overflow-hidden  leading-[1] font-extrabold absolute right-0 bottom-25 eleven">
                 <h1 className="hf1  text-[250px] leading-[1] font-extrabold h-full ">
                   47
                 </h1>
