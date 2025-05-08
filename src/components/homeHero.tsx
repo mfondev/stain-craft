@@ -57,7 +57,11 @@ export default function HomeHero() {
   };
 
   useEffect(() => {
-    gsap.set(".commission", { y: 830, opacity: 1 });
+    // gsap.set(".commission", { y: 830, opacity: 1 });
+    gsap.set(".commission", {
+      y: () => window.innerHeight, // move it down by 100% of the viewport height
+      opacity: 1,
+    });
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".panel_1",
@@ -67,7 +71,12 @@ export default function HomeHero() {
       },
     });
 
-    tl.to(".commission", { y: 750, duration: 0.8, ease: "power2.out" });
+    // tl.to(".commission", { y: 750, duration: 0.8, ease: "power2.out" });
+    tl.to(".commission", {
+      y: () => window.innerHeight - 80, // only 100px of the element comes into view
+      duration: 0.8,
+      ease: "power2.out",
+    });
 
     const animation = gsap.fromTo(
       ".menuLink",
@@ -143,7 +152,7 @@ export default function HomeHero() {
               />
             </div>
           </section>
-          <div className=" absolute top-1/2 right-[150px] transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-20 flex flex-col gap-[250px]">
+          <div className="absolute top-1/2 right-[150px] transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-20 flex flex-col gap-[250px]">
             <span>
               <h1 className="uppercase text-3xl text-left font-extrabold text-white">
                 staincraft
