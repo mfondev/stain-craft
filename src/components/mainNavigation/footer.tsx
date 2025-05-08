@@ -4,10 +4,11 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <main className="relative">
-      <section className="bg-[#dadada] min-h-scree relative z-20">
-        <div className="relative h-[160vh]">
-          <main className="absolute top-0 left-0 w-full h-[100vh] flex items-cente justify-cente z-10 text-center">
-            <h1 className="text-[160px] leading-[1] font-extrabold uppercase pt-[50px] px-[40px]">
+      <section
+       className="bg-[#dadada]  relative z-20">
+        <div className="relative md:h-[110vh] lg:h-[160vh]">
+          <main className="absolute top-0 left-0 w-full lg:h-[100vh] flex items-cente justify-cente z-10 text-center">
+            <h1 className="md:text-[80px] xl:text-[160px] leading-[1] font-extrabold uppercase pt-[50px] px-[40px]">
               Descend into <br />
               <span className="ml-[150px]">MadnesS</span> <br />
               <div className="flex gap-10">
@@ -42,10 +43,10 @@ export default function Footer() {
           </p>
         </header>
         <div className="flex items-center justify-between">
-          <h1 className="text-[259px] uppercase font-extrabold leading-[1]">
+          <h1 className="text-[162px] lg:text-[250px] uppercase font-extrabold leading-[1]">
             MF
           </h1>
-          <h1 className="text-[259px] uppercase font-extrabold leading-[1]">
+          <h1 className="text-[162px] lg:text-[250px] uppercase font-extrabold leading-[1]">
             47
           </h1>
         </div>
