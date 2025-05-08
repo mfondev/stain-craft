@@ -9,16 +9,27 @@ import Link from "next/link";
 import { SlArrowRight } from "react-icons/sl";
 import { BsPlusLg } from "react-icons/bs";
 import Specs from "./specification/specs";
-import { menuItems } from "../lib/types";
+import {menuItems, MenuItem } from "../lib/types";
 import { GiSpeaker } from "react-icons/gi";
 import CommissionForm from "./forms/commissionForm";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import Gallery from "./gallery/gallery";
 gsap.registerPlugin(ScrollTrigger);
-
 
 export default function HomeHero() {
   const [isOpen, setIsOpen] = useState(false);
   const soundRef = useRef<HTMLDivElement>(null);
   const [activeSpec, setActiveSpec] = useState<string | null>(null);
+  const [galleryOpen, setGalleryOpen] = useState<boolean>(false);
+
+  const handleGalleryClick = (e: React.MouseEvent) => {
+    setGalleryOpen(true);
+  };
+
+  const handleCloseGallery = () => {
+    setGalleryOpen(false);
+    document.documentElement.style.overflow = "auto";
+  };
 
   function playSound() {
     new Audio("/sounds/engine_sound.wav").play();
@@ -116,30 +127,31 @@ export default function HomeHero() {
         );
     }
 
-    const scrollTarget = document.documentElement; 
+    const scrollTarget = document.documentElement;
 
     if (!isOpen) {
-      scrollTarget.style.overflow = "hidden"; 
+      scrollTarget.style.overflow = "hidden";
       commissionTimeline.current.play();
     } else {
-      scrollTarget.style.overflow = ""; 
+      scrollTarget.style.overflow = "";
       commissionTimeline.current.reverse();
     }
-  
+
     setIsOpen(!isOpen);
   };
 
   return (
     <>
+    {galleryOpen && <Gallery closeGallery={handleCloseGallery}/>}
       <main className="relative z-40">
         <section className="sticky top-0 panel">
-          <section className="min-h-screen bg-black rounded-t-[50px] flex brightness-75 panel_1">
+          <section className="min-h-screen bg-black lg:rounded-t-[50px] flex brightness-75 panel_1">
             <div className="relative w-1/2">
               <Image
                 src="/images/koz_1.jpg"
                 alt=""
                 fill
-                className="object-cover rounded-tl-[50px]"
+                className="object-cover lg:rounded-tl-[50px]"
               />
             </div>
             <div className="w-[1px] bg-[#c4c0c0]"></div>
@@ -148,11 +160,11 @@ export default function HomeHero() {
                 src="/images/koz_2.jpg"
                 alt=""
                 fill
-                className="object-cover rounded-tr-[50px]"
+                className="object-cover lg:rounded-tr-[50px]"
               />
             </div>
           </section>
-          <div className="absolute top-1/2 right-[150px] transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-20 flex flex-col gap-[250px]">
+          <div className="absolute top-1/2 right-[150px] transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-20 flex flex-col gap-[250px] md:top-5 md:left-5 md:transform-none md:-translate-y-0 md:-translate-x-0 md:gap-[80px]">
             <span>
               <h1 className="uppercase text-3xl text-left font-extrabold text-white">
                 staincraft
@@ -170,33 +182,40 @@ export default function HomeHero() {
               <GiSpeaker />
             </div>
           </div>
+          <Link 
+         href="#gallery"
+          onClick={handleGalleryClick}  
+          className="absolute bottom-[50px] left-5 flex justify-between items-center px-4 py-2 bg-transparent border border-black rounded-br-[15px] w-[95%] lg:hidden">
+            <p className="text-black">Gallery</p>
+            <MdOutlineKeyboardArrowRight className="text-white text-2xl" />
+          </Link>
         </section>
         <section className="rounded-t-[50px] sticky top-0 panel secondCarView">
           <main className="relative" id="car-tour">
             <ul className="flex flex-col space-y-6 w-[200px] absolute top-1/2 left-0 text-center z-20">
-              {menuItems.map((item, index) => (
+                {menuItems.map((item: MenuItem, index: number) => (
                 <div key={index}>
                   <li className=" group flex items-center gap-4 cursor-pointer transition-all duration-300">
-                    <p className="w-[0px] bg-black h-[1px] transition-all duration-300 group-hover:w-[32px]"></p>
-                    <p className="bg-[#ef4826] w-2 h-2 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"></p>
-                    <h1
-                      className="menuLink text-[#6b6b6b] uppercase font-extrabold text-sm transition-all duration-300 group-hover:text-black group-hover:text-base "
-                      onClick={() => handleSpecClick(item.title)}
-                    >
-                      {item.title}
-                    </h1>
-                    {activeSpec === item.title && (
-                      <Specs
-                        key={item.title}
-                        title={item.title}
-                        images={item.images}
-                        paragraph={item.paragraph}
-                        onClose={() => setActiveSpec(null)}
-                      />
-                    )}
+                  <p className="w-[0px] bg-black h-[1px] transition-all duration-300 group-hover:w-[32px]"></p>
+                  <p className="bg-[#ef4826] w-2 h-2 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"></p>
+                  <h1
+                    className="menuLink text-[#6b6b6b] uppercase font-extrabold text-sm transition-all duration-300 group-hover:text-black group-hover:text-base "
+                    onClick={() => handleSpecClick(item.title)}
+                  >
+                    {item.title}
+                  </h1>
+                  {activeSpec === item.title && (
+                    <Specs
+                    key={item.title}
+                    title={item.title}
+                    images={item.images}
+                    paragraph={item.paragraph}
+                    onClose={() => setActiveSpec(null)}
+                    />
+                  )}
                   </li>
                 </div>
-              ))}
+                ))}
             </ul>
             <Link
               href=""
