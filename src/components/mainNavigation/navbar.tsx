@@ -37,8 +37,6 @@ const Navbar = () => {
   }, []);
   
 
-
-
   const textShift = (e: React.FormEvent<HTMLElement>) => {
     const link = e.currentTarget;
     const tl = gsap.timeline();
@@ -65,7 +63,7 @@ const Navbar = () => {
   };
 
   const handleGalleryClick = (e: React.MouseEvent) => {
-    // e.preventDefault();
+
     setGalleryOpen(true);
   }
 
@@ -88,7 +86,7 @@ const Navbar = () => {
         <Link
           href="#gallery"
           onClick={handleGalleryClick}  
-          className="uppercase font-extrabold text-[12px] md:hidden"
+          className="uppercase font-extrabold text-[12px] hidden lg:flex"
           onMouseEnter={textShift}
           onMouseLeave={textUnshift}
         >
@@ -101,7 +99,7 @@ const Navbar = () => {
         </Link>
         <Link
           href="#car-tour"
-          className="uppercase font-extrabold text-[12px] md:hidden"
+          className="uppercase font-extrabold text-[12px] hidden lg:flex"
           onMouseEnter={textShift}
           onMouseLeave={textUnshift}
         >
@@ -116,7 +114,7 @@ const Navbar = () => {
         </Link>
         <Link
           href="#about"
-          className="uppercase font-extrabold text-[12px] md:hidden"
+          className="uppercase font-extrabold text-[12px] hidden lg:flex"
           onMouseEnter={textShift}
           onMouseLeave={textUnshift}
         >
