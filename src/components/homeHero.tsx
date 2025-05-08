@@ -9,7 +9,7 @@ import Link from "next/link";
 import { SlArrowRight } from "react-icons/sl";
 import { BsPlusLg } from "react-icons/bs";
 import Specs from "./specification/specs";
-import {menuItems, MenuItem } from "../lib/types";
+import { menuItems, MenuItem } from "../lib/types";
 import { GiSpeaker } from "react-icons/gi";
 import CommissionForm from "./forms/commissionForm";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
@@ -142,7 +142,7 @@ export default function HomeHero() {
 
   return (
     <>
-    {galleryOpen && <Gallery closeGallery={handleCloseGallery}/>}
+      {galleryOpen && <Gallery closeGallery={handleCloseGallery} />}
       <main className="relative z-40">
         <section className="sticky top-0 panel">
           <section className="min-h-screen bg-black lg:rounded-t-[50px] flex brightness-75 panel_1">
@@ -164,7 +164,7 @@ export default function HomeHero() {
               />
             </div>
           </section>
-          <div className="absolute top-1/2 right-[150px] transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-20 flex flex-col gap-[250px] md:top-5 md:left-5 md:transform-none md:-translate-y-0 md:-translate-x-0 md:gap-[80px]">
+          <div className="top-5 left-5 transform-none -translate-y-0 -translate-x-0 gap-[80px] absolute lg:top-1/2 lg:left-auto lg:right-[150px] lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 text-center text-white z-20 flex flex-col lg:gap-[250px] ">
             <span>
               <h1 className="uppercase text-3xl text-left font-extrabold text-white">
                 staincraft
@@ -182,17 +182,18 @@ export default function HomeHero() {
               <GiSpeaker />
             </div>
           </div>
-          <Link 
-         href="#gallery"
-          onClick={handleGalleryClick}  
-          className="absolute bottom-[50px] left-5 flex justify-between items-center px-4 py-2 bg-transparent border border-black rounded-br-[15px] w-[95%] lg:hidden">
+          <Link
+            href="#gallery"
+            onClick={handleGalleryClick}
+            className="absolute bottom-[50px] left-5 flex justify-between items-center px-4 py-2 bg-transparent border border-black rounded-br-[15px] w-[95%] lg:hidden"
+          >
             <p className="text-black">Gallery</p>
             <MdOutlineKeyboardArrowRight className="text-white text-2xl" />
           </Link>
         </section>
         <section className="rounded-t-[50px] sticky top-0 panel secondCarView">
           <main className="relative" id="car-tour">
-            <ul className="flex flex-col space-y-6 w-[200px] absolute top-1/2 left-0 text-center z-20">
+            {/* <ul className="flex flex-col space-y-6 w-[200px] absolute top-1/2 left-0 text-center z-20">
                 {menuItems.map((item: MenuItem, index: number) => (
                 <div key={index}>
                   <li className=" group flex items-center gap-4 cursor-pointer transition-all duration-300">
@@ -216,10 +217,51 @@ export default function HomeHero() {
                   </li>
                 </div>
                 ))}
+            </ul> */}
+            <ul
+              className="flex flex-col space-y-6 w-[200px] absolute top-1/2 left-0 text-center z-20 bottom-35
+             max-lg:flex-row max-lg:space-y-0 max-lg:bottom-25 max-lg:top-auto max-lg:left-0 max-lg:w-full max-lg:justify-center max-lg:items-stretch max-lg:bg-white max-lg:border max-lg:border-[#757675]"
+            >
+              {menuItems.map((item: MenuItem, index: number) => (
+                <div
+                  key={index}
+                  className="max-lg:flex-1 max-lg:border-l max-lg:border-r max-lg:border-[#757675] max-lg:flex max-lg:items-center max-lg:justify-center"
+                >
+                  <li
+                    className="group flex items-center gap-4 cursor-pointer transition-all duration-300
+                   max-lg:flex-col max-lg:gap-0 max-lg:w-full max-lg:py-4 max-lg:px-2 max-lg:border-none"
+                  >
+                    {/* Black line and orange dot: desktop only */}
+                    <p className="w-[0px] bg-black h-[1px] transition-all duration-300 group-hover:w-[32px] max-lg:hidden"></p>
+                    <p className="bg-[#ef4826] w-2 h-2 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100 max-lg:hidden"></p>
+
+                    {/* Menu title */}
+                    <h1
+                      className="lg:menuLink text-[#6b6b6b] uppercase font-extrabold text-sm transition-all duration-300 group-hover:text-black group-hover:text-base
+                     max-lg:text-[#757675] max-lg:hover:text-black"
+                      onClick={() => handleSpecClick(item.title)}
+                    >
+                      {item.title}
+                    </h1>
+
+                    {/* Specs: desktop only */}
+                    {activeSpec === item.title && (
+                      <Specs
+                        key={item.title}
+                        title={item.title}
+                        images={item.images}
+                        paragraph={item.paragraph}
+                        onClose={() => setActiveSpec(null)}
+                      />
+                    )}
+                  </li>
+                </div>
+              ))}
             </ul>
+
             <Link
               href=""
-              className="hover:text-white hover:bg-black z-10 ml-[40px] absolute bottom-0 flex items-center justify-between w-[200px] bg-transparent border border-black text-black p-4 rounded-br-[25px]  mb-8"
+              className="hover:text-white hover:bg-black z-10 md:ml-[20px] lg:ml-[40px] absolute bottom-0 flex items-center justify-between w-[95%] lg:w-[200px] bg-transparent border border-black text-black p-4 rounded-br-[15px] lg:rounded-br-[25px]  mb-8"
               onMouseEnter={textShift}
               onMouseLeave={textUnshift}
             >
@@ -261,7 +303,7 @@ export default function HomeHero() {
           </main>
         </section>
       </main>
-      <div className="overlayy commission fixed bottom-0 left-0 w-1/2 h-[100vh] z-40 rounded-tr-[35px] ">
+      <div className="overlayy commission fixed bottom-0 left-0 w-full lg:w-1/2 h-[100vh] z-40 rounded-tr-[35px] ">
         <div className=" flex items-center justify-between w-full h-[10%] bg-[#ef4826]  hover:bg-[#26ef47] text-black px-8 py-3 rounded-tr-[35px] cursor-pointer z-50 fixe bottom-0 left-0">
           <h2 className="uppercase text-[16px] font-extrabold">
             commission your mf-47
