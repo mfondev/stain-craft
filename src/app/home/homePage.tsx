@@ -70,7 +70,6 @@ export default function HomePage() {
         <Navbar />
         <div className="bg-bottom-image h-screen sticky top-0 panel">
           <article className="sticky top-0 panel pt-[80px] articleHead">
-            
             <Image
               src="/images/bgg.webp"
               alt="dummy image"
@@ -80,10 +79,10 @@ export default function HomePage() {
             />
             <div className=" h-screen relative">
               <div className="h-[200px] overflow-hidden absolute left-0 top-0 ">
-                <h1 className="hf1 md:text-[162px] text-[250px] leading-[1] font-extrabold h-full">
+                <h1 className="hf1 text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full">
                   MF
                 </h1>
-                <h1 className="hf2 md:text-[162px] text-[250px] leading-[1] font-extrabold h-full">
+                <h1 className="hf2 text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full">
                   MF
                 </h1>
               </div>
@@ -167,10 +166,10 @@ export default function HomePage() {
                 </main>
               </main>
               <div className="h-[200px] overflow-hidden  leading-[1] font-extrabold absolute right-0 bottom-25 lg:eleven md:top-0 md:right-0 ">
-                <h1 className="hf1 md:text-[162px] text-[250px] leading-[1] font-extrabold h-full ">
+                <h1 className="hf1 text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full ">
                   47
                 </h1>
-                <h1 className="hf2 md:text-[162px] text-[250px] leading-[1] font-extrabold h-full ">
+                <h1 className="hf2 text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full ">
                   47
                 </h1>
               </div>
