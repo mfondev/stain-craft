@@ -88,7 +88,7 @@ const Navbar = () => {
         <Link
           href="#gallery"
           onClick={handleGalleryClick}  
-          className="uppercase font-extrabold text-[12px] font-bol"
+          className="uppercase font-extrabold text-[12px] md:hidden"
           onMouseEnter={textShift}
           onMouseLeave={textUnshift}
         >
@@ -101,7 +101,7 @@ const Navbar = () => {
         </Link>
         <Link
           href="#car-tour"
-          className="uppercase font-extrabold text-[12px]"
+          className="uppercase font-extrabold text-[12px] md:hidden"
           onMouseEnter={textShift}
           onMouseLeave={textUnshift}
         >
@@ -116,7 +116,7 @@ const Navbar = () => {
         </Link>
         <Link
           href="#about"
-          className="uppercase font-extrabold text-[12px] "
+          className="uppercase font-extrabold text-[12px] md:hidden"
           onMouseEnter={textShift}
           onMouseLeave={textUnshift}
         >
