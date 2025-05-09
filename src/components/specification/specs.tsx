@@ -109,10 +109,10 @@ export default function Specs({ title, images, paragraph,onClose }: SpecsProps) 
               </div>
             ))}
           </div>
-          <article className="bg-white absolute w-[95%] lg:w-[46%] right-5 top-5 h-[0%] flex flex-col justify-between specs-overlay overflow-hidden z-40">
+          <article className="bg-white absolute w-full md:w-[95%] lg:w-[46%] right-0 md:right-5 top-0 md:top-5 h-[0%] flex flex-col  md:justify-between specs-overlay overflow-hidden z-40">
             <header className="flex items-cente justify-between px-2 py-1">
               <div className=" h-[72px] overflow-hidden">
-                <h1 className="md:text-[72px] lg:text-[90px] uppercase leading-[1] specTitle">
+                <h1 className="text-[42px] md:text-[72px] lg:text-[90px] uppercase leading-[1] specTitle">
                   {title}
                 </h1>
               </div>
@@ -124,8 +124,8 @@ export default function Specs({ title, images, paragraph,onClose }: SpecsProps) 
               </div>
             </header>
             <section className="flex flex-col items-center justify-center">
-              <div className="m mb-8 slideshow-section specSlide ">
-                <div className="w-[290px] h-[310px] relative ">
+              <div className=" mb-8 slideshow-section specSlide ">
+                <div className="w-[290px] h-[550px] md:h-[310px] relative ">
                   {images.map((image, index) => (
                     <Image
                       src={image}
@@ -137,7 +137,7 @@ export default function Specs({ title, images, paragraph,onClose }: SpecsProps) 
                   ))}
                 </div>
               </div>
-              <p className="text-sm px-18 pb-4 specTexts opacity-0 text-left">
+              <p className="text-[12px] md:text-sm lg:px-18 pb-4 specTexts opacity-0 text-center md:text-left">
                 {paragraph}
               </p>
             </section>
