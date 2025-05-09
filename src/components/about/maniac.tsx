@@ -5,15 +5,15 @@ import Image from "next/image";
 export default function Maniac() {
   return (
     <div className="details detail1Text">
-    <h1 className="text-[55px] font-extrabold uppercase mb-8 detail1">
+    <h1 className="text-[39px] md:text-[55px] font-extrabold uppercase mb-4 md:mb-8 detail1">
       MANIACS
     </h1>
-    <h6 className="text-[32px] font-extrabold uppercase leading-8 mb-10">
+    <h6 className="text-[22px] md:text-[32px] font-extrabold uppercase leading-5 mb:leading-8 mb-10">
       Twins, born in Ukraine, raised in Canada. High School dropouts.
       Trained in Italy and California. Oilstainlab is their
       un-medicated vision, a pure manifest of automotive excess & Fun.
     </h6>
-    {/* <article className=" grid place-items-center bg-[#e2e2e2] relative w-full h-[570px] overflow-hidden mb-14 ">
+    <article className=" grid place-items-center bg-[#e2e2e2] relative w-full h-[420px] md:h-[570px] overflow-hidden mb-14 ">
       <div className="flex items-center gap-[40px] pr-[100px] leading-[1]  absolute w-full top-[-70px] left-[-690px] maniacText1">
         <h1 className="text-[14vw] font-extrabold uppercase">
           maniacs
@@ -58,7 +58,7 @@ export default function Maniac() {
           maniacs
         </h1>
       </div>
-      <div className="w-[230px] h-[350px] relative ">
+      <div className="w-[230px] h-[270px] md:h-[350px] relative ">
         <Image
           src="/images/about_2.jpg"
           alt=""
@@ -90,8 +90,8 @@ export default function Maniac() {
           className="slideshow object-cover absolute top-0 left-0 z-[50]"
         />
       </div>
-    </article> */}
-    <div className="flex items-start justify-between ">
+    </article>
+    <div className="flex flex-col md:flex-row  gap-4 md:gap-0 items-start justify-between ">
       <h2 className="uppercase text-sm max-w-[60px] font-extrabold">
         double vision
       </h2>

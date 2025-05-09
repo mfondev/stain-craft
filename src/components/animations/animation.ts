@@ -3,19 +3,49 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 import SplitType from "split-type";
 
+// export const textSlide = () => {
+//   const tl = gsap.timeline();
+//   const text1Letters = gsap.utils.toArray(".h-text1 span");
+//   const text2Letters = gsap.utils.toArray(".h-text2 span");
+//   tl.fromTo(
+//     text1Letters,
+//     { y: 0, opacity: 1 },
+//     { y: -140, opacity: 1, duration: 0.8, stagger: 0.05, ease: "power2.out" }
+//   )
+//     .fromTo(
+//       text2Letters,
+//       { y: 0, opacity: 0 },
+//       { y: -110, opacity: 1, duration: 0.8, stagger: 0.05, ease: "power2.out" },
+//       "<"
+//     )
+//     .fromTo(
+//       ".l-footer",
+//       { y: 100, opacity: 0 },
+//       { y: 0, duration: 0.8, ease: "power2.out", opacity: 1 }
+//     );
+// };
+
 export const textSlide = () => {
   const tl = gsap.timeline();
   const text1Letters = gsap.utils.toArray(".h-text1 span");
   const text2Letters = gsap.utils.toArray(".h-text2 span");
+
+  // Check if the screen width is less than 600px
+  const isMobile = window.innerWidth < 600;
+
+  // Set Y values based on screen size
+  const y1 = isMobile ? -70 : -140;
+  const y2 = isMobile ? -60 : -110;
+
   tl.fromTo(
     text1Letters,
     { y: 0, opacity: 1 },
-    { y: -140, opacity: 1, duration: 0.8, stagger: 0.05, ease: "power2.out" }
+    { y: y1, opacity: 1, duration: 0.8, stagger: 0.05, ease: "power2.out" }
   )
     .fromTo(
       text2Letters,
       { y: 0, opacity: 0 },
-      { y: -110, opacity: 1, duration: 0.8, stagger: 0.05, ease: "power2.out" },
+      { y: y2, opacity: 1, duration: 0.8, stagger: 0.05, ease: "power2.out" },
       "<"
     )
     .fromTo(
@@ -24,6 +54,7 @@ export const textSlide = () => {
       { y: 0, duration: 0.8, ease: "power2.out", opacity: 1 }
     );
 };
+
 
 export const textUnslide = () => {
   const text2Letters = gsap.utils.toArray(".h-text2 span");

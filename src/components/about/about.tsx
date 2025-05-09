@@ -105,7 +105,7 @@ export default function About() {
           ))}
         </div>
 
-        <div className="px-6 py-6">
+        <div className="px-6 py-[60px]">
           {activeTab === "Maniacs" && <Maniac />}
           {activeTab === "Mission" && <Mission />}
           {activeTab === "Machine" && <Machine />}

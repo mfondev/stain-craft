@@ -77,7 +77,7 @@ export default function HomePage() {
               height={100}
               className="object-cover absolute left-1/2 top-[-320px] mb-8 transform -translate-x-1/2 carImg z-30 w-[1800px] lg:h-[780px] md:w-[800px] md:h-[900px]"
             /> */}
-            <div className="top-0 md:top-[-400px] lg:top-[-320px] absolute w-full">
+            {/* <div className="top-0 md:top-[-400px] lg:top-[-320px] absolute w-full">
               <div className="relative w-[600px] md:w-[1200px] lg:w-full lg:h-[780px] h-[900px] transform -translate-x-1/2 left-1/2">
                 <Image
                   src="/images/bgg.webp"
@@ -86,14 +86,14 @@ export default function HomePage() {
                   className="carImg z-30 object-contain"
                 />
               </div>
-            </div>
+            </div> */}
 
             <div className=" h-screen relative">
               <div className="h-[200px] overflow-hidden absolute left-0 top-0 ">
-                <h1 className="hf1 text-[90px] md:text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full">
+                <h1 className="hf1 text-[120px] md:text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full">
                   MF
                 </h1>
-                <h1 className="hf2 text-[90px] md:text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full">
+                <h1 className="hf2 text-[120px] md:text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full">
                   MF
                 </h1>
               </div>
@@ -177,10 +177,10 @@ export default function HomePage() {
                 </main>
               </main>
               <div className="h-[200px] overflow-hidden  leading-[1] font-extrabold absolute lg:right-0 lg:bottom-25 lg:eleven top-0 right-0 ">
-                <h1 className="hf1 text-[90px] md:text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full ">
+                <h1 className="hf1 text-[120px] md:text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full ">
                   47
                 </h1>
-                <h1 className="hf2 text-[90px] md:text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full ">
+                <h1 className="hf2 text-[120px] md:text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full ">
                   47
                 </h1>
               </div>

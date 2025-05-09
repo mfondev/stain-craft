@@ -5,17 +5,17 @@ import Image from "next/image";
 export default function Mission() {
   return (
     <div className="details detail2Text">
-    <h1 className="text-[55px] font-extrabold uppercase headers mb-8">
+    <h1 className="text-[39px] md:text-[55px]  font-extrabold uppercase headers mb-4 md:mb-8">
       MISSION
     </h1>
 
-    <h6 className="text-[32px] font-extrabold uppercase leading-8 mb-10">
+    <h6 className="text-[20px] md:text-[32px] font-extrabold uppercase leading-5 md:leading-8 mb-10">
       When we started Oilstainlab in 2018, we promised never to be
       sane. Instead, we embraced that part of ourselves that had
       always been truest.
     </h6>
     <section className="mb-14">
-      <div className="relative w-full h-[500px] ">
+      <div className="relative w-full h-[330px] md:h-[500px] ">
         <Image
           src="/images/bmw.jpg"
           alt=""
@@ -24,7 +24,7 @@ export default function Mission() {
         />
       </div>
     </section>
-    <div className="flex items-start justify-between ">
+    <div className="flex flex-col md:flex-row gap-4 md:gap-0 items-start justify-between ">
       <h2 className="uppercase text-sm max-w-[60px font-extrabold">
         too <br /> far gone
       </h2>
