@@ -62,49 +62,50 @@ export default forwardRef<HTMLElement, Props>(function IntroPage(
           <article className="flex flex-col justify-between h-full relative z-10">
             <div className="text-white">
               <div className="flex flex-col gap-4">
-                <div className="h-[110px] overflow-hidden flex flex-col">
-                  <h1 className="text-[70px] md:text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
+                <div className="h-[60px] md:h-[110px] overflow-hidden flex flex-col">
+                  <h1 className="text-[60px] md:text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
                     {wrapText("Bespoke")}
                   </h1>
-                  <h1 className="text-[70px] md:text-[120px] leading-[1] uppercase font-extrabold h-text2">
+                  <h1 className="text-[60px] md:text-[120px] leading-[1] uppercase font-extrabold h-text2">
                     {wrapText("Bespoke")}
                   </h1>
                 </div>
-                <div className="h-[110px] overflow-hidden flex flex-col ml-0 md:ml-[200px] lg:ml-[400px]">
-                  <h1 className="text-[70px] md:text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
+                <div className="h-[60px] md:h-[110px] overflow-hidden flex flex-col ml-0 md:ml-[200px] lg:ml-[400px]">
+                  <h1 className="text-[60px] md:text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
                     {wrapText("Myth")}
                   </h1>
-                  <h1 className="text-[70px] md:text-[120px] leading-[1] uppercase font-extrabold h-text2">
+                  <h1 className="text-[60px] md:text-[120px] leading-[1] uppercase font-extrabold h-text2">
                     {wrapText("Myth")}
                   </h1>
                 </div>
-                <div className="h-[110px] overflow-hidden flex flex-col">
-                  <h1 className="text-[70px] md:text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
+                <div className="h-[60px] md:h-[110px] overflow-hidden flex flex-col">
+                  <h1 className="text-[60px] md:text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
                     {wrapText("Chaos")}
                   </h1>
-                  <h1 className="text-[70px] md:text-[120px] leading-[1] uppercase font-extrabold h-text2">
+                  <h1 className="text-[60px] md:text-[120px] leading-[1] uppercase font-extrabold h-text2">
                     {wrapText("Chaos")}
                   </h1>
                 </div>
-                <div className="h-[110px] overflow-hidden flex flex-col ml-0 md:ml-[200px] lg:ml-[130px]">
-                  <h1 className="text-[70px] md:text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
+                <div className="h-[60px] md:h-[110px] overflow-hidden flex flex-col ml-0 md:ml-[200px] lg:ml-[130px]">
+                  <h1 className="text-[60px] md:text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
                     {wrapText("Maniac")}
                   </h1>
-                  <h1 className="text-[70px] md:text-[120px] leading-[1] uppercase font-extrabold h-text2">
+                  <h1 className="text-[60px] md:text-[120px] leading-[1] uppercase font-extrabold h-text2">
                     {wrapText("Maniac")}
                   </h1>
                 </div>
               </div>
             </div>
             {/*  */}
-            <div className="flex items-center justify-between l-footer">
+            {/* <div className="flex items-center justify-between l-footer"> */}
+            <div className="flex flex-col items-center justify-center text-center gap-4 md:gap-0 uppercase md:flex-row md:justify-between md:items-center l-footer">
               <h3 className="text-sm uppercase text-white">
                 CALIFORNIA, USA, 90757
               </h3>
               <Link
                 href=""
                 onClick={onHomePageReveal}
-                className="flex items-center justify-between w-[190px] bg-[#ef4826] hover:bg-[#26ef47] text-black p-5 rounded-br-[15px]"
+                className="flex items-center justify-between w-full md:w-[190px] bg-[#ef4826] hover:bg-[#26ef47] text-black p-3 md:p-5 rounded-br-[15px]"
                 onMouseEnter={textShift}
                 onMouseLeave={textUnshift}
               >
