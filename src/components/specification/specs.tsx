@@ -109,10 +109,10 @@ export default function Specs({ title, images, paragraph,onClose }: SpecsProps) 
               </div>
             ))}
           </div>
-          <article className="bg-white absolute w-[46%] right-5 top-5 h-[0%] flex flex-col justify-between specs-overlay overflow-hidden z-40">
+          <article className="bg-white absolute w-[95%] lg:w-[46%] right-5 top-5 h-[0%] flex flex-col justify-between specs-overlay overflow-hidden z-40">
             <header className="flex items-cente justify-between px-2 py-1">
               <div className=" h-[72px] overflow-hidden">
-                <h1 className="text-[90px] uppercase leading-[1] specTitle">
+                <h1 className="md:text-[72px] lg:text-[90px] uppercase leading-[1] specTitle">
                   {title}
                 </h1>
               </div>

@@ -57,7 +57,7 @@ body {
 }
 
 .gallery {
-  display: flex;
+  /* display: flex; */
   align-items: start;
 }
 
@@ -71,7 +71,6 @@ body {
 }
 
 .details {
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -89,64 +88,3 @@ body {
   background-position: bottom center;
   background-size: cover; 
 }
-
-/* 
-✓ Starting...
-✓ Ready in 2.6s
-⨯ The requested resource isn't a valid image for /images/bgg.webp received text/html; charset=utf-8
-[Error: The requested resource isn't a valid image.] { statusCode: 400 } did npm run build 
-
-
-ChatGPT said:
-The error you're seeing:
-
-vbnet
-Copy
-Edit
-⨯ The requested resource isn't a valid image for /images/bgg.webp received text/html; charset=utf-8
-[Error: The requested resource isn't a valid image.] { statusCode: 400 }
-...usually means that your build process or image optimization tool (like Next.js, Vite, or Astro) is trying to process /images/bgg.webp, but it's either:
-
-Not actually an image, or
-
-The path is incorrect and it's loading an HTML 404 page instead of the image.
-
-Here's how to fix it:
-✅ Step 1: Confirm the file path
-Check that the file really exists at public/images/bgg.webp. If you’re using:
-
-Next.js: it should be in the public/images/ folder, and you reference it as /images/bgg.webp.
-
-Vite/Astro: you might need to import it if it's inside src/assets/.
-
-✅ Step 2: Open the image directly
-Try going to http://localhost:3000/images/bgg.webp in your browser. If you see an error page, then:
-
-The file is not where you think it is, or
-
-The image is corrupt or unreadable.
-
-✅ Step 3: Check for image corruption
-Try opening the bgg.webp file in an image viewer or browser. If it doesn’t open, re-export or replace it with a valid .webp image.
-
-✅ Step 4: If you're using an image optimizer
-If you're using an image optimizer (like next/image or Astro’s Image component), it might throw this error if the image isn't valid or accessible. As a test, try replacing it with a known good .webp image temporarily.
-
-Would you like to tell me which framework you're using (e.g., Next.js, Vite, Astro) so I can give framework-specific advice?
-
-
-
-
-
-
-
-
-
-Search
-
-Reason
-
-Create image
-
-
-ChatGPT can make mistakes. Check i */

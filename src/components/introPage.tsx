@@ -41,7 +41,6 @@ export default forwardRef<HTMLElement, Props>(function IntroPage(
 
   const textUnshift = () => {
     const tl = gsap.timeline();
-
     tl.to(".ent-1", { x: -3, duration: 0.3 })
       .to(".ent-2", { x: 0, duration: 0.3 }, "<")
       .to(".arr-1", { x: 0, duration: 0.3 })
@@ -64,34 +63,34 @@ export default forwardRef<HTMLElement, Props>(function IntroPage(
             <div className="text-white">
               <div className="flex flex-col gap-4">
                 <div className="h-[110px] overflow-hidden flex flex-col">
-                  <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
+                  <h1 className="text-[70px] md:text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
                     {wrapText("Bespoke")}
                   </h1>
-                  <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-text2">
+                  <h1 className="text-[70px] md:text-[120px] leading-[1] uppercase font-extrabold h-text2">
                     {wrapText("Bespoke")}
                   </h1>
                 </div>
-                <div className="h-[110px] overflow-hidden flex flex-col ml-[400px]">
-                  <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
+                <div className="h-[110px] overflow-hidden flex flex-col ml-0 md:ml-[200px] lg:ml-[400px]">
+                  <h1 className="text-[70px] md:text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
                     {wrapText("Myth")}
                   </h1>
-                  <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-text2">
+                  <h1 className="text-[70px] md:text-[120px] leading-[1] uppercase font-extrabold h-text2">
                     {wrapText("Myth")}
                   </h1>
                 </div>
                 <div className="h-[110px] overflow-hidden flex flex-col">
-                  <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-full h-text1 ">
+                  <h1 className="text-[70px] md:text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
                     {wrapText("Chaos")}
                   </h1>
-                  <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-text2">
+                  <h1 className="text-[70px] md:text-[120px] leading-[1] uppercase font-extrabold h-text2">
                     {wrapText("Chaos")}
                   </h1>
                 </div>
-                <div className="h-[110px] overflow-hidden flex flex-col ml-[130px]">
-                  <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
+                <div className="h-[110px] overflow-hidden flex flex-col ml-0 md:ml-[200px] lg:ml-[130px]">
+                  <h1 className="text-[70px] md:text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
                     {wrapText("Maniac")}
                   </h1>
-                  <h1 className="text-[120px] leading-[1] uppercase font-extrabold h-text2">
+                  <h1 className="text-[70px] md:text-[120px] leading-[1] uppercase font-extrabold h-text2">
                     {wrapText("Maniac")}
                   </h1>
                 </div>
