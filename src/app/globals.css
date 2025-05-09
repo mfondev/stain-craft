@@ -57,7 +57,7 @@ body {
 }
 
 .gallery {
-  display: flex;
+  /* display: flex; */
   align-items: start;
 }
 

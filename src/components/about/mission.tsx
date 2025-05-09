@@ -37,7 +37,7 @@ export default function Mission() {
         addicted to progress as they are to the past.
       </p>
     </div>
-    <div className="w-full h-[1px] bg-[#e8e8e8] my-32  detail3"></div>
+    <div className="w-full h-[1px] bg-[#e8e8e8] my-8 lg:my-32  detail3"></div>
     
   </div>
   );

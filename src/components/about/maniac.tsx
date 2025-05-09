@@ -13,7 +13,7 @@ export default function Maniac() {
       Trained in Italy and California. Oilstainlab is their
       un-medicated vision, a pure manifest of automotive excess & Fun.
     </h6>
-    <article className=" grid place-items-center bg-[#e2e2e2] relative w-full h-[570px] overflow-hidden mb-14 ">
+    {/* <article className=" grid place-items-center bg-[#e2e2e2] relative w-full h-[570px] overflow-hidden mb-14 ">
       <div className="flex items-center gap-[40px] pr-[100px] leading-[1]  absolute w-full top-[-70px] left-[-690px] maniacText1">
         <h1 className="text-[14vw] font-extrabold uppercase">
           maniacs
@@ -90,7 +90,7 @@ export default function Maniac() {
           className="slideshow object-cover absolute top-0 left-0 z-[50]"
         />
       </div>
-    </article>
+    </article> */}
     <div className="flex items-start justify-between ">
       <h2 className="uppercase text-sm max-w-[60px] font-extrabold">
         double vision
@@ -105,7 +105,7 @@ export default function Maniac() {
         creating for maniacs.
       </p>
     </div>
-    <div className="w-full h-[1px] bg-[#e8e8e8] my-32 detail2"></div>
+    <div className="w-full h-[1px] bg-[#e8e8e8] my-8 lg:my-32 detail2"></div>
   </div>
   );
 }

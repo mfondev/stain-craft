@@ -70,26 +70,37 @@ export default function HomePage() {
         <Navbar />
         <div className="bg-bottom-image h-screen sticky top-0 panel">
           <article className="sticky top-0 panel pt-[80px] articleHead">
-            <Image
+            {/* <Image
               src="/images/bgg.webp"
               alt="dummy image"
               width={1200}
               height={100}
               className="object-cover absolute left-1/2 top-[-320px] mb-8 transform -translate-x-1/2 carImg z-30 w-[1800px] lg:h-[780px] md:w-[800px] md:h-[900px]"
-            />
+            /> */}
+            <div className="top-0 md:top-[-400px] lg:top-[-320px] absolute w-full">
+              <div className="relative w-[600px] md:w-[1200px] lg:w-full lg:h-[780px] h-[900px] transform -translate-x-1/2 left-1/2">
+                <Image
+                  src="/images/bgg.webp"
+                  alt="dummy image"
+                  fill
+                  className="carImg z-30 object-contain"
+                />
+              </div>
+            </div>
+
             <div className=" h-screen relative">
               <div className="h-[200px] overflow-hidden absolute left-0 top-0 ">
-                <h1 className="hf1 text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full">
+                <h1 className="hf1 text-[90px] md:text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full">
                   MF
                 </h1>
-                <h1 className="hf2 text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full">
+                <h1 className="hf2 text-[90px] md:text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full">
                   MF
                 </h1>
               </div>
-              
-              <main className="w-full md:px-6 flex flex-col justify-center items-center absolute bottom-35 lg:left-[140px] mb-8 z-40">
+
+              <main className="w-full px-6 flex flex-col justify-center items-center absolute lg:bottom-20 bottom-30 md:bottom-35 lg:left-[140px] lg:mb-8 lg:mx-0 z-40">
                 <div className="h-[30px] overflow-hidden md:text-center">
-                  <h2 className="uppercase text-[30px] leading-[1] font-extrabold  lm1">
+                  <h2 className="uppercase text-[30px] leading-[1] font-extrabold lm1">
                     Less is more,
                   </h2>
                 </div>
@@ -107,7 +118,7 @@ export default function HomePage() {
                     <IoMdArrowDropright className="text-xl" />
                   </div>
                 </Link>
-                <main className="md:w-full lg:w-[320px]">
+                <main className="w-full lg:w-[320px]">
                   <div className="stats">
                     <div className="flex items-center justify-between w-full mb-2 ">
                       <span className="h-[30px] w-[58px]  overflow-hidden flex flex-col items-center">
@@ -165,11 +176,11 @@ export default function HomePage() {
                   </div>
                 </main>
               </main>
-              <div className="h-[200px] overflow-hidden  leading-[1] font-extrabold absolute right-0 bottom-25 lg:eleven md:top-0 md:right-0 ">
-                <h1 className="hf1 text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full ">
+              <div className="h-[200px] overflow-hidden  leading-[1] font-extrabold absolute lg:right-0 lg:bottom-25 lg:eleven top-0 right-0 ">
+                <h1 className="hf1 text-[90px] md:text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full ">
                   47
                 </h1>
-                <h1 className="hf2 text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full ">
+                <h1 className="hf2 text-[90px] md:text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full ">
                   47
                 </h1>
               </div>
