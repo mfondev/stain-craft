@@ -4,13 +4,13 @@ import Image from "next/image";
 export default function Machine() {
   return (
     <div className="details detail3Text">
-      <h1 className="text-[55px] font-extrabold uppercase headers mb-14 leading-[1]">
+      <h1 className="text-[39px] md:text-[55px] font-extrabold uppercase mb-4 md:mb-8 detail1">
         Time <br />
         MAchine
       </h1>
 
       <section className="mb-14 slideshow-section">
-        <div className="w-full h-[530px] relative ">
+        <div className="w-full h-[330px] md:h-[530px] relative ">
           <Image
             src="/images/carImg1.jpg"
             alt=""
@@ -43,16 +43,16 @@ export default function Machine() {
           />
         </div>
       </section>
-      <div className="flex items-start justify-between mb-30 w-[550px]">
+      <div className="flex flex-col md:flex-row items-start justify-between mb-10 lg:mb-30 gap-4 md:gap-0 w-full md:w-[550px]">
         <h2 className="uppercase text-sm max-w-[60px font-extrabold ">
           devergent <br /> past
         </h2>
-        <p className="max-w-[380px] text-[28px] leading-[1] uppercase text-center">
+        <p className="max-w-[380px] text-[28px] leading-[1] uppercase text-left md:text-center">
           To find our future we needed to break free from the grip of time.
         </p>
       </div>
       <section className="mb-14 slideshow-section">
-        <div className="w-full h-[530px] relative ">
+        <div className="w-full h-[330px] md:h-[530px] relative ">
           <Image
             src="/images/carImg4.jpg"
             alt=""
@@ -87,7 +87,7 @@ export default function Machine() {
         </div>
       </section>
 
-      <div className="flex items-start justify-between  mb-24">
+      <div className="flex flex-col md:flex-row items-start justify-between gap-4 md:gap-0 mb-10 md:mb-24">
         <h2 className="uppercase text-sm max-w-[60px font-extrabold">
           time <br /> machine
         </h2>
@@ -98,11 +98,11 @@ export default function Machine() {
           Few go back to go forward. It would have been insane for us not to.
         </p>
       </div>
-      <h2 className="uppercase font-extrabold text-[54px] leading-[1] mb-24">
+      <h2 className="uppercase font-extrabold text-[39px] md:text-[54px] leading-[1] mb-10 md:mb-24">
         When the past overtakes the future. Half-11 Prototype.
       </h2>
-      <section className="mb-14 slideshow-section">
-        <div className="w-full h-[530px] relative ">
+      <section className="md:mb-14 slideshow-section">
+        <div className="w-full h-[330px] md:h-[530px] relative ">
           <Image
             src="/images/about_3.jpg"
             alt=""
