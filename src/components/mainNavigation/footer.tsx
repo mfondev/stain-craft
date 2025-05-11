@@ -32,7 +32,7 @@ export default function Footer() {
           </div>
         </div>
       </section>
-      <footer className="bg-[#242424] text-[#525252] h-[50vh] flex flex-col justify-between pt-8 px-8 sticky bottom-0 z-10">
+      <footer className="bg-[#242424] text-[#525252] h-[50vh] lg:h-[90vh] flex flex-col justify-between pt-8 px-8 sticky bottom-0 z-10">
         <header className="flex flex-col items-center justify-center text-center gap-2 uppercase lg:flex-row lg:justify-between lg:items-center">
           <h3 className="uppercase text-[12px] md:text-sm font-extrabold">
             HF-11 is a registered trademark of OILSTAINLAB LLC.

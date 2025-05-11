@@ -89,7 +89,7 @@ export default function HomePage() {
               </div>
             </div> */}
             <div className="absolute top-[-600px] md:top-[-350px] left-0 w-full overflow-hidden z-10">
-              <div className="relative left-1/2 -translate-x-1/2 w-[700px] h-[1000px] md:w-[1200px] md:h-[900px] lg:w-full lg:h-[1000px]">
+              <div className="relative left-1/2 -translate-x-1/2 w-[700px] h-[1100px] md:w-[1200px] md:h-[900px] lg:w-full lg:h-[1000px]">
                 <Image
                   src="/images/bgg.webp"
                   alt="falling car"
