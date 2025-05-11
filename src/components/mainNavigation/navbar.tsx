@@ -15,6 +15,8 @@ const Navbar = () => {
     const handleScroll = () => {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
+
+        // console.log("scrollTop", scrollTop);
   
       if (navbarRef.current) {
         if (scrollTop === 0) {
@@ -74,9 +76,9 @@ const Navbar = () => {
 
   return (
     <nav
-      className="flex justify-between items-center px-4 md:px-8 py-3 bg-transparent text-black cursor-pointer fixed w-full top-0 z-30"
+      className="flex justify-between items-center px-4 md:px-8 py-3 bg-transparent text-black cursor-pointer fixed w-full top-0 z-40 transition-all duration-300"
       ref={navbarRef}
-      style={{ transition: "top 0.3s ease" }}
+      // style={{ transition: "top 0.3s ease" }}
     >
       <Link href="/" className="text-xl md:text-2xl font-extrabold uppercase">
         StainCraft

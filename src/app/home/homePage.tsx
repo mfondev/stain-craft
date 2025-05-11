@@ -71,23 +71,7 @@ export default function HomePage() {
 
         <div className="bg-bottom-image h-screen sticky top-0 panel">
           <article className="sticky top-0 panel pt-[80px] articleHead">
-            {/* <Image
-              src="/images/bgg.webp"
-              alt="dummy image"
-              width={1200}
-              height={100}
-              className="object-cover absolute left-1/2 top-[-320px] mb-8 transform -translate-x-1/2 carImg z-30 w-[1800px] lg:h-[780px] md:w-[800px] md:h-[900px]"
-            /> */}
-            {/* <div className="top-0 md:top-[-400px] lg:top-[-320px] absolute w-full">
-              <div className="relative w-[600px] md:w-[1200px] lg:w-full lg:h-[780px] h-[900px] transform -translate-x-1/2 left-1/2">
-                <Image
-                  src="/images/bgg.webp"
-                  alt="dummy image"
-                  fill
-                  className="carImg z-30 object-contain"
-                />
-              </div>
-            </div> */}
+           
             <div className="absolute top-[-600px] md:top-[-350px] left-0 w-full overflow-hidden z-10">
               <div className="relative left-1/2 -translate-x-1/2 w-[700px] h-[1100px] md:w-[1200px] md:h-[900px] lg:w-full lg:h-[1000px]">
                 <Image
@@ -187,7 +171,7 @@ export default function HomePage() {
                   </div>
                 </main>
               </main>
-              <div className="h-[200px] overflow-hidden  leading-[1] font-extrabold absolute lg:right-0 lg:bottom-25 lg:eleven top-0 right-0 ">
+              <div className="h-[200px] overflow-hidden  leading-[1] font-extrabold absolute lg:right-0 lg:bottom-25 eleven top-0 right-0 ">
                 <h1 className="hf1 text-[120px] md:text-[162px] lg:text-[250px] leading-[1] font-extrabold h-full ">
                   47
                 </h1>

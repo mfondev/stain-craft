@@ -1,10 +1,49 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
+import CommissionForm from "../forms/commissionForm";
+import { BsPlusLg } from "react-icons/bs";
+import gsap from "gsap";
 
 export default function Footer() {
+  const [isOpen, setIsOpen] = useState(false);
+  const commissionTimeline = useRef<GSAPTimeline | null>(null);
+
+  useEffect(() => {
+    const viewportHeight = window.innerHeight;
+
+    gsap.set(".commission", {
+      y: viewportHeight,
+      opacity: 1,
+    });
+
+    commissionTimeline.current = gsap.timeline({ paused: true });
+
+    commissionTimeline.current.to(".commissio", {
+      y: 0,
+      duration: 1.2,
+      ease: "power2.inOut",
+    });
+  }, []);
+
+  const toggleCommission = () => {
+    const scrollTarget = document.documentElement;
+
+    if (!isOpen) {
+      scrollTarget.style.overflow = "hidden";
+      commissionTimeline.current?.play();
+    } else {
+      scrollTarget.style.overflow = "";
+      commissionTimeline.current?.reverse();
+    }
+
+    setIsOpen(!isOpen);
+  };
+
   return (
     <main className="relative">
-      <section className="bg-[#dadada]  relative z-20">
+      <section className="bg-[#dadada] relative z-20">
         <div className="relative h-[80vh] md:h-[110vh] lg:h-[160vh]">
           <main className="absolute top-0 left-0 w-full lg:h-[100vh] flex items-cente justify-center z-10 text-center">
             <h1 className="text-[40px] md:text-[80px] lg:text-[160px] leading-[1] font-extrabold uppercase pt-[50px] md:px-[40px]">
@@ -31,6 +70,20 @@ export default function Footer() {
             </div>
           </div>
         </div>
+        {/* commission */}
+        <div
+          className="absolute bottom-0 left-0 w-full h-[10%] bg-[#ef4826] hover:bg-[#26ef47] text-black px-4 py-4 cursor-pointer z-50 block md:hidden"
+          onClick={toggleCommission}
+        >
+          <div className="flex items-center justify-between w-full h-full">
+            <h2 className="uppercase text-[16px] font-extrabold">
+              commission your mf-47
+            </h2>
+            <div className="bg-black rounded-full p-[3px]">
+              <BsPlusLg className="text-gray-500 text-[20px] gear" />
+            </div>
+          </div>
+        </div>
       </section>
       <footer className="bg-[#242424] text-[#525252] h-[50vh] lg:h-[90vh] flex flex-col justify-between pt-8 px-8 sticky bottom-0 z-10">
         <header className="flex flex-col items-center justify-center text-center gap-2 uppercase lg:flex-row lg:justify-between lg:items-center">
@@ -51,6 +104,30 @@ export default function Footer() {
           </h1>
         </div>
       </footer>
+      {/*  */}
+      {/*  */}
+      <div className="footer-overlayy commissio fixed bottom-0 left-0 w-full lg:w-1/2 h-[100vh] z-40 rounded-tr-[20px] lg:hidden block">
+        <div className="flex items-center justify-between w-full h-[10%] bg-[#ef4826] text-black px-2 py-2 rounded-tr-[35px] cursor-pointer z-50">
+          <h2 className="uppercase text-[16px] font-extrabold">
+              commission your mf-47
+            </h2>
+          <div className="bg-black rounded-full p-[3px]">
+            <BsPlusLg
+              className="text-gray-500 text-[20px] gear rotate-45"
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleCommission();
+              }}
+            />
+          </div>
+        </div>
+        <div className="h-[90%] bg-white px-4 py-3">
+          <h2 className="text-[50px] max-w-[270px leading-[0.9] font-extrabold mb-4">
+            REGISTER YOUR INTEREST IN HF-11.
+          </h2>
+          <CommissionForm />
+        </div>
+      </div>
     </main>
   );
 }
