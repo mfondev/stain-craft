@@ -68,11 +68,14 @@ export default function HomeHero() {
   };
 
   useEffect(() => {
-    // gsap.set(".commission", { y: 830, opacity: 1 });
+    const viewportHeight = window.innerHeight;
+    console.log(viewportHeight);
+    
     gsap.set(".commission", {
-      y: () => window.innerHeight, // move it down by 100% of the viewport height
+      y: viewportHeight,
       opacity: 1,
     });
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".panel_1",
@@ -82,9 +85,8 @@ export default function HomeHero() {
       },
     });
 
-    // tl.to(".commission", { y: 750, duration: 0.8, ease: "power2.out" });
     tl.to(".commission", {
-      y: () => window.innerHeight - 80, // only 100px of the element comes into view
+      y: viewportHeight - 80,
       duration: 0.8,
       ease: "power2.out",
     });

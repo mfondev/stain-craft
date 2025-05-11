@@ -78,7 +78,7 @@ const Navbar = () => {
       ref={navbarRef}
       style={{ transition: "top 0.3s ease" }}
     >
-      <Link href="/" className="text-2xl font-extrabold uppercase">
+      <Link href="/" className="text-xl md:text-2xl font-extrabold uppercase">
         StainCraft
       </Link>
       <div className="flex items-center space-x-6">

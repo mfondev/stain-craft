@@ -68,6 +68,7 @@ export default function HomePage() {
       <IntroPage onHomePageReveal={homeRoute} ref={introRef} />
       <main className="relative bg-[#eaece9">
         <Navbar />
+
         <div className="bg-bottom-image h-screen sticky top-0 panel">
           <article className="sticky top-0 panel pt-[80px] articleHead">
             {/* <Image
@@ -87,6 +88,16 @@ export default function HomePage() {
                 />
               </div>
             </div> */}
+            <div className="absolute top-[-600px] md:top-[-350px] left-0 w-full overflow-hidden z-10">
+              <div className="relative left-1/2 -translate-x-1/2 w-[700px] h-[1000px] md:w-[1200px] md:h-[900px] lg:w-full lg:h-[1000px]">
+                <Image
+                  src="/images/bgg.webp"
+                  alt="falling car"
+                  fill
+                  className="carImg object-contain"
+                />
+              </div>
+            </div>
 
             <div className=" h-screen relative">
               <div className="h-[200px] overflow-hidden absolute left-0 top-0 ">
