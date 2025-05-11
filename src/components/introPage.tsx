@@ -58,10 +58,10 @@ export default forwardRef<HTMLElement, Props>(function IntroPage(
         <video autoPlay loop muted playsInline className="absolute top-0 left-0 w-full h-full object-cover z-0">
           <source src="/images/intro.mp4" type="video/mp4" />
         </video>
-        <section className="intro-section flex flex-col justify-center h-screen px-8 z-10 bg-black py-8">
-          <article className="flex flex-col justify-between h-full relative z-10">
+        <section className="intro-section flex flex-col justify-center h-screen px-4 md:px-8 z-10 bg-black md:py-8">
+          <article className="flex flex-col justify-between h-[94vh] relative z-10">
             <div className="text-white">
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col md:gap-4">
                 <div className="h-[60px] md:h-[110px] overflow-hidden flex flex-col">
                   <h1 className="text-[60px] md:text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
                     {wrapText("Bespoke")}
@@ -70,7 +70,7 @@ export default forwardRef<HTMLElement, Props>(function IntroPage(
                     {wrapText("Bespoke")}
                   </h1>
                 </div>
-                <div className="h-[60px] md:h-[110px] overflow-hidden flex flex-col ml-0 md:ml-[200px] lg:ml-[400px]">
+                <div className="h-[60px] md:h-[110px] overflow-hidden flex flex-col ml-[60px] md:ml-[200px] lg:ml-[400px]">
                   <h1 className="text-[60px] md:text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
                     {wrapText("Myth")}
                   </h1>
@@ -86,7 +86,7 @@ export default forwardRef<HTMLElement, Props>(function IntroPage(
                     {wrapText("Chaos")}
                   </h1>
                 </div>
-                <div className="h-[60px] md:h-[110px] overflow-hidden flex flex-col ml-0 md:ml-[200px] lg:ml-[130px]">
+                <div className="h-[60px] md:h-[110px] overflow-hidden flex flex-col ml-[24px] md:ml-[200px] lg:ml-[130px]">
                   <h1 className="text-[60px] md:text-[120px] leading-[1] uppercase font-extrabold h-full h-text1">
                     {wrapText("Maniac")}
                   </h1>
@@ -96,8 +96,6 @@ export default forwardRef<HTMLElement, Props>(function IntroPage(
                 </div>
               </div>
             </div>
-            {/*  */}
-            {/* <div className="flex items-center justify-between l-footer"> */}
             <div className="flex flex-col items-center justify-center text-center gap-4 md:gap-0 uppercase md:flex-row md:justify-between md:items-center l-footer">
               <h3 className="text-sm uppercase text-white">
                 CALIFORNIA, USA, 90757

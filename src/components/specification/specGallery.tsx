@@ -119,7 +119,7 @@ export default function SpecGallery({ images, imageClick,activeIndex }: Props) {
   return (
     <>
       <div
-        className="gallery-button  absolute right-[40px] top-1/2 -translate-y-1/2 flex items-center h-[50px] z-50"
+        className="gallery-button absolute right-[8px] md:right-[40px] top-1/2 -translate-y-1/2 flex items-center h-[50px] z-50"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >

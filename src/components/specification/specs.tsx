@@ -125,7 +125,7 @@ export default function Specs({ title, images, paragraph,onClose }: SpecsProps) 
             </header>
             <section className="flex flex-col items-center justify-center">
               <div className=" mb-8 slideshow-section specSlide ">
-                <div className="w-[290px] h-[420px] md:h-[310px] relative ">
+                <div className="w-[300px] md:w-[290px] h-[380px] md:h-[310px] relative ">
                   {images.map((image, index) => (
                     <Image
                       src={image}
@@ -137,7 +137,8 @@ export default function Specs({ title, images, paragraph,onClose }: SpecsProps) 
                   ))}
                 </div>
               </div>
-              <p className="text-[12px] md:text-sm lg:px-18 pb-4 specTexts opacity-0 text-center md:text-left">
+              <p>
+              {/* <p className="w-full text-[12px] md:text-sm lg:px-18 pb-4 specTexts opacity-0 text-center md:text-left"> */}
                 {paragraph}
               </p>
             </section>

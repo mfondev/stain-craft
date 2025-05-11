@@ -69,8 +69,8 @@ export default function HomeHero() {
 
   useEffect(() => {
     const viewportHeight = window.innerHeight;
-    console.log(viewportHeight);
-    
+    // console.log(viewportHeight);
+
     gsap.set(".commission", {
       y: viewportHeight,
       opacity: 1,
@@ -148,16 +148,16 @@ export default function HomeHero() {
       <main className="relative z-40">
         <section className="sticky top-0 panel">
           <section className="min-h-screen bg-black lg:rounded-t-[50px] flex brightness-75 panel_1">
-            <div className="relative w-1/2">
+            <div className="relative w-full md:w-1/2">
               <Image
-                src="/images/koz_1.jpg"
+                src="/images/koz_3.jpg"
                 alt=""
                 fill
                 className="object-cover lg:rounded-tl-[50px]"
               />
             </div>
             <div className="w-[1px] bg-[#c4c0c0]"></div>
-            <div className="relative w-1/2">
+            <div className="relative w-1/2 hidden md:block">
               <Image
                 src="/images/koz_2.jpg"
                 alt=""
@@ -195,15 +195,11 @@ export default function HomeHero() {
         </section>
         <section className="rounded-t-[50px] sticky top-0 panel secondCarView">
           <main className="relative" id="car-tour">
-            {/* <ul
-              className="flex flex-col space-y-6 w-[200px] absolute top-1/2 left-0 text-center z-20 bottom-35
-             max-lg:flex-row max-lg:space-y-0 max-lg:bottom-25 max-lg:top-auto max-lg:left-0 max-lg:w-full max-lg:justify-center max-lg:items-stretch max-lg:bg-white max-lg:border max-lg:border-[#757675]"
-            > */}
             <ul
               className="flex flex-col space-y-6 w-[200px] absolute top-1/2 left-0 text-center z-20 bottom-35
-    max-lg:flex-row max-lg:space-y-0 max-lg:bottom-25 max-lg:top-auto max-lg:left-0 max-lg:w-full 
-    max-lg:justify-start max-lg:items-stretch max-lg:bg-white max-lg:border max-lg:border-[#757675]
-    max-lg:overflow-x-auto max-lg:whitespace-nowrap max-lg:scrollbar-thin"
+              max-lg:flex-row max-lg:space-y-0 max-lg:bottom-25 max-lg:top-auto max-lg:left-0 max-lg:w-full 
+              max-lg:justify-start max-lg:items-stretch max-lg:bg-white max-lg:border max-lg:border-[#757675]
+              max-lg:overflow-x-auto max-lg:whitespace-nowrap max-lg:scrollbar-thin"
             >
               {menuItems.map((item: MenuItem, index: number) => (
                 <div
@@ -214,11 +210,8 @@ export default function HomeHero() {
                     className="group flex items-center gap-4 cursor-pointer transition-all duration-300
                    max-lg:flex-col max-lg:gap-0 max-lg:w-full max-lg:py-4 max-lg:px-10 max-lg:border-none"
                   >
-                    {/* Black line and orange dot: desktop only */}
                     <p className="w-[0px] bg-black h-[1px] transition-all duration-300 group-hover:w-[32px] max-lg:hidden"></p>
                     <p className="bg-[#ef4826] w-2 h-2 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100 max-lg:hidden"></p>
-
-                    {/* Menu title */}
                     <h1
                       className="lg:menuLink text-[#6b6b6b] uppercase font-extrabold text-sm transition-all duration-300 group-hover:text-black group-hover:text-base
                      max-lg:text-[#757675] max-lg:hover:text-black"
@@ -226,8 +219,6 @@ export default function HomeHero() {
                     >
                       {item.title}
                     </h1>
-
-                    {/* Specs: desktop only */}
                     {activeSpec === item.title && (
                       <Specs
                         key={item.title}
@@ -286,7 +277,7 @@ export default function HomeHero() {
           </main>
         </section>
       </main>
-      <div className="overlayy commission fixed bottom-0 left-0 w-full lg:w-1/2 h-[100vh] z-40 rounded-tr-[35px] ">
+      <div className="overlayy commission fixed bottom-0 left-0 w-full lg:w-1/2 h-[100vh] z-40 rounded-tr-[35px] hidden md:block">
         <div className=" flex items-center justify-between w-full h-[10%] bg-[#ef4826]  hover:bg-[#26ef47] text-black px-8 py-3 rounded-tr-[35px] cursor-pointer z-50 fixe bottom-0 left-0">
           <h2 className="uppercase text-[16px] font-extrabold">
             commission your mf-47

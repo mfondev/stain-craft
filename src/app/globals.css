@@ -25,6 +25,9 @@ body {
 .overlayy {
   transform: translateY(90%);
 }
+.footer-overlayy {
+  transform: translateY(100%);
+}
 
 .scale-section {
   clip-path: polygon(1% 0, 99% 0, 99% 100%, 1% 100%);

@@ -8,7 +8,7 @@ export default function Maniac() {
     <h1 className="text-[39px] md:text-[55px] font-extrabold uppercase mb-4 md:mb-8 detail1">
       MANIACS
     </h1>
-    <h6 className="text-[22px] md:text-[32px] font-extrabold uppercase leading-5 mb:leading-8 mb-10">
+    <h6 className="text-[22px] md:text-[32px] font-extrabold uppercase leading-5 mb:leading-9 lg:leading-9 mb-10">
       Twins, born in Ukraine, raised in Canada. High School dropouts.
       Trained in Italy and California. Oilstainlab is their
       un-medicated vision, a pure manifest of automotive excess & Fun.

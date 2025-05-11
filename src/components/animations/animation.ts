@@ -30,29 +30,29 @@ export const textSlide = () => {
   const text1Letters = gsap.utils.toArray(".h-text1 span");
   const text2Letters = gsap.utils.toArray(".h-text2 span");
 
-  // Check if the screen width is less than 600px
   const isMobile = window.innerWidth < 600;
 
-  // Set Y values based on screen size
-  const y1 = isMobile ? -70 : -140;
-  const y2 = isMobile ? -60 : -110;
+const y1 = isMobile ? -70 : -140;
+const y2 = isMobile ? -50 : -110;
+const duration = isMobile ? 1 : 0.8;
 
-  tl.fromTo(
-    text1Letters,
-    { y: 0, opacity: 1 },
-    { y: y1, opacity: 1, duration: 0.8, stagger: 0.05, ease: "power2.out" }
+tl.fromTo(
+  text1Letters,
+  { y: 0, opacity: 1 },
+  { y: y1, opacity: 1, duration, stagger: 0.05, ease: "power2.out" }
+)
+  .fromTo(
+    text2Letters,
+    { y: 0, opacity: 0 },
+    { y: y2, opacity: 1, duration, stagger: 0.05, ease: "power2.out" },
+    "<"
   )
-    .fromTo(
-      text2Letters,
-      { y: 0, opacity: 0 },
-      { y: y2, opacity: 1, duration: 0.8, stagger: 0.05, ease: "power2.out" },
-      "<"
-    )
-    .fromTo(
-      ".l-footer",
-      { y: 100, opacity: 0 },
-      { y: 0, duration: 0.8, ease: "power2.out", opacity: 1 }
-    );
+  .fromTo(
+    ".l-footer",
+    { y: 100, opacity: 0 },
+    { y: 0, duration: 0.8, ease: "power2.out", opacity: 1 }
+  );
+
 };
 
 
@@ -139,36 +139,36 @@ const onGoingCode = (progress: number) => {
     scale: 1 + progress * 0.2,
     duration: 1,
     ease: "power2.out",
-    scrub: 1,
+    // scrub: 1,
   });
-  // maxMove = -105;
 
-  // gsap.to(".eleven", {
-  //   y: Math.max(maxMove, -700 * progress),
-  //   ease: "power2.out",
-  //   duration: 1,
-  //   marginBottom: 10,
+
+  // gsap.ticker.add(() => {
+  //   const scrollY = window.scrollY;
+
+  //   const panel = document.querySelector(".articleHead");
+  //   const maxUp = panel ? (panel as HTMLElement).offsetHeight - 330 : 0;
+  //   const moveAmount = Math.min(scrollY, maxUp);
+
+  //   gsap.set(".eleven", {
+  //     y: -moveAmount,
+  //   });
   // });
 
-  gsap.ticker.add(() => {
+gsap.ticker.add(() => {
+  if (window.innerWidth >= 1024) {
     const scrollY = window.scrollY;
-
     const panel = document.querySelector(".articleHead");
     const maxUp = panel ? (panel as HTMLElement).offsetHeight - 330 : 0;
     const moveAmount = Math.min(scrollY, maxUp);
 
-    gsap.set(".eleven", {
-      y: -moveAmount,
-    });
-  });
+    const target = document.querySelector(".eleven");
+    if (target) {
+      gsap.set(target, { y: -moveAmount });
+    }
+  }
+});
 
-  // gsap.fromTo(".panel_1",{
-  //   filter: "brightness(0.5)",
-  //   duration: 1,
-  //   ease: "power2.out",
-  // },{
-  //   filter: `brightness(${0.5 + progress})`,
-  // })
 };
 
 export const createScroll01 = () => {
