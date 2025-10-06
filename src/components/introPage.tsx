@@ -96,7 +96,7 @@ export default forwardRef<HTMLElement, Props>(function IntroPage(
                 </div>
               </div>
             </div>
-            <div className="flex flex-col items-center justify-center text-center gap-4 md:gap-0 uppercase md:flex-row md:justify-between md:items-center l-footer">
+            <div className="flex flex-col items-center justify-center text-center gap-4 md:gap-0 uppercase md:flex-row md:justify-between md:items-center l-footer mb-[40px] lg:mb-0">
               <h3 className="text-sm uppercase text-white">
                 CALIFORNIA, USA, 90757
               </h3>
